@@ -203,7 +203,7 @@ def run_tournament(number_of_runs) -> dict:
     return results
 
 # run
-NUMBER_OF_RUNS = 100
+NUMBER_OF_RUNS = 1000
 bracket_check()
 final_results = run_tournament(NUMBER_OF_RUNS)
 print("\nList of all schools\n-------------------")
@@ -219,6 +219,9 @@ list_of_E8 = []
 list_of_S16 = []
 list_of_R2 = []
 for school in final_results:
+    name = str(school)
+    if name == "Defeated":
+        continue
     championships = float(final_results[school].get("champion",0))
     runner = float(final_results[school].get("runner up",0))
     final4 = float(final_results[school].get("FF",0))
@@ -230,7 +233,6 @@ for school in final_results:
     e8 = championships + runner + final4 + elite8
     s16 = championships + runner + final4 + elite8 + sweet16
     r2 = championships + runner + final4 + elite8 + sweet16 + round2
-    name = str(school)
     if championships >= float(NUMBER_OF_RUNS)*0.05:
         champ_pct = championships / float(NUMBER_OF_RUNS) * 100
         list_of_champs.append([name,champ_pct])

@@ -258,6 +258,10 @@ SCHOOLS = {
         "seed": None,
         "pablo": 6430,
     },
+    "Defeated": {
+        "seed": None,
+        "pablo": -9999,
+    },
 }
 
 BRACKET = {
