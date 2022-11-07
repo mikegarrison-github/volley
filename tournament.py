@@ -203,7 +203,7 @@ def run_tournament(number_of_runs) -> dict:
     return results
 
 # run
-NUMBER_OF_RUNS = 1000
+NUMBER_OF_RUNS = 100000
 bracket_check()
 final_results = run_tournament(NUMBER_OF_RUNS)
 for school in final_results:
@@ -270,4 +270,45 @@ sorted_list_of_E8 = sorted(list_of_E8,key=lambda x: x[1],reverse=True)
 print("Elite Eight Percentages")
 for teams in sorted_list_of_E8:
     print(str(teams[0])+": "+str(round(teams[1],1)))
-    
+# list of teams reaching S16
+list_of_S16 = []
+for school in final_results:
+    championships = float(final_results[school].get("champion",0))
+    runner = float(final_results[school].get("runner up",0))
+    final4 = float(final_results[school].get("FF",0))
+    elite8 = float(final_results[school].get("E8",0))
+    sweet16 = float(final_results[school].get("S6",0))
+    semis = championships + runner
+    f4 = championships + runner + final4
+    e8 = championships + runner + final4 + elite8
+    s16 = championships + runner + final4 + elite8 + sweet16
+    if semis >= float(NUMBER_OF_RUNS)*0.10 or championships >= float(NUMBER_OF_RUNS)*0.05 or f4 >= float(NUMBER_OF_RUNS)*0.15 or e8 >= float(NUMBER_OF_RUNS)*0.20 or s16 >= float(NUMBER_OF_RUNS)*0.30:
+        name = str(school)
+        s16_pct = s16 / float(NUMBER_OF_RUNS) * 100
+        list_of_S16.append([name,s16_pct])
+sorted_list_of_S16 = sorted(list_of_S16,key=lambda x: x[1],reverse=True)
+print("Sweet 16 Percentages")
+for teams in sorted_list_of_S16:
+    print(str(teams[0])+": "+str(round(teams[1],1)))
+# list of teams reaching round 2
+list_of_R2 = []
+for school in final_results:
+    championships = float(final_results[school].get("champion",0))
+    runner = float(final_results[school].get("runner up",0))
+    final4 = float(final_results[school].get("FF",0))
+    elite8 = float(final_results[school].get("E8",0))
+    sweet16 = float(final_results[school].get("S6",0))
+    round2 = float(final_results[school].get("R2",0))
+    semis = championships + runner
+    f4 = championships + runner + final4
+    e8 = championships + runner + final4 + elite8
+    s16 = championships + runner + final4 + elite8 + sweet16
+    r2 = championships + runner + final4 + elite8 + sweet16 + round2
+    if semis >= float(NUMBER_OF_RUNS)*0.10 or championships >= float(NUMBER_OF_RUNS)*0.05 or f4 >= float(NUMBER_OF_RUNS)*0.15 or e8 >= float(NUMBER_OF_RUNS)*0.20 or s16 >= float(NUMBER_OF_RUNS)*0.30 or r2 >= float(NUMBER_OF_RUNS)*0.50:
+        name = str(school)
+        r2_pct = r2 / float(NUMBER_OF_RUNS) * 100
+        list_of_R2.append([name,r2_pct])
+sorted_list_of_R2 = sorted(list_of_R2,key=lambda x: x[1],reverse=True)
+print("Round 2 Percentages")
+for teams in sorted_list_of_R2:
+    print(str(teams[0])+": "+str(round(teams[1],1)))
