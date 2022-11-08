@@ -203,7 +203,7 @@ def run_tournament(number_of_runs) -> dict:
     return results
 
 # run
-NUMBER_OF_RUNS = 1000
+NUMBER_OF_RUNS = 100000
 bracket_check()
 final_results = run_tournament(NUMBER_OF_RUNS)
 print("\nList of all schools\n-------------------")
