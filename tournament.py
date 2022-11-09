@@ -1,6 +1,7 @@
 import random
 import runtime
 import pablo
+import statistics
 
 random.seed()
 
@@ -90,6 +91,20 @@ def bracket_check() -> None:
             school_data = runtime.SCHOOLS.get(school)
             if not school_data:
                 raise ValueError("No data found for school: "+str(school)+" in quad: "+str(quad))
+
+
+# average pablo score
+def median_pablo() -> int:
+    pablos = []
+    for quad in runtime.BRACKET:
+        for school in runtime.BRACKET[quad]:
+            if school == "Defeated":
+                continue
+            school_data = runtime.SCHOOLS.get(school)
+            pablos.append(school_data["pablo"])
+    median = statistics.median(pablos)
+    return round(median)
+            
 
 
 # run tournament
@@ -203,7 +218,7 @@ def run_tournament(number_of_runs) -> dict:
     return results
 
 # run
-NUMBER_OF_RUNS = 100000
+NUMBER_OF_RUNS = 100
 bracket_check()
 final_results = run_tournament(NUMBER_OF_RUNS)
 print("\nList of all schools\n-------------------")
@@ -281,3 +296,5 @@ sorted_list_of_R2 = sorted(list_of_R2,key=lambda x: x[1],reverse=True)
 print("\nRound 2 Percentages")
 for teams in sorted_list_of_R2:
     print(str(teams[0])+": "+str(round(teams[1],1)))
+avg_pablo = median_pablo()
+print("\n\nAverage pablo score: "+str(avg_pablo))
