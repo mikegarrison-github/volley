@@ -6,6 +6,14 @@ SCHOOLS = {
         "seed": 6,
         "pablo": 6530,
     },
+    "Arizona": {
+        "seed": None,
+        "pablo": 5925,
+    },
+    "Arizona State": {
+        "seed": None,
+        "pablo": 5815,
+    },
     "Army": {
         "seed": None,
         "pablo": 5175,
@@ -37,6 +45,10 @@ SCHOOLS = {
     "BYU": {
         "seed": 7,
         "pablo": 6800,
+    },
+    "California": {
+        "seed": None,
+        "pablo": 5240,
     },
     "Campbell": {
         "seed": None,
@@ -205,6 +217,10 @@ SCHOOLS = {
     "Oregon": {
         "seed": 3,
         "pablo": 6900,
+    },
+    "Oregon State": {
+        "seed": None,
+        "pablo": 5320,
     },
     "Penn State": {
         "seed": 4,
@@ -384,4 +400,35 @@ BRACKET = {
     "14": ["Creighton","Northern Colorado","Northern Iowa","Purdue"],
     "11": ["Florida","Florida A&M","Colorado","Georgia Tech"],
     "6": ["Stanford","Southeastern Louisiana","Pepperdine","Northwestern"],
+}
+
+CONF_SCHED = {
+    "9": [
+        ["Arizona State","Stanford"],
+        ["Arizona","California"],
+        ["Southern California","Oregon State"],
+        ["UCLA","Oregon"],
+        ["Utah","Washington State"],
+        ["Colorado","Washington"],
+        ["Arizona State","California"],
+        ["Arizona","Stanford"],
+        ["Southern California","Oregon"],
+        ["UCLA","Oregon State"],
+        ["Utah","Washington"],
+        ["Colorado","Washington State"],
+    ],
+    "10": [
+        ["UCLA","Washington State"],
+        ["Southern California","Washington"],
+        ["Colorado","Arizona"],
+        ["Utah","Arizona State"],
+        ["Oregon State","Stanford"],
+        ["Oregon","California"],
+        ["Oregon State","Oregon"],
+        ["Utah","Colorado"],
+        ["Arizona","Arizona State"],
+        ["California","Stanford"],
+        ["UCLA","Southern California"],
+        ["Washington","Washington State"],
+    ],
 }
