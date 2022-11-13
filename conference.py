@@ -65,7 +65,7 @@ def run_conference(number_of_runs, number_of_matches) -> dict:
 
 # run
 NUMBER_OF_RUNS = 1000
-NUMBER_OF_MATCHES = 4
+NUMBER_OF_MATCHES = 8
 final_results = run_conference(NUMBER_OF_RUNS, NUMBER_OF_MATCHES)
 print("\nList of all schools\n-------------------")
 for school in final_results:
@@ -73,4 +73,16 @@ for school in final_results:
     mean_wins = statistics.mean(wins)
     median_wins = statistics.median(wins)
     std_wins = statistics.stdev(wins)
-    print(str(school)+" mean wins: "+str(mean_wins)+" median wins: "+str(median_wins))
+    high_wins = sorted([mean_wins+std_wins,0,NUMBER_OF_MATCHES])[1]
+    low_wins = sorted([mean_wins-std_wins,0,NUMBER_OF_MATCHES])[1]
+    print(str(school)+" Expected wins: "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins)))
+print("\nPlaces\n-------------------")
+for school in final_results:
+    number_of_teams = len(runtime.CONFERENCE)
+    wins = final_results[school]["placements"]
+    mean_wins = statistics.mean(wins)
+    median_wins = statistics.median(wins)
+    std_wins = statistics.stdev(wins)
+    high_wins = sorted([mean_wins+std_wins,1,number_of_teams])[1]
+    low_wins = sorted([mean_wins-std_wins,1,number_of_teams])[1]
+    print(str(school)+" Expected placement: "+str(round(low_wins,1))+" to "+str(round(high_wins,1))+" -- median placement: "+str(round(median_wins)))

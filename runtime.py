@@ -418,6 +418,34 @@ CONFERENCE = [
 ]
 
 CONF_SCHED = {
+    "7": [
+        ["Washington State","Defeated"],
+        ["Defeated","Oregon"],
+        ["Defeated","Southern California"],
+        ["Defeated","UCLA"],
+        ["Colorado","Defeated"],
+        ["Defeated","Stanford"],
+        ["Defeated","UCLA"],
+        ["Defeated","Stanford"],
+        ["Utah","Defeated"],
+        ["Defeated","Oregon"],
+        ["Defeated","Southern California"],
+        ["Washington","Defeated"],
+    ],
+    "8": [
+        ["Stanford","Defeated"],
+        ["Defeated","Utah"],
+        ["Oregon","Defeated"],
+        ["Defeated","UCLA"],
+        ["Defeated","Arizona"],
+        ["Washington State","Defeated"],
+        ["Defeated","Southern California"],
+        ["Stanford","Defeated"],
+        ["Defeated","Colorado"],
+        ["Washington State","Arizona"],
+        ["Oregon","Utah"],
+        ["Washington","Arizona State"],
+    ],
     "9": [
         ["Arizona State","Stanford"],
         ["Arizona","California"],
