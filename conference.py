@@ -5,103 +5,14 @@ import statistics
 
 random.seed()
 
-def make_quad_list(quad) -> list:
-    bracket = runtime.BRACKET[quad]
-    return bracket
-
-
-def play_quad(bracket, neutral_flag=False) -> list:
-    
-    # who is home?
-    home_school = None
-    top_seed = None
-    for school in bracket:
-        school_data = runtime.SCHOOLS[school]
-        seed = school_data["seed"]
-        if seed:
-            if top_seed:
-                if seed < top_seed:
-                    home_school = school
-                    top_seed = seed
-            else:
-                top_seed = seed
-                home_school = school
-    if neutral_flag:
-        home_school = None
-    
-    # play first game
-    schools = [bracket[0],bracket[1]]
-    if schools[0] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"H")
-    elif schools[1] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"A")
-    else:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"N")
-    # who won?
-    score = random.random()
-    if score <= team_1_prob:
-        game_1_winner = schools[0]
-        game_1_loser = schools[1]
-    else:
-        game_1_winner = schools[1]
-        game_1_loser = schools[0]
-
-    # play second game
-    schools = [bracket[2],bracket[3]]
-    if schools[0] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"H")
-    elif schools[1] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"A")
-    else:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"N")
-    # who won?
-    score = random.random()
-    if score <= team_1_prob:
-        game_2_winner = schools[0]
-        game_2_loser = schools[1]
-    else:
-        game_2_winner = schools[1]
-        game_2_loser = schools[0]
-
-    # play third game
-    schools = [game_1_winner,game_2_winner]
-    if schools[0] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"H")
-    elif schools[1] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"A")
-    else:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"N")
-    # who won?
-    score = random.random()
-    if score <= team_1_prob:
-        game_3_winner = schools[0]
-        game_3_loser = schools[1]
-    else:
-        game_3_winner = schools[1]
-        game_3_loser = schools[0]
-
-    winners = [game_3_winner,game_3_loser,game_1_loser,game_2_loser]
-    return winners
-
-
-# bracket check
-def bracket_check() -> None:
-    for quad in runtime.BRACKET:
-        for school in runtime.BRACKET[quad]:
-            school_data = runtime.SCHOOLS.get(school)
-            if not school_data:
-                raise ValueError("No data found for school: "+str(school)+" in quad: "+str(quad))
 
 
 # average pablo score
 def median_pablo() -> int:
     pablos = []
-    for quad in runtime.BRACKET:
-        for school in runtime.BRACKET[quad]:
-            if school == "Defeated":
-                continue
-            school_data = runtime.SCHOOLS.get(school)
-            pablos.append(school_data["pablo"])
+    for school in runtime.CONFERENCE:
+        school_data = runtime.SCHOOLS.get(school)
+        pablos.append(school_data["pablo"])
     median = statistics.median(pablos)
     return round(median)
             
