@@ -402,6 +402,21 @@ BRACKET = {
     "6": ["Stanford","Southeastern Louisiana","Pepperdine","Northwestern"],
 }
 
+CONFERENCE = [
+    "Arizona",
+    "Arizona State",
+    "California",
+    "Stanford",
+    "UCLA",
+    "Southern California",
+    "Oregon",
+    "Oregon State",
+    "Colorado",
+    "Utah",
+    "Washington",
+    "Washington State",
+]
+
 CONF_SCHED = {
     "9": [
         ["Arizona State","Stanford"],
