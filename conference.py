@@ -5,8 +5,6 @@ import statistics
 
 random.seed()
 
-
-
 # average pablo score
 def median_pablo() -> int:
     pablos = []
@@ -16,8 +14,6 @@ def median_pablo() -> int:
     median = statistics.median(pablos)
     return round(median)
             
-
-
 # run conference
 def run_conference(number_of_runs, number_of_matches) -> dict:
     results = {}
@@ -63,10 +59,54 @@ def run_conference(number_of_runs, number_of_matches) -> dict:
             results[school] = {"wins":wins,"placements":placements}
     return results
 
+# find current records
+def find_current_records(number_of_matches) -> dict:
+    results = {}
+    for school in runtime.CONFERENCE:
+        results[school]={"wins":0,"losses":0,"unplayed":0}
+    for week in runtime.CONF_SCHED:
+        for match in runtime.CONF_SCHED[week]:
+            home_team = match[1]
+            visiting_team = match[0]
+            if home_team == "Defeated":
+                results[visiting_team]["wins"] += 1
+            elif visiting_team == "Defeated":
+                results[home_team]["wins"] += 1
+            else:
+                results[home_team]["unplayed"] += 1
+                results[visiting_team]["unplayed"] += 1
+    for school in runtime.CONFERENCE:
+        results[school]["losses"] = number_of_matches - results[school]["wins"] - results[school]["unplayed"]
+    standings = {}
+    for school in runtime.CONFERENCE:
+        wins = results[school]["wins"]
+        losses = results[school]["losses"]
+        percentage = float(wins) / float(wins + losses)
+        standings[school] = percentage
+    ordered_list = sorted(standings.items(), key=lambda item: item[1], reverse=True)
+    place = 1
+    count = 0
+    current_percentage = 1.0
+    for item in ordered_list:
+        school,percentage = item
+        if percentage == current_percentage:
+            standings[school] = place
+            count += 1
+        else:
+            place += count
+            standings[school] = place
+            count = 1
+            current_percentage = percentage
+    for school in runtime.CONFERENCE:
+        results[school]["placement"] = standings[school]
+    return results
+
+
 # run
-NUMBER_OF_RUNS = 1000
-NUMBER_OF_MATCHES = 8
+NUMBER_OF_RUNS = 10000
+NUMBER_OF_MATCHES = 20
 final_results = run_conference(NUMBER_OF_RUNS, NUMBER_OF_MATCHES)
+current_results = find_current_records(NUMBER_OF_MATCHES)
 # sort schools
 sorted_list_of_schools = sorted(runtime.CONFERENCE)
 _pablo = {}
@@ -83,8 +123,10 @@ for school in wins_sorted_list:
     mean_wins = statistics.mean(wins)
     median_wins = statistics.median(wins)
     std_wins = statistics.stdev(wins)
-    high_wins = sorted([mean_wins+std_wins,0,NUMBER_OF_MATCHES])[1]
-    low_wins = sorted([mean_wins-std_wins,0,NUMBER_OF_MATCHES])[1]
+    maximum_possible_wins = current_results[school]["wins"] + current_results[school]["unplayed"]
+    minimum_possible_wins = current_results[school]["wins"]
+    high_wins = sorted([mean_wins+std_wins,minimum_possible_wins,maximum_possible_wins])[1]
+    low_wins = sorted([mean_wins-std_wins,minimum_possible_wins,maximum_possible_wins])[1]
     print(str(school)+" Expected wins: "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins)))
 print("\nPlaces\n-------------------")
 for school in wins_sorted_list:
