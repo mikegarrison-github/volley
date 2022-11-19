@@ -10,7 +10,23 @@ def make_quad_list(quad) -> list:
     return bracket
 
 
-def play_quad(bracket, neutral_flag=False) -> list:
+def play_match(schools, home_school, avg_school=None) -> float:
+    pablo0 = runtime.SCHOOLS[schools[0]]["pablo"]
+    pablo1 = runtime.SCHOOLS[schools[1]]["pablo"]
+    if schools[0] == avg_school:
+        pablo0 = median_pablo()
+    if schools[1] == avg_school:
+        pablo1 = median_pablo()
+    if schools[0] == home_school:
+        team_1_prob = pablo.pablo_odds(pablo0,pablo1,"H")
+    elif schools[1] == home_school:
+        team_1_prob = pablo.pablo_odds(pablo0,pablo1,"A")
+    else:
+        team_1_prob = pablo.pablo_odds(pablo0,pablo1,"N")
+    return team_1_prob
+
+
+def play_quad(bracket, neutral_flag=False, avg_school=None) -> list:
     
     # who is home?
     home_school = None
@@ -31,12 +47,7 @@ def play_quad(bracket, neutral_flag=False) -> list:
     
     # play first game
     schools = [bracket[0],bracket[1]]
-    if schools[0] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"H")
-    elif schools[1] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"A")
-    else:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"N")
+    team_1_prob = play_match(schools,home_school,avg_school)
     # who won?
     score = random.random()
     if score <= team_1_prob:
@@ -48,12 +59,7 @@ def play_quad(bracket, neutral_flag=False) -> list:
 
     # play second game
     schools = [bracket[2],bracket[3]]
-    if schools[0] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"H")
-    elif schools[1] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"A")
-    else:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"N")
+    team_1_prob = play_match(schools,home_school,avg_school)
     # who won?
     score = random.random()
     if score <= team_1_prob:
@@ -65,12 +71,7 @@ def play_quad(bracket, neutral_flag=False) -> list:
 
     # play third game
     schools = [game_1_winner,game_2_winner]
-    if schools[0] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"H")
-    elif schools[1] == home_school:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"A")
-    else:
-        team_1_prob = pablo.pablo_odds(runtime.SCHOOLS[schools[0]]["pablo"],runtime.SCHOOLS[schools[1]]["pablo"],"N")
+    team_1_prob = play_match(schools,home_school,avg_school)
     # who won?
     score = random.random()
     if score <= team_1_prob:
@@ -92,6 +93,15 @@ def bracket_check() -> None:
             if not school_data:
                 raise ValueError("No data found for school: "+str(school)+" in quad: "+str(quad))
 
+# bracket list
+def bracket_list() -> list:
+    br_list = []
+    for quad in runtime.BRACKET:
+        for school in runtime.BRACKET[quad]:
+            br_list.append(school)
+    return br_list
+
+
 
 # average pablo score
 def median_pablo() -> int:
@@ -108,7 +118,7 @@ def median_pablo() -> int:
 
 
 # run tournament
-def run_tournament(number_of_runs) -> dict:
+def run_tournament(number_of_runs,avg_school=None) -> dict:
     results = {}
     for i in range(number_of_runs):
         # make results buckets
@@ -125,7 +135,7 @@ def run_tournament(number_of_runs) -> dict:
         # play subregionals
         for quad in runtime.BRACKET:
             bracket = make_quad_list(quad)
-            winners = play_quad(bracket)
+            winners = play_quad(bracket,False,avg_school)
             regionals[quad] = winners[0]
             losers["round 1"].append(winners[2])
             losers["round 1"].append(winners[3])
@@ -137,29 +147,29 @@ def run_tournament(number_of_runs) -> dict:
         r2 = [regionals["2"],regionals["15"],regionals["7"],regionals["10"]]
         r3 = [regionals["3"],regionals["14"],regionals["6"],regionals["11"]]
         r4 = [regionals["4"],regionals["13"],regionals["5"],regionals["12"]]
-        winners = play_quad(r1)
+        winners = play_quad(r1,False,avg_school)
         ff = [winners[0]]
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
-        winners = play_quad(r4)
+        winners = play_quad(r4,False,avg_school)
         ff.append(winners[0])
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
-        winners = play_quad(r3)
+        winners = play_quad(r3,False,avg_school)
         ff.append(winners[0])
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
-        winners = play_quad(r2)
+        winners = play_quad(r2,False,avg_school)
         ff.append(winners[0])
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
 
         # play ff
-        winners = play_quad(ff,True)
+        winners = play_quad(ff,True,avg_school)
         champion = winners[0]
         losers["round 5"].append(winners[2])
         losers["round 5"].append(winners[3])
@@ -218,7 +228,7 @@ def run_tournament(number_of_runs) -> dict:
     return results
 
 # run
-NUMBER_OF_RUNS = 100
+NUMBER_OF_RUNS = 10000
 bracket_check()
 final_results = run_tournament(NUMBER_OF_RUNS)
 print("\nList of all schools\n-------------------")
@@ -298,3 +308,40 @@ for teams in sorted_list_of_R2:
     print(str(teams[0])+": "+str(round(teams[1],1)))
 avg_pablo = median_pablo()
 print("\n\nAverage pablo score: "+str(avg_pablo))
+# do bracket strength test
+print("\nResults when schools have average pablo score:")
+br_list = bracket_list()
+diff_list = []
+for school in br_list:
+    final_results = run_tournament(500,school)
+    championships = float(final_results[school].get("champion",0))
+    runner = float(final_results[school].get("runner up",0))
+    final4 = float(final_results[school].get("FF",0))
+    elite8 = float(final_results[school].get("E8",0))
+    sweet16 = float(final_results[school].get("S6",0))
+    round2 = float(final_results[school].get("R2",0))
+    semis = championships + runner
+    f4 = championships + runner + final4
+    e8 = championships + runner + final4 + elite8
+    s16 = championships + runner + final4 + elite8 + sweet16
+    r2 = championships + runner + final4 + elite8 + sweet16 + round2
+    champ_pct = championships / 5.0
+    semi_pct = semis / 5.0
+    f4_pct = f4 / 5.0
+    e8_pct = e8 / 5.0
+    s16_pct = s16 / 5.0
+    r2_pct = r2 / 5.0
+    diff_list.append([school,champ_pct,f4_pct,s16_pct])
+sorted_diff_list = sorted(diff_list,key=lambda x: x[1],reverse=True)
+print("\nEasiest path to championship")
+for school in sorted_diff_list[0:10]:
+    print(str(school[0])+" pct*100: "+str(round(school[1],1)*100))
+sorted_diff_list = sorted(diff_list,key=lambda x: x[2],reverse=True)
+print("\nEasiest path to final four")
+for school in sorted_diff_list[0:10]:
+    print(str(school[0])+" pct*10: "+str(round(school[2],1)*10))
+sorted_diff_list = sorted(diff_list,key=lambda x: x[3],reverse=True)
+print("\nEasiest path to sweet 16")
+for school in sorted_diff_list[0:10]:
+    print(str(school[0])+" pct: "+str(round(school[3],1)))
+

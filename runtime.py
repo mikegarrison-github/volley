@@ -1,5 +1,5 @@
 # pablo HCA
-HCA = 221
+HCA = 162
 
 SCHOOLS = {
     "Arkansas": {
@@ -8,11 +8,11 @@ SCHOOLS = {
     },
     "Arizona": {
         "seed": None,
-        "pablo": 5925,
+        "pablo": 5835,
     },
     "Arizona State": {
         "seed": None,
-        "pablo": 5815,
+        "pablo": 5710,
     },
     "Army": {
         "seed": None,
@@ -48,7 +48,7 @@ SCHOOLS = {
     },
     "California": {
         "seed": None,
-        "pablo": 5240,
+        "pablo": 5355,
     },
     "Campbell": {
         "seed": None,
@@ -60,7 +60,7 @@ SCHOOLS = {
     },
     "Colorado": {
         "seed": None,
-        "pablo": 6340,
+        "pablo": 6335,
     },
     "Colorado State": {
         "seed": None,
@@ -216,11 +216,11 @@ SCHOOLS = {
     },
     "Oregon": {
         "seed": 3,
-        "pablo": 6900,
+        "pablo": 6750,
     },
     "Oregon State": {
         "seed": None,
-        "pablo": 5320,
+        "pablo": 5295,
     },
     "Penn State": {
         "seed": 4,
@@ -276,11 +276,11 @@ SCHOOLS = {
     },
     "Southern California": {
         "seed": 6,
-        "pablo": 6490,
+        "pablo": 6330,
     },
     "Stanford": {
         "seed": 2,
-        "pablo": 7315,
+        "pablo": 7170,
     },
     "Tennessee": {
         "seed": None,
@@ -316,7 +316,7 @@ SCHOOLS = {
     },
     "UCLA": {
         "seed": None,
-        "pablo": 6590,
+        "pablo": 6385,
     },
     "UIC": {
         "seed": None,
@@ -332,7 +332,7 @@ SCHOOLS = {
     },
     "Utah": {
         "seed": 8,
-        "pablo": 6285,
+        "pablo": 6055,
     },
     "Utah Valley": {
         "seed": None,
@@ -344,11 +344,11 @@ SCHOOLS = {
     },
     "Washington": {
         "seed": 6,
-        "pablo": 6745,
+        "pablo": 6580,
     },
     "Washington State": {
         "seed": None,
-        "pablo": 6490,
+        "pablo": 6450,
     },
     "West Virginia": {
         "seed": None,
@@ -531,12 +531,12 @@ CONF_SCHED = {
         ["Washington","Defeated"],
     ],
     "9": [
-        ["Arizona State","Stanford"],
-        ["Arizona","California"],
-        ["Southern California","Oregon State"],
-        ["UCLA","Oregon"],
-        ["Utah","Washington State"],
-        ["Colorado","Washington"],
+        ["Defeated","Stanford"],
+        ["Arizona","Defeated"],
+        ["Southern California","Defeated"],
+        ["Defeated","Oregon"],
+        ["Defeated","Washington State"],
+        ["Colorado","Defeated"],
         ["Arizona State","California"],
         ["Arizona","Stanford"],
         ["Southern California","Oregon"],
