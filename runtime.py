@@ -1,378 +1,418 @@
 # pablo HCA
-HCA = 162
+HCA = 161
 
 SCHOOLS = {
     "Arkansas": {
         "seed": 6,
-        "pablo": 6530,
+        "pablo": 6515,
     },
     "Arizona": {
         "seed": None,
-        "pablo": 5835,
+        "pablo": 5865,
     },
     "Arizona State": {
         "seed": None,
-        "pablo": 5710,
+        "pablo": 5660,
     },
     "Army": {
         "seed": None,
-        "pablo": 5175,
+        "pablo": 5160,
     },
     "Auburn": {
         "seed": None,
-        "pablo": 6120,
+        "pablo": 6060,
     },
     "Ball State": {
         "seed": None,
-        "pablo": 5900,
+        "pablo": 5815,
     },
     "Baylor": {
         "seed": 4,
-        "pablo": 6635,
+        "pablo": 6415,
     },
     "Binghamton": {
         "seed": None,
-        "pablo": 5000,
+        "pablo": 5055,
     },
     "Boise State": {
         "seed": None,
-        "pablo": 5350,
+        "pablo": 5160,
+    },
+    "Bowling Green": {
+        "seed": None,
+        "pablo": 5705,
     },
     "Brown": {
         "seed": None,
-        "pablo": 5205,
+        "pablo": 5330,
     },
     "BYU": {
         "seed": 7,
-        "pablo": 6800,
+        "pablo": 6595,
     },
     "California": {
         "seed": None,
-        "pablo": 5355,
+        "pablo": 5230,
     },
     "Campbell": {
         "seed": None,
-        "pablo": 4705,
+        "pablo": 4790,
     },
     "Colgate": {
         "seed": None,
-        "pablo": 5385,
+        "pablo": 5520,
     },
     "Colorado": {
         "seed": None,
-        "pablo": 6335,
+        "pablo": 6250,
     },
     "Colorado State": {
         "seed": None,
-        "pablo": 5895,
+        "pablo": 5700,
     },
     "Coppin State": {
         "seed": None,
-        "pablo": 4405,
+        "pablo": 4490,
     },
     "Creighton": {
         "seed": 4,
-        "pablo": 6725,
+        "pablo": 6590,
     },
     "Davidson": {
         "seed": None,
-        "pablo": 5265,
+        "pablo": 5105,
     },
     "Dayton": {
         "seed": None,
-        "pablo": 5140,
+        "pablo": 5215,
+    },
+    "Delaware State": {
+        "seed": None,
+        "pablo": 5200,
     },
     "Fairfield": {
         "seed": None,
-        "pablo": 4970,
+        "pablo": 4930,
     },
-    "Florida": {
-        "seed": 3,
-        "pablo": 6770,
-    },
-    "Florida A&M": {
+    "Fairleigh Dickinson": {
         "seed": None,
-        "pablo": 4795,
+        "pablo": 4240,
     },
-    "Florida Gulf Coast": {
-        "seed": None,
-        "pablo": 5960,
-    },
-    "Florida State": {
-        "seed": None,
-        "pablo": 6275,
-    },
-    "Georgia": {
-        "seed": None,
-        "pablo": 6125,
-    },
-    "Georgia Tech": {
-        "seed": 6,
-        "pablo": 6800,
-    },
-    "Hawai'i": {
-        "seed": None,
-        "pablo": 6275,
-    },
-    "Houston": {
-        "seed": 5,
-        "pablo": 6305,
-    },
-    "Howard": {
-        "seed": None,
-        "pablo": 4855,
-    },
-    "Illinois": {
-        "seed": None,
-        "pablo": 6225,
-    },
-    "Illinois State": {
-        "seed": None,
-        "pablo": 4795,
-    },
-    "Iowa State": {
-        "seed": 7,
-        "pablo": 5960,
-    },
-    "James Madison": {
-        "seed": None,
-        "pablo": 5630,
-    },
-    "Kansas": {
-        "seed": 7,
-        "pablo": 6490,
-    },
-    "Kansas State": {
-        "seed": None,
-        "pablo": 6015,
-    },
-    "Kentucky": {
-        "seed": 3,
-        "pablo": 6940,
-    },
-    "Lipscomb": {
-        "seed": None,
-        "pablo": 5345,
-    },
-    "Louisville": {
-        "seed": 1,
-        "pablo": 7195,
-    },
-    "Loyola Marymount": {
-        "seed": None,
-        "pablo": 6215,
-    },
-    "LSU": {
-        "seed": None,
-        "pablo": 6100,
-    },
-    "Marquette": {
-        "seed": 5,
-        "pablo": 6625,
-    },
-    "Miami (FL)": {
-        "seed": 8,
-        "pablo": 6255,
-    },
-    "Michigan": {
-        "seed": None,
-        "pablo": 6305,
-    },
-    "Minnesota": {
-        "seed": 3,
-        "pablo": 6965,
-    },
-    "Mississippi State": {
+    "FGCU": {
         "seed": None,
         "pablo": 6065,
     },
-    "Nebraska": {
-        "seed": 1,
-        "pablo": 7455,
-    },
-    "North Carolina": {
-        "seed": None,
-        "pablo": 5935,
-    },
-    "Northern Colorado": {
-        "seed": None,
-        "pablo": 5835,
-    },
-    "Northern Iowa": {
-        "seed": None,
-        "pablo": 5895,
-    },
-    "Northwestern": {
-        "seed": 7,
-        "pablo": 6355,
-    },
-    "Ohio State": {
-        "seed": 2,
-        "pablo": 7395,
-    },
-    "Ole Miss": {
-        "seed": None,
-        "pablo": 5960,
-    },
-    "Oregon": {
+    "Florida": {
         "seed": 3,
-        "pablo": 6750,
+        "pablo": 6685,
     },
-    "Oregon State": {
+    "Florida A&M": {
         "seed": None,
-        "pablo": 5295,
+        "pablo": 4915,
     },
-    "Penn State": {
-        "seed": 4,
-        "pablo": 6570,
+    "Florida State": {
+        "seed": 7,
+        "pablo": 6145,
     },
-    "Pepperdine": {
+    "Georgia": {
         "seed": None,
-        "pablo": 6425,
+        "pablo": 6070,
     },
-    "Pittsburgh": {
-        "seed": 1,
-        "pablo": 7165,
-    },
-    "Purdue": {
+    "Georgia Tech": {
         "seed": 5,
-        "pablo": 6610,
+        "pablo": 6705,
     },
-    "Rice": {
-        "seed": 5,
-        "pablo": 6450,
-    },
-    "Sacred Heart": {
-        "seed": None,
-        "pablo": 4660,
-    },
-    "Samford": {
-        "seed": None,
-        "pablo": 5150,
-    },
-    "San Diego": {
-        "seed": 2,
-        "pablo": 7220,
-    },
-    "South Alabama": {
-        "seed": None,
-        "pablo": 5720,
-    },
-    "South Carolina": {
-        "seed": None,
-        "pablo": 5740,
-    },
-    "South Dakota": {
-        "seed": None,
-        "pablo": 5725,
-    },
-    "Southeast Missouri State": {
-        "seed": None,
-        "pablo": 4565,
-    },
-    "Southeastern Louisiana": {
-        "seed": None,
-        "pablo": 4935,
-    },
-    "Southern California": {
-        "seed": 6,
-        "pablo": 6330,
-    },
-    "Stanford": {
-        "seed": 2,
-        "pablo": 7170,
-    },
-    "Tennessee": {
-        "seed": None,
-        "pablo": 6095,
-    },
-    "Tennessee-Martin": {
-        "seed": None,
-        "pablo": 4810,
-    },
-    "Texas": {
-        "seed": 1,
-        "pablo": 7765,
-    },
-    "Texas A&M-CC": {
-        "seed": None,
-        "pablo": 4880,
-    },
-    "Texas Tech": {
-        "seed": None,
-        "pablo": 5890,
-    },
-    "The Citadel": {
-        "seed": None,
-        "pablo": 4420,
-    },
-    "Towson": {
-        "seed": None,
-        "pablo": 5840,
-    },
-    "UCF": {
-        "seed": 4,
-        "pablo": 6710,
-    },
-    "UCLA": {
-        "seed": None,
-        "pablo": 6385,
-    },
-    "UIC": {
-        "seed": None,
-        "pablo": 5385,
-    },
-    "UMBC": {
-        "seed": None,
-        "pablo": 5015,
-    },
-    "UNLV": {
+    "Hawai'i": {
         "seed": 8,
         "pablo": 6230,
     },
-    "Utah": {
-        "seed": 8,
-        "pablo": 6055,
-    },
-    "Utah Valley": {
+    "High Point": {
         "seed": None,
-        "pablo": 5480,
+        "pablo": 5570,
     },
-    "UTRGV": {
+    "Houston": {
+        "seed": 5,
+        "pablo": 6370,
+    },
+    "Howard": {
         "seed": None,
-        "pablo": 5640,
+        "pablo": 4875,
     },
-    "Washington": {
+    "Illinois": {
+        "seed": None,
+        "pablo": 6200,
+    },
+    "Illinois State": {
+        "seed": None,
+        "pablo": 4765,
+    },
+    "Iowa State": {
         "seed": 6,
-        "pablo": 6580,
+        "pablo": 5830,
     },
-    "Washington State": {
+    "James Madison": {
         "seed": None,
-        "pablo": 6450,
+        "pablo": 5795,
     },
-    "West Virginia": {
+    "Kansas": {
         "seed": None,
-        "pablo": 5275,
+        "pablo": 6410,
     },
-    "Western Kentucky": {
-        "seed": 8,
-        "pablo": 6555,
-    },
-    "Winthrop": {
+    "Kansas State": {
         "seed": None,
-        "pablo": 4925,
+        "pablo": 5890,
     },
-    "Wisconsin": {
-        "seed": 2,
+    "Kentucky": {
+        "seed": 3,
+        "pablo": 6855,
+    },
+    "Lipscomb": {
+        "seed": None,
+        "pablo": 5430,
+    },
+    "Louisville": {
+        "seed": 1,
         "pablo": 7165,
     },
-    "Wright State": {
+    "Loyola Chicago": {
+        "seed": None,
+        "pablo": 5890,
+    },
+    "Loyola Marymount": {
+        "seed": None,
+        "pablo": 6170,
+    },
+    "LSU": {
+        "seed": None,
+        "pablo": 6060,
+    },
+    "Marquette": {
+        "seed": 4,
+        "pablo": 6650,
+    },
+    "Miami (FL)": {
+        "seed": 7,
+        "pablo": 6230,
+    },
+    "Michigan": {
+        "seed": None,
+        "pablo": 6230,
+    },
+    "Minnesota": {
+        "seed": 2,
+        "pablo": 6790,
+    },
+    "Mississippi State": {
+        "seed": None,
+        "pablo": 5885,
+    },
+    "Nebraska": {
+        "seed": 2,
+        "pablo": 7235,
+    },
+    "North Carolina": {
         "seed": None,
         "pablo": 5840,
     },
+    "Northern Colorado": {
+        "seed": None,
+        "pablo": 5785,
+    },
+    "Northern Iowa": {
+        "seed": None,
+        "pablo": 5745,
+    },
+    "Northwestern": {
+        "seed": None,
+        "pablo": 6010,
+    },
+    "Ohio State": {
+        "seed": 3,
+        "pablo": 7030,
+    },
+    "Ole Miss": {
+        "seed": None,
+        "pablo": 5855,
+    },
+    "Oregon": {
+        "seed": 3,
+        "pablo": 6665,
+    },
+    "Oregon State": {
+        "seed": None,
+        "pablo": 5250,
+    },
+    "Penn State": {
+        "seed": 4,
+        "pablo": 6560,
+    },
+    "Pepperdine": {
+        "seed": None,
+        "pablo": 6110,
+    },
+    "Pittsburgh": {
+        "seed": 2,
+        "pablo": 6975,
+    },
+    "Purdue": {
+        "seed": 8,
+        "pablo": 6315,
+    },
+    "Quinnipiac": {
+        "seed": None,
+        "pablo": 4250,
+    },
+    "Rice": {
+        "seed": 5,
+        "pablo": 6410,
+    },
+    "Sacred Heart": {
+        "seed": None,
+        "pablo": 4610,
+    },
+    "Samford": {
+        "seed": None,
+        "pablo": 5135,
+    },
+    "San Diego": {
+        "seed": 2,
+        "pablo": 6945,
+    },
+    "SFA": {
+        "seed": None,
+        "pablo": 5745,
+    },
+    "South Alabama": {
+        "seed": None,
+        "pablo": 5680,
+    },
+    "South Carolina": {
+        "seed": None,
+        "pablo": 5670,
+    },
+    "South Dakota": {
+        "seed": None,
+        "pablo": 5740,
+    },
+    "Southeast Missouri State": {
+        "seed": None,
+        "pablo": 4645,
+    },
+    "Southeastern Louisiana": {
+        "seed": None,
+        "pablo": 5030,
+    },
+    "Southern California": {
+        "seed": 6,
+        "pablo": 6290,
+    },
+    "Stanford": {
+        "seed": 1,
+        "pablo": 7110,
+    },
+    "TCU": {
+        "seed": None,
+        "pablo": 5940,
+    },
+    "Tennessee": {
+        "seed": None,
+        "pablo": 6110,
+    },
+    "Tennessee State": {
+        "seed": None,
+        "pablo": 4620,
+    },
+    "Tennessee-Martin": {
+        "seed": None,
+        "pablo": 4935,
+    },
+    "Texas": {
+        "seed": 1,
+        "pablo": 7455,
+    },
+    "Texas A&M-CC": {
+        "seed": None,
+        "pablo": 4795,
+    },
+    "Texas Tech": {
+        "seed": None,
+        "pablo": 5835,
+    },
+    "The Citadel": {
+        "seed": None,
+        "pablo": 4380,
+    },
+    "Towson": {
+        "seed": 8,
+        "pablo": 5805,
+    },
+    "UCF": {
+        "seed": 5,
+        "pablo": 6635,
+    },
+    "UCLA": {
+        "seed": None,
+        "pablo": 6280,
+    },
+    "UIC": {
+        "seed": None,
+        "pablo": 5490,
+    },
+    "UMBC": {
+        "seed": None,
+        "pablo": 5165,
+    },
+    "UNLV": {
+        "seed": None,
+        "pablo": 6220,
+    },
+    "Utah": {
+        "seed": None,
+        "pablo": 5905,
+    },
+    "Utah State": {
+        "seed": None,
+        "pablo": 5760,
+    },
+    "Utah Valley": {
+        "seed": None,
+        "pablo": 5355,
+    },
+    "UTRGV": {
+        "seed": None,
+        "pablo": 5575,
+    },
+    "Washington": {
+        "seed": 8,
+        "pablo": 6500,
+    },
+    "Washington State": {
+        "seed": 7,
+        "pablo": 6500,
+    },
+    "West Virginia": {
+        "seed": None,
+        "pablo": 5155,
+    },
+    "Western Kentucky": {
+        "seed": 6,
+        "pablo": 6465,
+    },
+    "Winthrop": {
+        "seed": None,
+        "pablo": 4825,
+    },
+    "Wisconsin": {
+        "seed": 1,
+        "pablo": 7025,
+    },
+    "Wright State": {
+        "seed": None,
+        "pablo": 5900,
+    },
     "Yale": {
         "seed": None,
-        "pablo": 5620,
+        "pablo": 5735,
     },
     "Defeated": {
         "seed": None,
@@ -381,25 +421,25 @@ SCHOOLS = {
 }
 
 BRACKET = {
-    "1": ["Texas","UTRGV","Auburn","UNLV"],
-    "16": ["Penn State","Army","Yale","Houston"],
-    "9": ["Minnesota","Samford","Loyola Marymount","Washington"],
-    "8": ["San Diego","Sacred Heart","Washington State","Kansas"],
+    "1": ["Texas","Fairleigh Dickinson","Georgia","Towson"],
+    "16": ["Georgia Tech","Wright State","Ball State","Marquette"],
+    "9": ["Ohio State","Tennessee State","High Point","Southern California"],
+    "8": ["Florida State","Northern Iowa","Southeastern Louisiana","Minnesota"],
 
-    "4": ["Louisville","Tennessee-Martin","Georgia","Western Kentucky"],
-    "13": ["Baylor","Davidson","Hawai'i","Rice"],
-    "12": ["Kentucky","Lipscomb","Michigan","Southern California"],
-    "5": ["Wisconsin","Ball State","LSU","Iowa State"],
+    "5": ["San Diego","Northern Colorado","UNLV","Washington State"],
+    "12": ["Western Kentucky","Bowling Green","Loyola Chicago","Kentucky"],
+    "13": ["Creighton","Auburn","South Dakota","Houston"],
+    "4": ["Hawai'i","LSU","Pepperdine","Stanford"],
 
-    "2": ["Pittsburgh","Binghamton","James Madison","Utah"],
-    "15": ["UCF","Wright State","Florida State","Marquette"],
-    "10": ["Oregon","Fairfield","Colorado State","Arkansas"],
-    "7": ["Ohio State","Coppin State","Towson","BYU"],
+    "2": ["Wisconsin","Quinnipiac","TCU","Washington"],
+    "15": ["UCF","Yale","UMBC","Penn State"],
+    "10": ["Florida","Florida A&M","FGCU","Iowa State"],
+    "7": ["BYU","James Madison","Colgate","Pittsburgh"],
 
-    "3": ["Nebraska","Winthrop","South Dakota","Miami (FL)"],
-    "14": ["Creighton","Northern Colorado","Northern Iowa","Purdue"],
-    "11": ["Florida","Florida A&M","Colorado","Georgia Tech"],
-    "6": ["Stanford","Southeastern Louisiana","Pepperdine","Northwestern"],
+    "3": ["Nebraska","Delaware State","Kansas","Miami (FL)"],
+    "14": ["Arkansas","Utah State","Loyola Marymount","Oregon"],
+    "11": ["Baylor","SFA","Colorado","Rice"],
+    "6": ["Purdue","Tennessee","Samford","Louisville"],
 }
 
 CONFERENCE = [
@@ -537,12 +577,12 @@ CONF_SCHED = {
         ["Defeated","Oregon"],
         ["Defeated","Washington State"],
         ["Colorado","Defeated"],
-        ["Arizona State","California"],
-        ["Arizona","Stanford"],
-        ["Southern California","Oregon"],
-        ["UCLA","Oregon State"],
-        ["Utah","Washington"],
-        ["Colorado","Washington State"],
+        ["Arizona State","Defeated"],
+        ["Defeated","Stanford"],
+        ["Defeated","Oregon"],
+        ["UCLA","Defeated"],
+        ["Defeated","Washington"],
+        ["Defeated","Washington State"],
     ],
     "10": [
         ["UCLA","Washington State"],
