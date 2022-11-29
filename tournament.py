@@ -228,7 +228,7 @@ def run_tournament(number_of_runs,avg_school=None) -> dict:
     return results
 
 # run
-NUMBER_OF_RUNS = 10000
+NUMBER_OF_RUNS = 100000
 bracket_check()
 final_results = run_tournament(NUMBER_OF_RUNS)
 print("\nList of all schools\n-------------------")
@@ -313,7 +313,7 @@ print("\nResults when schools have average pablo score:")
 br_list = bracket_list()
 diff_list = []
 for school in br_list:
-    final_results = run_tournament(500,school)
+    final_results = run_tournament(1500,school)
     championships = float(final_results[school].get("champion",0))
     runner = float(final_results[school].get("runner up",0))
     final4 = float(final_results[school].get("FF",0))
@@ -325,23 +325,23 @@ for school in br_list:
     e8 = championships + runner + final4 + elite8
     s16 = championships + runner + final4 + elite8 + sweet16
     r2 = championships + runner + final4 + elite8 + sweet16 + round2
-    champ_pct = championships / 5.0
-    semi_pct = semis / 5.0
-    f4_pct = f4 / 5.0
-    e8_pct = e8 / 5.0
-    s16_pct = s16 / 5.0
-    r2_pct = r2 / 5.0
+    champ_pct = float(championships) / 15.0
+    semi_pct = float(semis) / 15.0
+    f4_pct = float(f4) / 15.0
+    e8_pct = float(e8) / 15.0
+    s16_pct = float(s16) / 15.0
+    r2_pct = float(r2) / 15.0
     diff_list.append([school,champ_pct,f4_pct,s16_pct])
 sorted_diff_list = sorted(diff_list,key=lambda x: x[1],reverse=True)
 print("\nEasiest path to championship")
-for school in sorted_diff_list[0:10]:
-    print(str(school[0])+" pct*100: "+str(round(school[1],1)*100))
+for school in sorted_diff_list[0:4]:
+    print(str(school[0])+": "+str(round(school[1],1))+"%")
 sorted_diff_list = sorted(diff_list,key=lambda x: x[2],reverse=True)
 print("\nEasiest path to final four")
-for school in sorted_diff_list[0:10]:
-    print(str(school[0])+" pct*10: "+str(round(school[2],1)*10))
+for school in sorted_diff_list[0:8]:
+    print(str(school[0])+": "+str(round(school[2],2))+"%")
 sorted_diff_list = sorted(diff_list,key=lambda x: x[3],reverse=True)
 print("\nEasiest path to sweet 16")
-for school in sorted_diff_list[0:10]:
-    print(str(school[0])+" pct: "+str(round(school[3],1)))
+for school in sorted_diff_list[0:20]:
+    print(str(school[0])+": "+str(round(school[3],1))+"%")
 
