@@ -280,32 +280,32 @@ for school in final_results:
 sorted_list_of_champs = sorted(list_of_champs,key=lambda x: x[1],reverse=True)
 print("\nChampion")
 for champs in sorted_list_of_champs:
-    print(str(champs[0])+": "+str(round(champs[1],1)))
+    print(str(champs[0])+": "+str(round(champs[1],0))+"%")
 # list of teams reaching semis
 sorted_list_of_semis = sorted(list_of_semis,key=lambda x: x[1],reverse=True)
 print("\nFinalist")
 for semis in sorted_list_of_semis:
-    print(str(semis[0])+": "+str(round(semis[1],1)))
+    print(str(semis[0])+": "+str(round(semis[1],0))+"%")
 # list of teams reaching FF
 sorted_list_of_FF = sorted(list_of_FF,key=lambda x: x[1],reverse=True)
 print("\nFinal Four")
 for teams in sorted_list_of_FF:
-    print(str(teams[0])+": "+str(round(teams[1],1)))
+    print(str(teams[0])+": "+str(round(teams[1],0))+"%")
 # list of teams reaching E8
 sorted_list_of_E8 = sorted(list_of_E8,key=lambda x: x[1],reverse=True)
 print("\nElite Eight")
 for teams in sorted_list_of_E8:
-    print(str(teams[0])+": "+str(round(teams[1],1)))
+    print(str(teams[0])+": "+str(round(teams[1],0))+"%")
 # list of teams reaching S16
 sorted_list_of_S16 = sorted(list_of_S16,key=lambda x: x[1],reverse=True)
 print("\nSweet 16")
 for teams in sorted_list_of_S16:
-    print(str(teams[0])+": "+str(round(teams[1],1)))
+    print(str(teams[0])+": "+str(round(teams[1],0))+"%")
 # list of teams reaching round 2
 sorted_list_of_R2 = sorted(list_of_R2,key=lambda x: x[1],reverse=True)
 print("\nRound 2")
 for teams in sorted_list_of_R2:
-    print(str(teams[0])+": "+str(round(teams[1],1)))
+    print(str(teams[0])+": "+str(round(teams[1],0))+"%")
 avg_pablo = median_pablo()
 print("\n\nAverage pablo score: "+str(avg_pablo))
 # do bracket strength test
