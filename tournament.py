@@ -278,32 +278,32 @@ for school in final_results:
         list_of_R2.append([name,r2_pct])
 # list of champions
 sorted_list_of_champs = sorted(list_of_champs,key=lambda x: x[1],reverse=True)
-print("\nChampionship Percentages")
+print("\nChampion")
 for champs in sorted_list_of_champs:
     print(str(champs[0])+": "+str(round(champs[1],1)))
 # list of teams reaching semis
 sorted_list_of_semis = sorted(list_of_semis,key=lambda x: x[1],reverse=True)
-print("\nSemi-finalist Percentages")
+print("\nFinalist")
 for semis in sorted_list_of_semis:
     print(str(semis[0])+": "+str(round(semis[1],1)))
 # list of teams reaching FF
 sorted_list_of_FF = sorted(list_of_FF,key=lambda x: x[1],reverse=True)
-print("\nFinal Four Percentages")
+print("\nFinal Four")
 for teams in sorted_list_of_FF:
     print(str(teams[0])+": "+str(round(teams[1],1)))
 # list of teams reaching E8
 sorted_list_of_E8 = sorted(list_of_E8,key=lambda x: x[1],reverse=True)
-print("\nElite Eight Percentages")
+print("\nElite Eight")
 for teams in sorted_list_of_E8:
     print(str(teams[0])+": "+str(round(teams[1],1)))
 # list of teams reaching S16
 sorted_list_of_S16 = sorted(list_of_S16,key=lambda x: x[1],reverse=True)
-print("\nSweet 16 Percentages")
+print("\nSweet 16")
 for teams in sorted_list_of_S16:
     print(str(teams[0])+": "+str(round(teams[1],1)))
 # list of teams reaching round 2
 sorted_list_of_R2 = sorted(list_of_R2,key=lambda x: x[1],reverse=True)
-print("\nRound 2 Percentages")
+print("\nRound 2")
 for teams in sorted_list_of_R2:
     print(str(teams[0])+": "+str(round(teams[1],1)))
 avg_pablo = median_pablo()
