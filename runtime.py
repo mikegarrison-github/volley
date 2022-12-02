@@ -421,13 +421,13 @@ SCHOOLS = {
 }
 
 BRACKET = {
-    "1": ["Texas","Fairleigh Dickinson","Georgia","Towson"],
-    "16": ["Georgia Tech","Wright State","Ball State","Marquette"],
+    "1": ["Texas","Defeated","Georgia","Defeated"],
+    "16": ["Georgia Tech","Defeated","Defeated","Marquette"],
     "9": ["Ohio State","Tennessee State","High Point","Southern California"],
     "8": ["Florida State","Northern Iowa","Southeastern Louisiana","Minnesota"],
 
-    "5": ["San Diego","Northern Colorado","UNLV","Washington State"],
-    "12": ["Western Kentucky","Bowling Green","Loyola Chicago","Kentucky"],
+    "5": ["San Diego","Defeated","Defeated","Washington State"],
+    "12": ["Western Kentucky","Defeated","Defeated","Kentucky"],
     "13": ["Creighton","Auburn","South Dakota","Houston"],
     "4": ["Hawai'i","LSU","Pepperdine","Stanford"],
 
@@ -436,9 +436,9 @@ BRACKET = {
     "10": ["Florida","Florida A&M","FGCU","Iowa State"],
     "7": ["BYU","James Madison","Colgate","Pittsburgh"],
 
-    "3": ["Nebraska","Delaware State","Kansas","Miami (FL)"],
+    "3": ["Nebraska","Defeated","Kansas","Defeated"],
     "14": ["Arkansas","Utah State","Loyola Marymount","Oregon"],
-    "11": ["Baylor","SFA","Colorado","Rice"],
+    "11": ["Baylor","Defeated","Defeated","Rice"],
     "6": ["Purdue","Tennessee","Samford","Louisville"],
 }
 

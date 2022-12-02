@@ -313,6 +313,9 @@ print("\nResults when schools have average pablo score:")
 br_list = bracket_list()
 diff_list = []
 for school in br_list:
+    name = str(school)
+    if name == "Defeated":
+        continue
     final_results = run_tournament(1500,school)
     championships = float(final_results[school].get("champion",0))
     runner = float(final_results[school].get("runner up",0))
