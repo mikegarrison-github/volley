@@ -254,10 +254,10 @@ for school in final_results:
     sweet16 = float(final_results[school].get("S6",0))
     round2 = float(final_results[school].get("R2",0))
     semis = championships + runner
-    f4 = championships + runner + final4
-    e8 = championships + runner + final4 + elite8
-    s16 = championships + runner + final4 + elite8 + sweet16
-    r2 = championships + runner + final4 + elite8 + sweet16 + round2
+    f4 = semis + final4
+    e8 = f4 + elite8
+    s16 = e8 + sweet16
+    r2 = s16 + round2
     locked = False
     if championships >= float(NUMBER_OF_RUNS)*0.05:
         champ_pct = championships / float(NUMBER_OF_RUNS) * 100
