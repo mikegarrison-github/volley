@@ -258,22 +258,28 @@ for school in final_results:
     e8 = championships + runner + final4 + elite8
     s16 = championships + runner + final4 + elite8 + sweet16
     r2 = championships + runner + final4 + elite8 + sweet16 + round2
+    locked = False
     if championships >= float(NUMBER_OF_RUNS)*0.05:
         champ_pct = championships / float(NUMBER_OF_RUNS) * 100
         list_of_champs.append([name,champ_pct])
-    if semis >= float(NUMBER_OF_RUNS)*0.10 or championships >= float(NUMBER_OF_RUNS)*0.05:
+        locked = True
+    if semis >= float(NUMBER_OF_RUNS)*0.10 or locked:
         semi_pct = semis / float(NUMBER_OF_RUNS) * 100
         list_of_semis.append([name,semi_pct])
-    if semis >= float(NUMBER_OF_RUNS)*0.10 or championships >= float(NUMBER_OF_RUNS)*0.05 or f4 >= float(NUMBER_OF_RUNS)*0.15:
+        locked = True
+    if f4 >= float(NUMBER_OF_RUNS)*0.1666 or locked:
         f4_pct = f4 / float(NUMBER_OF_RUNS) * 100
         list_of_FF.append([name,f4_pct])
-    if semis >= float(NUMBER_OF_RUNS)*0.10 or championships >= float(NUMBER_OF_RUNS)*0.05 or f4 >= float(NUMBER_OF_RUNS)*0.15 or e8 >= float(NUMBER_OF_RUNS)*0.20:
+        locked = True
+    if e8 >= float(NUMBER_OF_RUNS)*0.25 or locked:
         e8_pct = e8 / float(NUMBER_OF_RUNS) * 100
         list_of_E8.append([name,e8_pct])
-    if semis >= float(NUMBER_OF_RUNS)*0.10 or championships >= float(NUMBER_OF_RUNS)*0.05 or f4 >= float(NUMBER_OF_RUNS)*0.15 or e8 >= float(NUMBER_OF_RUNS)*0.20 or s16 >= float(NUMBER_OF_RUNS)*0.30:
+        locked = True
+    if s16 >= float(NUMBER_OF_RUNS)*0.3333 or locked:
         s16_pct = s16 / float(NUMBER_OF_RUNS) * 100
         list_of_S16.append([name,s16_pct])
-    if semis >= float(NUMBER_OF_RUNS)*0.10 or championships >= float(NUMBER_OF_RUNS)*0.05 or f4 >= float(NUMBER_OF_RUNS)*0.15 or e8 >= float(NUMBER_OF_RUNS)*0.20 or s16 >= float(NUMBER_OF_RUNS)*0.30 or r2 >= float(NUMBER_OF_RUNS)*0.50:
+        locked = True
+    if r2 >= float(NUMBER_OF_RUNS)*0.50 or locked:
         r2_pct = r2 / float(NUMBER_OF_RUNS) * 100
         list_of_R2.append([name,r2_pct])
 # list of champions
