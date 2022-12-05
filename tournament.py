@@ -2,6 +2,7 @@ import random
 import runtime
 import pablo
 import statistics
+import math
 
 random.seed()
 
@@ -227,6 +228,14 @@ def run_tournament(number_of_runs,avg_school=None) -> dict:
 
     return results
 
+def xxx(value,NUMBER_OF_RUNS) -> str:
+    out_str = ""
+    if value != 0:
+        number_of_x = math.ceil(float(value)*20.0/float(NUMBER_OF_RUNS))
+        for i in range(number_of_x):
+            out_str += "X"
+    return out_str
+
 # run
 NUMBER_OF_RUNS = 100000
 bracket_check()
@@ -353,4 +362,35 @@ sorted_diff_list = sorted(diff_list,key=lambda x: x[3],reverse=True)
 print("\nEasiest path to sweet 16")
 for school in sorted_diff_list[0:20]:
     print(str(school[0])+": "+str(round(school[3],1))+"%")
-
+# estimated finish graphs
+print("\nEstimated Finish:")
+for school in final_results:
+    name = str(school)
+    if name == "Defeated":
+        continue
+    championships = float(final_results[school].get("champion",0))
+    runner = float(final_results[school].get("runner up",0))
+    final4 = float(final_results[school].get("FF",0))
+    elite8 = float(final_results[school].get("E8",0))
+    sweet16 = float(final_results[school].get("S6",0))
+    round2 = float(final_results[school].get("R2",0))
+    zilch = float(final_results[school].get("zilch",0))
+    results = {
+        "6": championships,
+        "5": runner,
+        "4": final4,
+        "3": elite8,
+        "2": sweet16,
+        "1": round2,
+        "0": zilch
+    }
+    most_common_finish = max(results, key=results.get)
+    print("\n"+name+" most common number of wins is "+most_common_finish)
+    print("6: "+xxx(results["6"],NUMBER_OF_RUNS))
+    print("5: "+xxx(results["5"],NUMBER_OF_RUNS))
+    print("4: "+xxx(results["4"],NUMBER_OF_RUNS))
+    print("3: "+xxx(results["3"],NUMBER_OF_RUNS))
+    print("2: "+xxx(results["2"],NUMBER_OF_RUNS))
+    print("1: "+xxx(results["1"],NUMBER_OF_RUNS))
+    print("0: "+xxx(results["0"],NUMBER_OF_RUNS))
+    

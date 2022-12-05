@@ -423,23 +423,23 @@ SCHOOLS = {
 BRACKET = {
     "1": ["Texas","Defeated","Defeated","Defeated"],
     "16": ["Defeated","Defeated","Defeated","Marquette"],
-    "9": ["Ohio State","Defeated","Defeated","Southern California"],
-    "8": ["Defeated","Northern Iowa","Defeated","Minnesota"],
+    "9": ["Ohio State","Defeated","Defeated","Defeated"],
+    "8": ["Defeated","Defeated","Defeated","Minnesota"],
 
     "5": ["San Diego","Defeated","Defeated","Defeated"],
     "12": ["Defeated","Defeated","Defeated","Kentucky"],
-    "13": ["Defeated","Auburn","Defeated","Houston"],
-    "4": ["Defeated","LSU","Defeated","Stanford"],
+    "13": ["Defeated","Defeated","Defeated","Houston"],
+    "4": ["Defeated","Defeated","Defeated","Stanford"],
 
-    "2": ["Wisconsin","Defeated","TCU","Defeated"],
-    "15": ["UCF","Defeated","Defeated","Penn State"],
-    "10": ["Florida","Defeated","Defeated","Iowa State"],
-    "7": ["BYU","Defeated","Defeated","Pittsburgh"],
+    "2": ["Wisconsin","Defeated","Defeated","Defeated"],
+    "15": ["Defeated","Defeated","Defeated","Penn State"],
+    "10": ["Florida","Defeated","Defeated","Defeated"],
+    "7": ["Defeated","Defeated","Defeated","Pittsburgh"],
 
     "3": ["Nebraska","Defeated","Defeated","Defeated"],
-    "14": ["Arkansas","Defeated","Defeated","Oregon"],
+    "14": ["Defeated","Defeated","Defeated","Oregon"],
     "11": ["Baylor","Defeated","Defeated","Defeated"],
-    "6": ["Purdue","Defeated","Defeated","Louisville"],
+    "6": ["Defeated","Defeated","Defeated","Louisville"],
 }
 
 CONFERENCE = [
