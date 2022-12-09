@@ -1,5 +1,6 @@
 # pablo HCA
 HCA = 155
+PABLO_DATE = "Nov 28"
 
 SCHOOLS = {
     "Arkansas": {

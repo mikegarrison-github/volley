@@ -245,7 +245,8 @@ for school in final_results:
     print(str(school)+" Champs: "+str(final_results[school].get("champion",0))+" #2: "+str(final_results[school].get("runner up",0))+" FF: "+str(final_results[school].get("FF",0)))
     print(" -- Elite 8: "+str(final_results[school].get("E8",0))+" Sweet 16: "+str(final_results[school].get("S6",0))+" won a match: "+str(final_results[school].get("R2",0)))
     print(" -- one and done: "+str(final_results[school].get("zilch",0)))
-print("\nResults by tiers\n-------------------")
+print("\nOdds determined by using the "+runtime.PABLO_DATE+" pablo ratings and the regional home court determined by best surviving seed. Final Four is assumed to be neutral court. Tournament simulation uses random number generator and the pablo-determined odds. Results are based on "+str(NUMBER_OF_RUNS)+" simulations.")
+print("\nPercentage chances by tiers\n-------------------")
 list_of_champs = []
 list_of_semis = []
 list_of_FF = []
@@ -276,7 +277,7 @@ for school in final_results:
         semi_pct = semis / float(NUMBER_OF_RUNS) * 100
         list_of_semis.append([name,semi_pct])
         locked = True
-    if f4 >= float(NUMBER_OF_RUNS)*0.1666 or locked:
+    if f4 >= float(NUMBER_OF_RUNS)*0.16 or locked:
         f4_pct = f4 / float(NUMBER_OF_RUNS) * 100
         list_of_FF.append([name,f4_pct])
         locked = True
@@ -284,7 +285,7 @@ for school in final_results:
         e8_pct = e8 / float(NUMBER_OF_RUNS) * 100
         list_of_E8.append([name,e8_pct])
         locked = True
-    if s16 >= float(NUMBER_OF_RUNS)*0.3333 or locked:
+    if s16 >= float(NUMBER_OF_RUNS)*0.33 or locked:
         s16_pct = s16 / float(NUMBER_OF_RUNS) * 100
         list_of_S16.append([name,s16_pct])
         locked = True
@@ -293,36 +294,37 @@ for school in final_results:
         list_of_R2.append([name,r2_pct])
 # list of champions
 sorted_list_of_champs = sorted(list_of_champs,key=lambda x: x[1],reverse=True)
-print("\nChampion")
+print("\nChampion (cutoff at 5%)")
 for champs in sorted_list_of_champs:
     print(str(champs[0])+": "+str(int(round(champs[1],0)))+"%")
 # list of teams reaching semis
 sorted_list_of_semis = sorted(list_of_semis,key=lambda x: x[1],reverse=True)
-print("\nFinalist")
+print("\nFinalist (cutoff at 10%)")
 for semis in sorted_list_of_semis:
     print(str(semis[0])+": "+str(int(round(semis[1],0)))+"%")
 # list of teams reaching FF
 sorted_list_of_FF = sorted(list_of_FF,key=lambda x: x[1],reverse=True)
-print("\nFinal Four")
+print("\nFinal Four (cutoff at 16%)")
 for teams in sorted_list_of_FF:
     print(str(teams[0])+": "+str(int(round(teams[1],0)))+"%")
 # list of teams reaching E8
 sorted_list_of_E8 = sorted(list_of_E8,key=lambda x: x[1],reverse=True)
-print("\nElite Eight")
+print("\nElite Eight (cutoff at 25%)")
 for teams in sorted_list_of_E8:
     print(str(teams[0])+": "+str(int(round(teams[1],0)))+"%")
 # list of teams reaching S16
 sorted_list_of_S16 = sorted(list_of_S16,key=lambda x: x[1],reverse=True)
-print("\nSweet 16")
+print("\nSweet 16 (cutoff at 33%)")
 for teams in sorted_list_of_S16:
     print(str(teams[0])+": "+str(int(round(teams[1],0)))+"%")
 # list of teams reaching round 2
 sorted_list_of_R2 = sorted(list_of_R2,key=lambda x: x[1],reverse=True)
-print("\nRound 2")
+print("\nRound 2 (cutoff at 50%)")
 for teams in sorted_list_of_R2:
     print(str(teams[0])+": "+str(int(round(teams[1],0)))+"%")
 # estimated finish graphs
-print("\nEstimated Finish:")
+print("\nSimulated Number Of Wins (blocks of up to 5%):")
+print("Each X represents "+str(int(0.05*NUMBER_OF_RUNS))+" simulated tournaments. The last X (or the first one, if there is only one) represents from 1 to "+str(int(0.05*NUMBER_OF_RUNS))+" simulations.")
 for school in final_results:
     name = str(school)
     if name == "Defeated":
@@ -382,15 +384,15 @@ for school in br_list:
     r2_pct = float(r2) / 15.0
     diff_list.append([school,champ_pct,f4_pct,s16_pct])
 sorted_diff_list = sorted(diff_list,key=lambda x: x[1],reverse=True)
-print("\nEasiest path to championship")
+print("\nFour easiest paths to the championship")
 for school in sorted_diff_list[0:4]:
     print(str(school[0])+": "+str(round(school[1],1))+"%")
 sorted_diff_list = sorted(diff_list,key=lambda x: x[2],reverse=True)
-print("\nEasiest path to final four")
+print("\nEight easiest paths to the Final Four")
 for school in sorted_diff_list[0:8]:
     print(str(school[0])+": "+str(round(school[2],1))+"%")
 sorted_diff_list = sorted(diff_list,key=lambda x: x[3],reverse=True)
-print("\nEasiest path to sweet 16")
+print("\nSixteen easiest paths to the Sweet 16")
 for school in sorted_diff_list[0:20]:
     print(str(school[0])+": "+str(round(school[3],1))+"%")
     
