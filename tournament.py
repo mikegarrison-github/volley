@@ -321,6 +321,37 @@ sorted_list_of_R2 = sorted(list_of_R2,key=lambda x: x[1],reverse=True)
 print("\nRound 2")
 for teams in sorted_list_of_R2:
     print(str(teams[0])+": "+str(int(round(teams[1],0)))+"%")
+# estimated finish graphs
+print("\nEstimated Finish:")
+for school in final_results:
+    name = str(school)
+    if name == "Defeated":
+        continue
+    championships = float(final_results[school].get("champion",0))
+    runner = float(final_results[school].get("runner up",0))
+    final4 = float(final_results[school].get("FF",0))
+    elite8 = float(final_results[school].get("E8",0))
+    sweet16 = float(final_results[school].get("S6",0))
+    round2 = float(final_results[school].get("R2",0))
+    zilch = float(final_results[school].get("zilch",0))
+    results = {
+        "6": championships,
+        "5": runner,
+        "4": final4,
+        "3": elite8,
+        "2": sweet16,
+        "1": round2,
+        "0": zilch
+    }
+    most_common_finish = max(results, key=results.get)
+    print("\n"+name+" most common number of wins is "+most_common_finish)
+    print("6: "+xxx(results["6"],NUMBER_OF_RUNS))
+    print("5: "+xxx(results["5"],NUMBER_OF_RUNS))
+    print("4: "+xxx(results["4"],NUMBER_OF_RUNS))
+    print("3: "+xxx(results["3"],NUMBER_OF_RUNS))
+    print("2: "+xxx(results["2"],NUMBER_OF_RUNS))
+    print("1: "+xxx(results["1"],NUMBER_OF_RUNS))
+    print("0: "+xxx(results["0"],NUMBER_OF_RUNS))
 avg_pablo = median_pablo()
 print("\n\nAverage (median) pablo score of remaining teams: "+str(avg_pablo))
 # do bracket strength test
@@ -362,35 +393,4 @@ sorted_diff_list = sorted(diff_list,key=lambda x: x[3],reverse=True)
 print("\nEasiest path to sweet 16")
 for school in sorted_diff_list[0:20]:
     print(str(school[0])+": "+str(round(school[3],1))+"%")
-# estimated finish graphs
-print("\nEstimated Finish:")
-for school in final_results:
-    name = str(school)
-    if name == "Defeated":
-        continue
-    championships = float(final_results[school].get("champion",0))
-    runner = float(final_results[school].get("runner up",0))
-    final4 = float(final_results[school].get("FF",0))
-    elite8 = float(final_results[school].get("E8",0))
-    sweet16 = float(final_results[school].get("S6",0))
-    round2 = float(final_results[school].get("R2",0))
-    zilch = float(final_results[school].get("zilch",0))
-    results = {
-        "6": championships,
-        "5": runner,
-        "4": final4,
-        "3": elite8,
-        "2": sweet16,
-        "1": round2,
-        "0": zilch
-    }
-    most_common_finish = max(results, key=results.get)
-    print("\n"+name+" most common number of wins is "+most_common_finish)
-    print("6: "+xxx(results["6"],NUMBER_OF_RUNS))
-    print("5: "+xxx(results["5"],NUMBER_OF_RUNS))
-    print("4: "+xxx(results["4"],NUMBER_OF_RUNS))
-    print("3: "+xxx(results["3"],NUMBER_OF_RUNS))
-    print("2: "+xxx(results["2"],NUMBER_OF_RUNS))
-    print("1: "+xxx(results["1"],NUMBER_OF_RUNS))
-    print("0: "+xxx(results["0"],NUMBER_OF_RUNS))
     
