@@ -144,16 +144,16 @@ def run_tournament(number_of_runs,avg_school=None) -> dict:
         
         # play regionals
         ff = []
-        r1 = [regionals["1"],regionals["16"],regionals["8"],regionals["9"]]
-        r2 = [regionals["2"],regionals["15"],regionals["7"],regionals["10"]]
-        r3 = [regionals["3"],regionals["14"],regionals["6"],regionals["11"]]
-        r4 = [regionals["4"],regionals["13"],regionals["5"],regionals["12"]]
+        r1 = [regionals["UL1"],regionals["UL4"],regionals["UL2"],regionals["UL3"]]
+        r2 = [regionals["LL1"],regionals["LL4"],regionals["LL2"],regionals["LL3"]]
+        r3 = [regionals["UR1"],regionals["UR4"],regionals["UR2"],regionals["UR3"]]
+        r4 = [regionals["LR1"],regionals["LR4"],regionals["LR2"],regionals["LR3"]]
         winners = play_quad(r1,False,avg_school)
         ff = [winners[0]]
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
-        winners = play_quad(r4,False,avg_school)
+        winners = play_quad(r2,False,avg_school)
         ff.append(winners[0])
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
@@ -163,7 +163,7 @@ def run_tournament(number_of_runs,avg_school=None) -> dict:
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
-        winners = play_quad(r2,False,avg_school)
+        winners = play_quad(r4,False,avg_school)
         ff.append(winners[0])
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])

@@ -422,25 +422,25 @@ SCHOOLS = {
 }
 
 BRACKET = {
-    "1": ["Texas","Defeated","Defeated","Defeated"],
-    "16": ["Defeated","Defeated","Defeated","Defeated"],
-    "9": ["Ohio State","Defeated","Defeated","Defeated"],
-    "8": ["Defeated","Defeated","Defeated","Defeated"],
+    "UL1": ["Texas","Defeated","Defeated","Defeated"],
+    "UL4": ["Defeated","Defeated","Defeated","Defeated"],
+    "UL3": ["Defeated","Defeated","Defeated","Defeated"],
+    "UL2": ["Defeated","Defeated","Defeated","Defeated"],
 
-    "5": ["San Diego","Defeated","Defeated","Defeated"],
-    "12": ["Defeated","Defeated","Defeated","Defeated"],
-    "13": ["Defeated","Defeated","Defeated","Defeated"],
-    "4": ["Defeated","Defeated","Defeated","Stanford"],
+    "LL2": ["San Diego","Defeated","Defeated","Defeated"],
+    "LL3": ["Defeated","Defeated","Defeated","Defeated"],
+    "LL4": ["Defeated","Defeated","Defeated","Defeated"],
+    "LL1": ["Defeated","Defeated","Defeated","Defeated"],
 
-    "2": ["Wisconsin","Defeated","Defeated","Defeated"],
-    "15": ["Defeated","Defeated","Defeated","Defeated"],
-    "10": ["Defeated","Defeated","Defeated","Defeated"],
-    "7": ["Defeated","Defeated","Defeated","Pittsburgh"],
+    "UR1": ["Defeated","Defeated","Defeated","Defeated"],
+    "UR4": ["Defeated","Defeated","Defeated","Defeated"],
+    "UR3": ["Defeated","Defeated","Defeated","Defeated"],
+    "UR2": ["Defeated","Defeated","Defeated","Pittsburgh"],
 
-    "3": ["Defeated","Defeated","Defeated","Defeated"],
-    "14": ["Defeated","Defeated","Defeated","Oregon"],
-    "11": ["Defeated","Defeated","Defeated","Defeated"],
-    "6": ["Defeated","Defeated","Defeated","Louisville"],
+    "LR2": ["Defeated","Defeated","Defeated","Defeated"],
+    "LR3": ["Defeated","Defeated","Defeated","Defeated"],
+    "LR4": ["Defeated","Defeated","Defeated","Defeated"],
+    "LR1": ["Defeated","Defeated","Defeated","Louisville"],
 }
 
 CONFERENCE = [
