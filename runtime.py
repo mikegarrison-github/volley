@@ -1,6 +1,7 @@
 # pablo HCA
 HCA = 155
 PABLO_DATE = "Nov 28"
+RKPAGE = 'RichKern.com Pablo Rankings.html'
 
 SCHOOLS = {
     "Arkansas": {
@@ -443,20 +444,56 @@ BRACKET = {
     "LR1": ["Defeated","Defeated","Defeated","Louisville"],
 }
 
-CONFERENCE = [
-    "Arizona",
-    "Arizona State",
-    "California",
-    "Stanford",
-    "UCLA",
-    "Southern California",
-    "Oregon",
-    "Oregon State",
-    "Colorado",
-    "Utah",
-    "Washington",
-    "Washington State",
-]
+CONFERENCE = {
+    "Arizona": {
+        "my name": "Arizona",
+        "rk name": "Arizona",
+    },
+    "Arizona State": {
+        "my name": "ASU",
+        "rk name": "Arizona State",
+    },
+    "California": {
+        "my name": "Cal",
+        "rk name": "Cal",
+    },
+    "Stanford": {
+        "my name": "Stanford",
+        "rk name": "Stanford",
+    },
+    "UCLA": {
+        "my name": "UCLA",
+        "rk name": "UCLA",
+    },
+    "Southern California": {
+        "my name": "USC",
+        "rk name": "USC",
+    },
+    "Oregon": {
+        "my name": "Oregon",
+        "rk name": "Oregon",
+    },
+    "Oregon State": {
+        "my name": "OSU",
+        "rk name": "Oregon State",
+    },
+    "Colorado": {
+        "my name": "Colorado",
+        "rk name": "Colorado",
+    },
+    "Utah": {
+        "my name": "Utah",
+        "rk name": "Utah",
+    },
+    "Washington": {
+        "my name": "Washington",
+        "rk name": "Washington",
+    },
+    "Washington State": {
+        "my name": "WSU",
+        "rk name": "Washington State",
+    },
+}
 
 CONF_SCHED = {
     "1": [

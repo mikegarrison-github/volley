@@ -8,9 +8,10 @@ random.seed()
 # average pablo score
 def median_pablo() -> int:
     pablos = []
-    for school in runtime.CONFERENCE:
-        school_data = runtime.SCHOOLS.get(school)
-        pablos.append(school_data["pablo"])
+    for school in runtime.CONFERENCE.items():
+        rk_name = school["rk name"]
+        rating, rank, hca, pablo_date = pablo.find_pablo(rk_name)
+        pablos.append(rating)
     median = statistics.median(pablos)
     return round(median)
             
@@ -18,12 +19,16 @@ def median_pablo() -> int:
 def run_conference(number_of_runs, number_of_matches) -> dict:
     results = {}
     for school in runtime.CONFERENCE:
-        results[school]={"wins":[],"placements":[]}
+        sch = runtime.CONFERENCE[school]
+        rk_name = sch["rk name"]
+        rating, rank, hca, pablo_date = pablo.find_pablo(rk_name)
+        results[school]={"wins":[],"placements":[],"rating":rating,"rank":rank}
+    results["Defeated"]={"rating":-9999}
     for i in range(number_of_runs):
         season_results = {}
         for week in runtime.CONF_SCHED:
             for match in runtime.CONF_SCHED[week]:
-                home_prob = pablo.pablo_odds(runtime.SCHOOLS[match[1]]["pablo"],runtime.SCHOOLS[match[0]]["pablo"],"H")
+                home_prob = pablo.pablo_odds(results[match[1]]["rating"],results[match[0]]["rating"],"H",hca)
                 score = random.random()
                 if score <= home_prob:
                     wins = season_results.get(match[1],0)
@@ -56,7 +61,8 @@ def run_conference(number_of_runs, number_of_matches) -> dict:
             placements = past_results["placements"]
             wins.append(season_results.get(school,0))
             placements.append(standings[school])
-            results[school] = {"wins":wins,"placements":placements}
+            results[school]["wins"] = wins
+            results[school]["placements"] = placements
     return results
 
 # find current records
@@ -108,10 +114,13 @@ NUMBER_OF_MATCHES = 20
 final_results = run_conference(NUMBER_OF_RUNS, NUMBER_OF_MATCHES)
 current_results = find_current_records(NUMBER_OF_MATCHES)
 # sort schools
-sorted_list_of_schools = sorted(runtime.CONFERENCE)
+sorted_list_of_schools = sorted(runtime.CONFERENCE.keys())
 _pablo = {}
 for school in sorted_list_of_schools:
-    _pablo[school] = runtime.SCHOOLS[school]["pablo"]
+    sch = runtime.CONFERENCE[school]
+    rk_name = sch["rk name"]
+    rating, rank, hca, pablo_date = pablo.find_pablo(rk_name)
+    _pablo[school] = rating
 pablo_sorted_list = [x for (x,y) in sorted(_pablo.items(), key=lambda item: item[1], reverse=True)]
 _wins = {}
 for school in pablo_sorted_list:
@@ -127,7 +136,8 @@ for school in wins_sorted_list:
     minimum_possible_wins = current_results[school]["wins"]
     high_wins = sorted([mean_wins+std_wins,minimum_possible_wins,maximum_possible_wins])[1]
     low_wins = sorted([mean_wins-std_wins,minimum_possible_wins,maximum_possible_wins])[1]
-    print(str(school)+" Expected wins: "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins)))
+    display_name = runtime.CONFERENCE[school]["my name"]
+    print(str(display_name)+" Expected wins: "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins)))
 print("\nPlaces\n-------------------")
 for school in wins_sorted_list:
     number_of_teams = len(runtime.CONFERENCE)
@@ -137,4 +147,5 @@ for school in wins_sorted_list:
     std_wins = statistics.stdev(wins)
     high_wins = sorted([mean_wins+std_wins,1,number_of_teams])[1]
     low_wins = sorted([mean_wins-std_wins,1,number_of_teams])[1]
-    print(str(school)+" Expected placement: "+str(round(low_wins,1))+" to "+str(round(high_wins,1))+" -- median placement: "+str(round(median_wins)))
+    display_name = runtime.CONFERENCE[school]["my name"]
+    print(str(display_name)+" Expected placement: "+str(round(low_wins,1))+" to "+str(round(high_wins,1))+" -- median placement: "+str(round(median_wins)))
