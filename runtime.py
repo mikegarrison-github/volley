@@ -444,6 +444,8 @@ BRACKET = {
     "LR1": ["Defeated","Defeated","Defeated","Louisville"],
 }
 
+NUMBER_OF_MATCHES = 20
+
 CONFERENCE = {
     "Arizona": {
         "my name": "Arizona",

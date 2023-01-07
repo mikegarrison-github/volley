@@ -3,14 +3,13 @@ import runtime
 import pandas as pd
 import numpy as np
 
-def find_pablo (rk_name):
-    data, hca, pablo_date = read_pablo_data()
-    school_data = data[rk_name]
+def find_pablo (rk_name, pablo_data):
+    school_data = pablo_data[rk_name]
     rating = school_data["rating"]
     rank = school_data["rank"]
-    return rating, rank, hca, pablo_date
+    return rating, rank
 
-def read_pablo_data():
+def read_pablo_data() -> tuple[dict,int,str]:
     out_data = {}
     rk_page = runtime.RKPAGE
     with open(rk_page,'r') as f:
