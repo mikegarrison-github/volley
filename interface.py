@@ -2,7 +2,7 @@ import conference as conf
 import pablo
 import tournament as tourn
 import random
-import tkinter as tk
+from tkinter import *
 import runtime as rt
 import statistics
 
@@ -12,7 +12,7 @@ def test_pablo(pablo_date=None,hca=None) -> tuple[dict,int,str]:
     pablo_date.set(pablo_date_called)
     hca.set(hca_called)
 
-def run_conference(runs_value) -> None:
+def run_conference(runs_value,text) -> None:
     try:
         number_of_runs = int(runs_value.get())
     except:
@@ -36,23 +36,17 @@ def run_conference(runs_value) -> None:
     results_table.sort(key=lambda entry: entry[1])
     results_table.sort(key=lambda entry: entry[0])
     results_table.sort(reverse=True,key=lambda entry: entry[4])
-    print('''All discussion about the PAC-12 is welcome (except for trolling and flamebaiting)
+    out_string = '''All discussion about the PAC-12 is welcome (except for trolling and flamebaiting)
 
 ==================
 
 [font color="red"]NOTE: All references to rankings in this post are based on pablo, not AVCA![/font]
 
-Standings:''')    
-    print()
+Standings:\n\n'''
     for school in results_table:
-        print("("+str(school[0])+") "+str(school[1])+" "+str(school[2])+"-"+str(school[3]))
-    print()
-    print("("+str(pablo_date)+" pablo rankings)")
-    print()
-    print("==================")
-    print()
-    print("Expected wins as of "+str(pablo_date))
-    print()
+        out_string += "("+str(school[0])+") "+str(school[1])+" "+str(school[2])+"-"+str(school[3])+"\n"
+    out_string += "\n("+str(pablo_date)+" pablo rankings)\n\n==================\n\n"
+    out_string += "Expected wins as of "+str(pablo_date)+"\n\n"
     # calculate expected wins
     for school in rt.CONFERENCE:
         rk_name = rt.CONFERENCE[school]["rk name"]
@@ -83,12 +77,8 @@ Standings:''')
         high_wins = sorted([mean_wins+std_wins,minimum_possible_wins,maximum_possible_wins])[1]
         low_wins = sorted([mean_wins-std_wins,minimum_possible_wins,maximum_possible_wins])[1]
         display_name = rt.CONFERENCE[school]["my name"]
-        print(str(display_name)+" "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins)))
-    print()
-    print("==================")
-    print()
-    print("Expected placement as of "+str(pablo_date))
-    print()
+        out_string += str(display_name)+" "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins))+"\n"
+    out_string += "\n==================\n\nExpected placement as of "+str(pablo_date)+"\n\n"
     for school in wins_sorted_list:
         number_of_teams = len(rt.CONFERENCE)
         placements = final_results[school]["expected placements"]
@@ -98,26 +88,32 @@ Standings:''')
         high_placements = sorted([mean_placements+std_placements,1,number_of_teams])[1]
         low_placements = sorted([mean_placements-std_placements,1,number_of_teams])[1]
         display_name = rt.CONFERENCE[school]["my name"]
-        print(str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements)))
-
+        out_string += str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements))+"\n"
+    out_string += "\n==================\n\n"
+    text.delete("1.0","end")
+    text.insert("1.0",out_string)
 
 def main():
-    root = tk.Tk()
-    pablo_date=tk.StringVar(root,"no pablo data")
-    hca=tk.IntVar(root,0)
+    root = Tk()
+    pablo_date=StringVar(root,"no pablo data")
+    hca=IntVar(root,0)
 
 # label
-    tk.Label(root, text="Mike's Volleytalk pablo control panel").grid(row=0,columnspan=99)
-    tk.Label(root,text="Pablo Date:").grid(row=1,column=0)
-    tk.Label(root,textvariable=pablo_date).grid(row=1,column=1)
-    tk.Label(root,text="HCA:").grid(row=2,column=0)
-    tk.Label(root,textvariable=hca).grid(row=2,column=1)
-    tk.Button(root,text="Check Pablo",command=lambda: test_pablo(pablo_date,hca)).grid(row=3,columnspan=2)
-    tk.Label(root,text="If the date and HCA apprear to be valid:").grid(row=4,columnspan=2)
-    tk.Label(root,text="Number of runs:").grid(row=5,column=0)
-    runs_value = tk.StringVar(root,"10000")
-    runs = tk.Entry(root,textvariable=runs_value).grid(row=5, column=1)
-    tk.Button(root,text="Run Conference",command=lambda: run_conference(runs_value)).grid(row=6,columnspan=2)
+    Label(root, text="Mike's Volleytalk pablo control panel").grid(row=0,columnspan=99)
+    Label(root,text="Output:").grid(row=15,column=0)
+    text = Text(root,width=100,height=40)
+    text.grid(row=16,columnspan=99)
+    Label(root,text="Pablo Date:").grid(row=1,column=0)
+    Label(root,textvariable=pablo_date).grid(row=1,column=1)
+    Label(root,text="HCA:").grid(row=2,column=0)
+    Label(root,textvariable=hca).grid(row=2,column=1)
+    Button(root,text="Check Pablo",command=lambda: test_pablo(pablo_date,hca)).grid(row=3,columnspan=2)
+    Label(root,text="If the date and HCA apprear to be valid:").grid(row=4,columnspan=2)
+    Label(root,text="Number of runs:").grid(row=5,column=0)
+    runs_value = StringVar(root,"10000")
+    runs = Entry(root,textvariable=runs_value)
+    runs.grid(row=5, column=1)
+    Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text)).grid(row=6,columnspan=2)
 
     root.mainloop()
 
