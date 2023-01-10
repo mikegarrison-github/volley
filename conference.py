@@ -97,3 +97,39 @@ def find_current_records(number_of_matches) -> dict:
     for school in runtime.CONFERENCE:
         results[school]["placement"] = standings[school]
     return results
+
+def make_schedules_and_odds(results, hca) -> str:
+    match_text = None
+    odds_text = None
+    rank_text = None
+    out_text = "match lines\n"
+    for week in runtime.CONF_SCHED:
+        out_text += "Week "+str(week)+"\n"
+        for match in runtime.CONF_SCHED[week]:
+            if (match[0]!="Defeated") and (match[1]!="Defeated"):
+                home_prob = pablo.pablo_odds(results[match[1]]["rating"],results[match[0]]["rating"],"H",hca)
+                match_text = str(runtime.CONFERENCE[match[0]]["my name"])+"&#064;"+str(runtime.CONFERENCE[match[1]]["my name"])
+                if round((home_prob)*100)>=45 and round((home_prob)*100)<=55:
+                    odds_text = str(runtime.CONFERENCE[match[0]]["my name"])+" ("+str(round((1-home_prob)*100))+"%) @ "+str(runtime.CONFERENCE[match[1]]["my name"])+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
+                else:
+                    odds_text = None
+                if results[match[0]]["rank"]<=25 and results[match[1]]["rank"]<=25:
+                    rank_text = "#"+str(results[match[0]]["rank"])+" "+str(runtime.CONFERENCE[match[0]]["my name"])+" ("+str(round((1-home_prob)*100))+"%) @ "+"#"+str(results[match[1]]["rank"])+" "+str(runtime.CONFERENCE[match[1]]["my name"])+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
+                else:
+                    rank_text = None
+            else:
+                match_text = None
+            if match_text:
+                if rank_text:
+                    match_text = '[font color="gold"]'+match_text+"[/font]\n"
+                elif odds_text:
+                    match_text = '[font color="red"]'+match_text+"[/font]\n"
+                else:
+                    match_text += "\n"
+                out_text += match_text
+                if odds_text:
+                    out_text += odds_text
+                if rank_text:
+                    out_text += rank_text
+    return out_text
+        

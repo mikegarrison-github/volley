@@ -12,7 +12,7 @@ def test_pablo(pablo_date=None,hca=None) -> tuple[dict,int,str]:
     pablo_date.set(pablo_date_called)
     hca.set(hca_called)
 
-def run_conference(runs_value,text) -> None:
+def run_conference(runs_value,text,text2) -> None:
     try:
         number_of_runs = int(runs_value.get())
     except:
@@ -27,6 +27,7 @@ def run_conference(runs_value,text) -> None:
     for school in current_results:
         rk_name = rt.CONFERENCE[school]["rk name"]
         pablo_rank = pablo_dict[rk_name]["rank"]
+        current_results[school]["rank"] = pablo_rank
         my_name = rt.CONFERENCE[school]["my name"]
         wins = current_results[school]["wins"]
         losses = current_results[school]["losses"]
@@ -89,9 +90,49 @@ Standings:\n\n'''
         low_placements = sorted([mean_placements-std_placements,1,number_of_teams])[1]
         display_name = rt.CONFERENCE[school]["my name"]
         out_string += str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements))+"\n"
-    out_string += "\n==================\n\n"
+    out_string += "\n==================\n\nThis week's matches (Pacific times)\n\n"
+    out_string += '''Thur:
+[font color="19d2e6"]7:00pm[/font] 
+
+Fri:
+[font color="19d2e6"]7:00pm[/font] 
+
+Sat:
+[font color="19d2e6"]noon[/font] 
+
+Sun:
+[font color="19d2e6"]11:00am[/font] 
+
+==================
+
+[font color="gold"]Pablo highlight matches of the week (top-25 pablo matchups):[/font]
+
+None
+
+==================
+
+[font color="red"]Pablo close matches of the week (55 percent or closer):[/font]
+
+None
+
+==================
+
+Next week:
+
+Mountains @ BayArea, Washington @ Oregon, Arizona @ LA
+
+===================
+
+Conference schedule link:
+
+https://pac-12.com/womens-volleyball/schedule/
+
+Pablo is the creation of @pablo and is available by subscription on richkern.com'''
     text.delete("1.0","end")
     text.insert("1.0",out_string)
+    match_string = conf.make_schedules_and_odds(current_results,hca)
+    text2.delete("1.0","end")
+    text2.insert("1.0",match_string)
 
 def main():
     root = Tk()
@@ -101,8 +142,10 @@ def main():
 # label
     Label(root, text="Mike's Volleytalk pablo control panel").grid(row=0,columnspan=99)
     Label(root,text="Output:").grid(row=15,column=0)
-    text = Text(root,width=100,height=40)
+    text = Text(root,width=100,height=25)
     text.grid(row=16,columnspan=99)
+    text2 = Text(root,width=100,height=25)
+    text2.grid(row=18,columnspan=99)
     Label(root,text="Pablo Date:").grid(row=1,column=0)
     Label(root,textvariable=pablo_date).grid(row=1,column=1)
     Label(root,text="HCA:").grid(row=2,column=0)
@@ -113,7 +156,7 @@ def main():
     runs_value = StringVar(root,"10000")
     runs = Entry(root,textvariable=runs_value)
     runs.grid(row=5, column=1)
-    Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text)).grid(row=6,columnspan=2)
+    Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2)).grid(row=6,columnspan=2)
 
     root.mainloop()
 
