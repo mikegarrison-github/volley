@@ -12,23 +12,25 @@ def test_pablo(pablo_date=None,hca=None) -> tuple[dict,int,str]:
     pablo_date.set(pablo_date_called)
     hca.set(hca_called)
 
-def run_conference(runs_value,text,text2) -> None:
+def run_conference(runs_value,text,text2,conf_file) -> None:
     try:
         number_of_runs = int(runs_value.get())
     except:
         number_of_runs = 10000
         runs_value.set("10000")
-    number_of_matches = rt.NUMBER_OF_MATCHES
+    F = open(conf_file)
+    conf_data = conf.read_conference_data(F)
+    number_of_matches = conf_data["NUMBER_OF_MATCHES"]
     random.seed()
     pablo_dict, hca, pablo_date = pablo.read_pablo_data()
     # get current records
     results_table = []
-    current_results=conf.find_current_records(number_of_matches)
+    current_results=conf.find_current_records(number_of_matches,conf_data)
     for school in current_results:
-        rk_name = rt.CONFERENCE[school]["rk name"]
+        rk_name = conf_data["CONFERENCE"][school]["rk name"]
         pablo_rank = pablo_dict[rk_name]["rank"]
         current_results[school]["rank"] = pablo_rank
-        my_name = rt.CONFERENCE[school]["my name"]
+        my_name = conf_data["CONFERENCE"][school]["my name"]
         wins = current_results[school]["wins"]
         losses = current_results[school]["losses"]
         percentage = float(wins)/float(wins + losses)
@@ -49,17 +51,17 @@ Standings:\n\n'''
     out_string += "\n("+str(pablo_date)+" pablo rankings)\n\n==================\n\n"
     out_string += "Expected wins as of "+str(pablo_date)+"\n\n"
     # calculate expected wins
-    for school in rt.CONFERENCE:
-        rk_name = rt.CONFERENCE[school]["rk name"]
+    for school in conf_data["CONFERENCE"]:
+        rk_name = conf_data["CONFERENCE"][school]["rk name"]
         rating = pablo_dict[rk_name]["rating"]
         current_results[school]["rating"]=rating
         current_results[school]["expected wins"]=[]
         current_results[school]["expected placements"]=[]
     current_results["Defeated"]={"rating":-9999}
-    final_results = conf.run_conference(number_of_runs,number_of_matches,current_results,hca)
+    final_results = conf.run_conference(number_of_runs,number_of_matches,current_results,hca,conf_data)
     del final_results["Defeated"]
     # now sort by expected wins, pablo rating, name
-    sorted_list_of_schools = sorted(rt.CONFERENCE.keys())
+    sorted_list_of_schools = sorted(conf_data["CONFERENCE"].keys())
     _pablo = {}
     for school in sorted_list_of_schools:
         _pablo[school] = final_results[school]["rating"]
@@ -77,18 +79,18 @@ Standings:\n\n'''
         minimum_possible_wins = final_results[school]["wins"]
         high_wins = sorted([mean_wins+std_wins,minimum_possible_wins,maximum_possible_wins])[1]
         low_wins = sorted([mean_wins-std_wins,minimum_possible_wins,maximum_possible_wins])[1]
-        display_name = rt.CONFERENCE[school]["my name"]
+        display_name = conf_data["CONFERENCE"][school]["my name"]
         out_string += str(display_name)+" "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins))+"\n"
     out_string += "\n==================\n\nExpected placement as of "+str(pablo_date)+"\n\n"
     for school in wins_sorted_list:
-        number_of_teams = len(rt.CONFERENCE)
+        number_of_teams = len(conf_data["CONFERENCE"])
         placements = final_results[school]["expected placements"]
         mean_placements = statistics.mean(placements)
         median_placements = statistics.median(placements)
         std_placements = statistics.stdev(placements)
         high_placements = sorted([mean_placements+std_placements,1,number_of_teams])[1]
         low_placements = sorted([mean_placements-std_placements,1,number_of_teams])[1]
-        display_name = rt.CONFERENCE[school]["my name"]
+        display_name = conf_data["CONFERENCE"][school]["my name"]
         out_string += str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements))+"\n"
     out_string += "\n==================\n\nThis week's matches (Pacific times)\n\n"
     out_string += '''Thur:
@@ -130,7 +132,7 @@ https://pac-12.com/womens-volleyball/schedule/
 Pablo is the creation of @pablo and is available by subscription on richkern.com'''
     text.delete("1.0","end")
     text.insert("1.0",out_string)
-    match_string = conf.make_schedules_and_odds(current_results,hca)
+    match_string = conf.make_schedules_and_odds(current_results,hca,conf_data)
     text2.delete("1.0","end")
     text2.insert("1.0",match_string)
 
@@ -138,6 +140,7 @@ def main():
     root = Tk()
     pablo_date=StringVar(root,"no pablo data")
     hca=IntVar(root,0)
+    conf_file = 'conf.json'
 
 # label
     Label(root, text="Mike's Volleytalk pablo control panel").grid(row=0,columnspan=99)
@@ -156,7 +159,7 @@ def main():
     runs_value = StringVar(root,"10000")
     runs = Entry(root,textvariable=runs_value)
     runs.grid(row=5, column=1)
-    Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2)).grid(row=6,columnspan=2)
+    Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2,conf_file)).grid(row=6,columnspan=2)
 
     root.mainloop()
 

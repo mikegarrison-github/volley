@@ -1,0 +1,197 @@
+{
+    "CONFERENCE": {
+        "Arizona": {
+            "my name": "Arizona",
+            "rk name": "Arizona"
+        },
+        "Arizona State": {
+            "my name": "ASU",
+            "rk name": "Arizona State"
+        },
+        "California": {
+            "my name": "Cal",
+            "rk name": "Cal"
+        },
+        "Stanford": {
+            "my name": "Stanford",
+            "rk name": "Stanford"
+        },
+        "UCLA": {
+            "my name": "UCLA",
+            "rk name": "UCLA"
+        },
+        "Southern California": {
+            "my name": "USC",
+            "rk name": "USC"
+        },
+        "Oregon": {
+            "my name": "Oregon",
+            "rk name": "Oregon"
+        },
+        "Oregon State": {
+            "my name": "OSU",
+            "rk name": "Oregon State"
+        },
+        "Colorado": {
+            "my name": "Colorado",
+            "rk name": "Colorado"
+        },
+        "Utah": {
+            "my name": "Utah",
+            "rk name": "Utah"
+        },
+        "Washington": {
+            "my name": "Washington",
+            "rk name": "Washington"
+        },
+        "Washington State": {
+            "my name": "WSU",
+            "rk name": "Washington State"
+        }
+    },
+    "CONF_SCHED": {
+        "1": [
+            ["Defeated","Washington"],
+            ["Arizona State","Defeated"],
+            ["Oregon","Defeated"],
+            ["Stanford","Defeated"],
+            ["Colorado","Defeated"],
+            ["Southern California","Defeated"],
+            ["Defeated","Oregon State"],
+            ["Washington State","Defeated"],
+            ["Defeated","Utah"],
+            ["Defeated","Colorado"],
+            ["Defeated","Oregon"],
+            ["Washington","Defeated"]
+        ],
+        "2": [
+            ["Defeated","Stanford"],
+            ["Defeated","Oregon"],
+            ["Arizona","Defeated"],
+            ["Defeated","Southern California"],
+            ["Utah","Defeated"],
+            ["Washington State","Defeated"],
+            ["Arizona State","Defeated"],
+            ["Defeated","Oregon"],
+            ["Colorado","Defeated"],
+            ["Defeated","Stanford"],
+            ["Defeated","Southern California"],
+            ["Washington","Defeated"]
+        ],
+        "3": [
+            ["Defeated","Utah"],
+            ["Stanford","Defeated"],
+            ["Defeated","Washington State"],
+            ["UCLA","Defeated"],
+            ["Southern California","Defeated"],
+            ["Defeated","Washington"],
+            ["Defeated","Colorado"],
+            ["Defeated","Washington State"],
+            ["UCLA","Defeated"],
+            ["Southern California","Defeated"],
+            ["Stanford","Defeated"],
+            ["Defeated","Washington"]
+        ],
+        "4": [
+            ["Defeated","Colorado"],
+            ["Defeated","Arizona State"],
+            ["Stanford","Defeated"],
+            ["Defeated","Utah"],
+            ["Defeated","UCLA"],
+            ["Defeated","Southern California"],
+            ["Washington State","Defeated"],
+            ["Washington","Defeated"],
+            ["Defeated","Arizona"],
+            ["Defeated","Southern California"],
+            ["Oregon","Defeated"],
+            ["Stanford","Defeated"]
+        ],
+        "5": [
+            ["Arizona State","Defeated"],
+            ["Defeated","Oregon"],
+            ["Defeated","Washington State"],
+            ["Defeated","Oregon State"],
+            ["Southern California","Defeated"],
+            ["Defeated","Stanford"],
+            ["Defeated","Washington State"],
+            ["Defeated","Washington"],
+            ["Defeated","Oregon"],
+            ["Utah","Defeated"],
+            ["UCLA","Defeated"],
+            ["Defeated","Stanford"]
+        ],
+        "6": [
+            ["Defeated","Colorado"],
+            ["Defeated","Colorado"],
+            ["Defeated","Utah"],
+            ["Defeated","Washington"],
+            ["Defeated","Arizona State"],
+            ["Oregon","Defeated"],
+            ["Oregon","Defeated"],
+            ["Stanford","Defeated"],
+            ["Stanford","Defeated"],
+            ["UCLA","Defeated"],
+            ["Defeated","Washington State"],
+            ["Defeated","Arizona"]
+        ],
+        "7": [
+            ["Washington State","Defeated"],
+            ["Defeated","Oregon"],
+            ["Defeated","Southern California"],
+            ["Defeated","UCLA"],
+            ["Colorado","Defeated"],
+            ["Defeated","Stanford"],
+            ["Defeated","UCLA"],
+            ["Defeated","Stanford"],
+            ["Utah","Defeated"],
+            ["Defeated","Oregon"],
+            ["Defeated","Southern California"],
+            ["Washington","Defeated"]
+        ],
+        "8": [
+            ["Stanford","Defeated"],
+            ["Defeated","Utah"],
+            ["Oregon","Defeated"],
+            ["Defeated","UCLA"],
+            ["Defeated","Arizona"],
+            ["Washington State","Defeated"],
+            ["Defeated","Southern California"],
+            ["Stanford","Defeated"],
+            ["Defeated","Colorado"],
+            ["Washington State","Defeated"],
+            ["Oregon","Defeated"],
+            ["Washington","Defeated"]
+        ],
+        "9": [
+            ["Defeated","Stanford"],
+            ["Arizona","Defeated"],
+            ["Southern California","Defeated"],
+            ["Defeated","Oregon"],
+            ["Defeated","Washington State"],
+            ["Colorado","Defeated"],
+            ["Arizona State","Defeated"],
+            ["Defeated","Stanford"],
+            ["Defeated","Oregon"],
+            ["UCLA","Defeated"],
+            ["Defeated","Washington"],
+            ["Defeated","Washington State"]
+        ],
+        "10": [
+            ["UCLA","Washington State"],
+            ["Southern California","Washington"],
+            ["Colorado","Arizona"],
+            ["Utah","Arizona State"],
+            ["Oregon State","Stanford"],
+            ["Oregon","California"],
+            ["Oregon State","Oregon"],
+            ["Utah","Colorado"],
+            ["Arizona","Arizona State"],
+            ["California","Stanford"],
+            ["UCLA","Southern California"],
+            ["Washington","Washington State"]
+        ]
+    },
+
+    "NUMBER_OF_MATCHES": 20
+
+}

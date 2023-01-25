@@ -2,11 +2,18 @@ import random
 import runtime
 import pablo
 import statistics
+import json
+
+def read_conference_data(file) -> dict:
+    conf_data = json.load(file)
+    return conf_data
+
+
 
 # average pablo score
-def median_pablo() -> int:
+def median_pablo(conf_data) -> int:
     pablos = []
-    for school in runtime.CONFERENCE.items():
+    for school in conf_data["CONFERENCE"].items():
         rk_name = school["rk name"]
         rating, rank, hca, pablo_date = pablo.find_pablo(rk_name)
         pablos.append(rating)
@@ -14,11 +21,11 @@ def median_pablo() -> int:
     return round(median)
             
 # run conference
-def run_conference(number_of_runs, number_of_matches, results, hca) -> dict:
+def run_conference(number_of_runs, number_of_matches, results, hca, conf_data) -> dict:
     for i in range(number_of_runs):
         season_results = {}
-        for week in runtime.CONF_SCHED:
-            for match in runtime.CONF_SCHED[week]:
+        for week in conf_data["CONF_SCHED"]:
+            for match in conf_data["CONF_SCHED"][week]:
                 home_prob = pablo.pablo_odds(results[match[1]]["rating"],results[match[0]]["rating"],"H",hca)
                 score = random.random()
                 if score <= home_prob:
@@ -28,7 +35,7 @@ def run_conference(number_of_runs, number_of_matches, results, hca) -> dict:
                     wins = season_results.get(match[0],0)
                     season_results[match[0]] = wins + 1
         standings = {}
-        for school in runtime.CONFERENCE:
+        for school in conf_data["CONFERENCE"]:
             wins = season_results.get(school,0)
             percentage = float(wins) / float(number_of_matches)
             standings[school] = percentage
@@ -46,7 +53,7 @@ def run_conference(number_of_runs, number_of_matches, results, hca) -> dict:
                 standings[school] = place
                 count = 1
                 current_percentage = percentage
-        for school in runtime.CONFERENCE:
+        for school in conf_data["CONFERENCE"]:
             past_results = results[school]
             wins = past_results["expected wins"]
             placements = past_results["expected placements"]
@@ -57,12 +64,12 @@ def run_conference(number_of_runs, number_of_matches, results, hca) -> dict:
     return results
 
 # find current records
-def find_current_records(number_of_matches) -> dict:
+def find_current_records(number_of_matches, conf_data) -> dict:
     results = {}
-    for school in runtime.CONFERENCE:
+    for school in conf_data["CONFERENCE"]:
         results[school]={"wins":0,"losses":0,"unplayed":0}
-    for week in runtime.CONF_SCHED:
-        for match in runtime.CONF_SCHED[week]:
+    for week in conf_data["CONF_SCHED"]:
+        for match in conf_data["CONF_SCHED"][week]:
             home_team = match[1]
             visiting_team = match[0]
             if home_team == "Defeated":
@@ -72,10 +79,10 @@ def find_current_records(number_of_matches) -> dict:
             else:
                 results[home_team]["unplayed"] += 1
                 results[visiting_team]["unplayed"] += 1
-    for school in runtime.CONFERENCE:
+    for school in conf_data["CONFERENCE"]:
         results[school]["losses"] = number_of_matches - results[school]["wins"] - results[school]["unplayed"]
     standings = {}
-    for school in runtime.CONFERENCE:
+    for school in conf_data["CONFERENCE"]:
         wins = results[school]["wins"]
         losses = results[school]["losses"]
         percentage = float(wins) / float(wins + losses)
@@ -94,27 +101,27 @@ def find_current_records(number_of_matches) -> dict:
             standings[school] = place
             count = 1
             current_percentage = percentage
-    for school in runtime.CONFERENCE:
+    for school in conf_data["CONFERENCE"]:
         results[school]["placement"] = standings[school]
     return results
 
-def make_schedules_and_odds(results, hca) -> str:
+def make_schedules_and_odds(results, hca, conf_data) -> str:
     match_text = None
     odds_text = None
     rank_text = None
     out_text = "match lines\n"
-    for week in runtime.CONF_SCHED:
+    for week in conf_data["CONF_SCHED"]:
         out_text += "Week "+str(week)+"\n"
-        for match in runtime.CONF_SCHED[week]:
+        for match in conf_data["CONF_SCHED"][week]:
             if (match[0]!="Defeated") and (match[1]!="Defeated"):
                 home_prob = pablo.pablo_odds(results[match[1]]["rating"],results[match[0]]["rating"],"H",hca)
-                match_text = str(runtime.CONFERENCE[match[0]]["my name"])+"&#064;"+str(runtime.CONFERENCE[match[1]]["my name"])
+                match_text = str(conf_data["CONFERENCE"][match[0]]["my name"])+"&#064;"+str(conf_data["CONFERENCE"][match[1]]["my name"])
                 if round((home_prob)*100)>=45 and round((home_prob)*100)<=55:
-                    odds_text = str(runtime.CONFERENCE[match[0]]["my name"])+" ("+str(round((1-home_prob)*100))+"%) @ "+str(runtime.CONFERENCE[match[1]]["my name"])+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
+                    odds_text = str(conf_data["CONFERENCE"][match[0]]["my name"])+" ("+str(round((1-home_prob)*100))+"%) @ "+str(conf_data["CONFERENCE"][match[1]]["my name"])+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
                 else:
                     odds_text = None
                 if results[match[0]]["rank"]<=25 and results[match[1]]["rank"]<=25:
-                    rank_text = "#"+str(results[match[0]]["rank"])+" "+str(runtime.CONFERENCE[match[0]]["my name"])+" ("+str(round((1-home_prob)*100))+"%) @ "+"#"+str(results[match[1]]["rank"])+" "+str(runtime.CONFERENCE[match[1]]["my name"])+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
+                    rank_text = "#"+str(results[match[0]]["rank"])+" "+str(conf_data["CONFERENCE"][match[0]]["my name"])+" ("+str(round((1-home_prob)*100))+"%) @ "+"#"+str(results[match[1]]["rank"])+" "+str(conf_data["CONFERENCE"][match[1]]["my name"])+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
                 else:
                     rank_text = None
             else:
