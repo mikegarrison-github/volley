@@ -11,6 +11,42 @@ def test_pablo(pablo_date=None,hca=None) -> tuple[dict,int,str]:
     pablo_date.set(pablo_date_called)
     hca.set(hca_called)
 
+def open_conf_sched(root,conf_file) -> None:
+    window = Toplevel(root)
+    Button(window,text="Close",command=window.destroy).grid(row=100)
+    # open json file
+    F = open(conf_file)
+    conf_data = conf.read_conference_data(F)
+    F.close
+    # print conf schedule
+    out_text = ""
+    for week in conf_data["CONF_SCHED"]:
+        out_text += "Week "+str(week)+":\n"
+        for match in conf_data["CONF_SCHED"][week]:
+            home_team = match[1]
+            if home_team == "Defeated":
+                ht_name = "Defeated"
+            else:
+                ht_name = conf_data["CONFERENCE"][home_team]["my name"]
+            visiting_team = match[0]
+            if visiting_team == "Defeated":
+                vt_name = "Defeated"
+            else:
+                vt_name = conf_data["CONFERENCE"][visiting_team]["my name"]
+            out_text += str(vt_name)+" @ "+str(ht_name)+"\n"
+        out_text += "\n"
+    text = Text(window,width=100,height=25)
+    text.grid(row=16,columnspan=99)
+    text.delete("1.0","end")
+    text.insert("1.0",out_text)
+    #start trying dropdown
+    options = list(conf_data["CONF_SCHED"].keys())
+    clicked = StringVar()
+    clicked.set("1")
+    drop = OptionMenu(window,clicked,*options).grid(row=20)
+    #activate window
+    window.grab_set()
+
 def run_conference(runs_value,text,text2,conf_file) -> None:
     try:
         number_of_runs = int(runs_value.get())
@@ -19,6 +55,7 @@ def run_conference(runs_value,text,text2,conf_file) -> None:
         runs_value.set("10000")
     F = open(conf_file)
     conf_data = conf.read_conference_data(F)
+    F.close
     number_of_matches = conf_data["NUMBER_OF_MATCHES"]
     random.seed()
     pablo_dict, hca, pablo_date = pablo.read_pablo_data()
@@ -159,6 +196,7 @@ def main():
     runs = Entry(root,textvariable=runs_value)
     runs.grid(row=5, column=1)
     Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2,conf_file)).grid(row=6,columnspan=2)
+    Button(root,text="Edit Schedule",command=lambda: open_conf_sched(root,conf_file)).grid(row=6,column=2)
 
     root.mainloop()
 
