@@ -3,7 +3,6 @@ import pablo
 import tournament as tourn
 import random
 from tkinter import *
-import runtime as rt
 import statistics
 
 
