@@ -10,15 +10,15 @@ def read_conference_data(file) -> dict:
 
 
 
-# average pablo score
-def median_pablo(conf_data) -> int:
-    pablos = []
-    for school in conf_data["CONFERENCE"].items():
-        rk_name = school["rk name"]
-        rating, rank, hca, pablo_date = pablo.find_pablo(rk_name)
-        pablos.append(rating)
-    median = statistics.median(pablos)
-    return round(median)
+# # average pablo score
+# def median_pablo(conf_data) -> int:
+#     pablos = []
+#     for school in conf_data["CONFERENCE"].items():
+#         rk_name = school["rk name"]
+#         rating, rank, hca, pablo_date = pablo.find_pablo(rk_name)
+#         pablos.append(rating)
+#     median = statistics.median(pablos)
+#     return round(median)
             
 # run conference
 def run_conference(number_of_runs, number_of_matches, results, hca, conf_data) -> dict:
