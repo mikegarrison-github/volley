@@ -3,6 +3,7 @@ import runtime
 import pablo
 import statistics
 import json
+from classes import Team, PabloWeeklyRating
 
 def read_conference_data(file) -> dict:
     conf_data = json.load(file)
@@ -21,19 +22,31 @@ def read_conference_data(file) -> dict:
 #     return round(median)
             
 # run conference
-def run_conference(number_of_runs, number_of_matches, results, hca, conf_data) -> dict:
+def run_conference(number_of_runs, number_of_matches, results, pablo_data, conf_data) -> dict:
     for i in range(number_of_runs):
         season_results = {}
         for week in conf_data["CONF_SCHED"]:
             for match in conf_data["CONF_SCHED"][week]:
-                home_prob = pablo.pablo_odds(results[match[1]]["rating"],results[match[0]]["rating"],"H",hca)
+                home_team = Team(match[1])
+                visiting_team = Team(match[0])
+                if home_team.name == "Defeated":
+                    home_team.set_names("Defeated","Defeated")
+                else:
+                    home_team.set_names(conf_data["CONFERENCE"][home_team.name]["my name"],conf_data["CONFERENCE"][home_team.name]["rk name"])
+                if visiting_team.name == "Defeated":
+                    visiting_team.set_names("Defeated","Defeated")
+                else:
+                    visiting_team.set_names(conf_data["CONFERENCE"][visiting_team.name]["my name"],conf_data["CONFERENCE"][visiting_team.name]["rk name"])
+                home_team.find_pablo(pablo_data)
+                visiting_team.find_pablo(pablo_data)
+                home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
                 score = random.random()
                 if score <= home_prob:
-                    wins = season_results.get(match[1],0)
-                    season_results[match[1]] = wins + 1
+                    wins = season_results.get(home_team.name,0)
+                    season_results[home_team.name] = wins + 1
                 else:
-                    wins = season_results.get(match[0],0)
-                    season_results[match[0]] = wins + 1
+                    wins = season_results.get(visiting_team.name,0)
+                    season_results[visiting_team.name] = wins + 1
         standings = {}
         for school in conf_data["CONFERENCE"]:
             wins = season_results.get(school,0)

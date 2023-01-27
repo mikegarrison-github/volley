@@ -101,7 +101,7 @@ Standings:\n\n'''
         current_results[school]["expected wins"]=[]
         current_results[school]["expected placements"]=[]
     current_results["Defeated"]={"rating":-9999}
-    final_results = conf.run_conference(number_of_runs,number_of_matches,current_results,pablo_data.hca,conf_data)
+    final_results = conf.run_conference(number_of_runs,number_of_matches,current_results,pablo_data,conf_data)
     del final_results["Defeated"]
     # now sort by expected wins, pablo rating, name
     sorted_list_of_schools = sorted(conf_data["CONFERENCE"].keys())
