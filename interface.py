@@ -175,7 +175,7 @@ https://pac-12.com/womens-volleyball/schedule/
 Pablo is the creation of @pablo and is available by subscription on richkern.com'''
     text.delete("1.0","end")
     text.insert("1.0",out_string)
-    match_string = conf.make_schedules_and_odds(current_results,pablo_data.hca,conf_data)
+    match_string = conf.make_schedules_and_odds(current_results,pablo_data,conf_data)
     text2.delete("1.0","end")
     text2.insert("1.0",match_string)
 

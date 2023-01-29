@@ -32,11 +32,11 @@ def run_conference(number_of_runs, number_of_matches, results, pablo_data, conf_
                 if home_team.name == "Defeated":
                     home_team.set_names("Defeated","Defeated")
                 else:
-                    home_team.set_names(conf_data["CONFERENCE"][home_team.name]["my name"],conf_data["CONFERENCE"][home_team.name]["rk name"])
+                    home_team.load_from_dict(conf_data["CONFERENCE"])
                 if visiting_team.name == "Defeated":
                     visiting_team.set_names("Defeated","Defeated")
                 else:
-                    visiting_team.set_names(conf_data["CONFERENCE"][visiting_team.name]["my name"],conf_data["CONFERENCE"][visiting_team.name]["rk name"])
+                    visiting_team.load_from_dict(conf_data["CONFERENCE"])
                 home_team.find_pablo(pablo_data)
                 visiting_team.find_pablo(pablo_data)
                 home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
@@ -118,7 +118,7 @@ def find_current_records(number_of_matches, conf_data) -> dict:
         results[school]["placement"] = standings[school]
     return results
 
-def make_schedules_and_odds(results, hca, conf_data) -> str:
+def make_schedules_and_odds(results, pablo_data, conf_data) -> str:
     match_text = None
     odds_text = None
     rank_text = None
@@ -126,15 +126,21 @@ def make_schedules_and_odds(results, hca, conf_data) -> str:
     for week in conf_data["CONF_SCHED"]:
         out_text += "Week "+str(week)+"\n"
         for match in conf_data["CONF_SCHED"][week]:
-            if (match[0]!="Defeated") and (match[1]!="Defeated"):
-                home_prob = pablo.pablo_odds(results[match[1]]["rating"],results[match[0]]["rating"],"H",hca)
-                match_text = str(conf_data["CONFERENCE"][match[0]]["my name"])+"&#064;"+str(conf_data["CONFERENCE"][match[1]]["my name"])
+            home_team = Team(match[1])
+            visiting_team = Team(match[0])
+            home_team.load_from_dict(conf_data["CONFERENCE"]) # get name info
+            visiting_team.load_from_dict(conf_data["CONFERENCE"])
+            home_team.load_from_dict(results) # get rank and rating
+            visiting_team.load_from_dict(results)
+            if (home_team.name!="Defeated") and (visiting_team.name!="Defeated"):
+                home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
+                match_text = str(visiting_team.my_name)+"&#064;"+str(home_team.my_name)
                 if round((home_prob)*100)>=45 and round((home_prob)*100)<=55:
-                    odds_text = str(conf_data["CONFERENCE"][match[0]]["my name"])+" ("+str(round((1-home_prob)*100))+"%) @ "+str(conf_data["CONFERENCE"][match[1]]["my name"])+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
+                    odds_text = str(visiting_team.my_name)+" ("+str(round((1-home_prob)*100))+"%) @ "+str(home_team.my_name)+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
                 else:
                     odds_text = None
-                if results[match[0]]["rank"]<=25 and results[match[1]]["rank"]<=25:
-                    rank_text = "#"+str(results[match[0]]["rank"])+" "+str(conf_data["CONFERENCE"][match[0]]["my name"])+" ("+str(round((1-home_prob)*100))+"%) @ "+"#"+str(results[match[1]]["rank"])+" "+str(conf_data["CONFERENCE"][match[1]]["my name"])+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
+                if visiting_team.rank<=25 and home_team.rank<=25:
+                    rank_text = "#"+str(visiting_team.rank)+" "+str(visiting_team.my_name)+" ("+str(round((1-home_prob)*100))+"%) @ "+"#"+str(home_team.rank)+" "+str(home_team.my_name)+" ("+str(round((home_prob)*100))+"%) -- Outcome: TBD\n"
                 else:
                     rank_text = None
             else:

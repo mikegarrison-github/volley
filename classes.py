@@ -47,6 +47,22 @@ class Team:
         chance = norm.cdf(difference/1000)
         return chance
 
+    def load_from_dict(self,dict_in) -> None:
+        team = dict_in.get(self.name)
+        if team:
+            my_name = team.get("my name")
+            if my_name:
+                self.my_name = my_name
+            rk_name = team.get("rk name")
+            if rk_name:
+                self.rk_name = rk_name
+            rating = team.get("rating")
+            if rating:
+                self.rating = rating
+            rank = team.get("rank")
+            if rank:
+                self.rank = rank
+
 
 class PabloWeeklyRating:
     def __init__(self,file_name="RichKern.com Pablo Rankings.html") -> None:
