@@ -1,5 +1,4 @@
 import conference as conf
-import pablo
 import tournament as tourn
 import random
 from tkinter import *
@@ -20,8 +19,6 @@ def test_pablo(pablo_date_var,hca_var,pablo_file=None) -> tuple[dict,int,str]:
 
 
 
-
-
 def open_conf_sched(root,conf_file) -> None:
     # create new window object subordinate to the main window (root)
     window = Toplevel(root)
@@ -29,50 +26,43 @@ def open_conf_sched(root,conf_file) -> None:
     # create a window close button
     Button(window,text="Close",command=window.destroy).grid(row=100)
 
-    # open json file and read in conference data
-    F = open(conf_file)
-    conf_data = conf.read_conference_data(F)
-    F.close
-
-    # print conf schedule
-    out_text = ""
-    week_flag = False
-    home_week_flag = False
-    visiting_week_flag = False
-    for week in conf_data["CONF_SCHED"]:
-        temp_out_text = "Week "+str(week)+":\n"
-        for match in conf_data["CONF_SCHED"][week]:
+    def match_boxes(*args) -> None:
+        week = str(clicked.get())
+        matches = conf_data["CONF_SCHED"].get(week,[])
+        out_text =""
+        for match in matches:
             home_team = match[1]
             if home_team == "Defeated":
                 ht_name = "Defeated"
             else:
                 ht_name = conf_data["CONFERENCE"][home_team]["my name"]
-                home_week_flag = True
             visiting_team = match[0]
             if visiting_team == "Defeated":
                 vt_name = "Defeated"
             else:
                 vt_name = conf_data["CONFERENCE"][visiting_team]["my name"]
-                visiting_week_flag = True
-            temp_out_text += str(vt_name)+" @ "+str(ht_name)+"\n"
-            if home_week_flag and visiting_week_flag:
-                week_flag = True
-            else:
-                home_week_flag = False
-                visiting_week_flag = False
-        temp_out_text += "\n"
-        if week_flag:
-            out_text = temp_out_text
-            break
+            out_text += str(vt_name)+" @ "+str(ht_name)+"\n"
+        out_text += "\n"
+        text.delete("1.0","end")
+        text.insert("1.0",out_text)
+        
+
+
+    # open json file and read in conference data
+    F = open(conf_file)
+    conf_data = conf.read_conference_data(F)
+    F.close
+
     text = Text(window,width=100,height=25)
     text.grid(row=16,columnspan=99)
-    text.delete("1.0","end")
-    text.insert("1.0",out_text)
-    #start trying dropdown
+
+
+    # week_select dropdown
     options = list(conf_data["CONF_SCHED"].keys())
     clicked = StringVar()
     clicked.set("1")
-    drop = OptionMenu(window,clicked,*options).grid(row=20)
+    OptionMenu(window,clicked,*options).grid(row=20)
+    clicked.trace_add("write",match_boxes)
     #activate window (until it is closed)
     window.grab_set()
 
@@ -248,7 +238,16 @@ def main():
     hca=IntVar(root,0)
     runs_value = StringVar(root,"10000")
     conf_file = 'conf.json'
+    pablo_file = None
 
+    # test pablo inner function
+    def test_pablo(*args):
+        if pablo_file:
+            pablo_data = PabloWeeklyRating(pablo_file)
+        else:
+            pablo_data = PabloWeeklyRating()
+        hca.set(pablo_data.hca)
+        pablo_date.set(pablo_data.pablo_date)
 
     # Construct root window
     #labels
@@ -268,7 +267,7 @@ def main():
     runs = Entry(root,textvariable=runs_value)
     runs.grid(row=5, column=1)
     # buttons
-    Button(root,text="Check Pablo",command=lambda: test_pablo(pablo_date,hca)).grid(row=3,columnspan=2)
+    Button(root,text="Check Pablo",command=test_pablo).grid(row=3,columnspan=2)
     Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2,conf_file)).grid(row=6,columnspan=2)
     Button(root,text="Edit Schedule",command=lambda: open_conf_sched(root,conf_file)).grid(row=6,column=2)
 
