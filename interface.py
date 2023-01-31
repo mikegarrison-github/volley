@@ -4,6 +4,7 @@ import random
 from tkinter import *
 import statistics
 from classes import Team,PabloWeeklyRating
+import json
 
 
 
@@ -11,30 +12,48 @@ from classes import Team,PabloWeeklyRating
 def open_conf_sched(root,conf_file) -> None:
     # create new window object subordinate to the main window (root)
     window = Toplevel(root)
-
-    # create a window close button
-    Button(window,text="Close",command=window.destroy).grid(row=100)
+    answer_frame = Frame(window, width =10, height =10)
+    answer_frame.grid(row=21)
 
     def match_boxes(*args) -> None:
         week = str(clicked.get())
         matches = conf_data["CONF_SCHED"].get(week,[])
-        out_text =""
+        count = 0
+        for widget in answer_frame.winfo_children():
+            widget.destroy()
         for match in matches:
+            count +=1
+            brow = 20+count
+            match.append(StringVar())
             home_team = match[1]
             if home_team == "Defeated":
                 ht_name = "Defeated"
             else:
                 ht_name = conf_data["CONFERENCE"][home_team]["my name"]
+            Radiobutton(answer_frame,text=ht_name,value=home_team,variable=match[2]).grid(row=brow,column=1)
             visiting_team = match[0]
             if visiting_team == "Defeated":
                 vt_name = "Defeated"
             else:
                 vt_name = conf_data["CONFERENCE"][visiting_team]["my name"]
-            out_text += str(vt_name)+" @ "+str(ht_name)+"\n"
-        out_text += "\n"
-        text.delete("1.0","end")
-        text.insert("1.0",out_text)
+            Radiobutton(answer_frame,text=vt_name,value=visiting_team,variable=match[2]).grid(row=brow,column=0)
+        def write_data(*args) -> None:
+            out_list = []
+            for match in matches:
+                if match[0] == match[2].get():
+                    out_list.append([match[0],"Defeated"])
+                elif match[1] == match[2].get():
+                    out_list.append(["Defeated",match[1]])
+                else:
+                    out_list.append([match[0],match[1]])
+            conf_data["CONF_SCHED"][week]=out_list
+            json_out = json.dumps(conf_data,indent=4)
+            with open(conf_file, "w") as outfile:
+                outfile.write(json_out)
+
         
+        # create a write data button
+        Button(answer_frame,text="Write Data",command=write_data).grid(row=90)
 
 
     # open json file and read in conference data
@@ -42,16 +61,16 @@ def open_conf_sched(root,conf_file) -> None:
     conf_data = conf.read_conference_data(F)
     F.close
 
-    text = Text(window,width=100,height=25)
-    text.grid(row=16,columnspan=99)
-
-
     # week_select dropdown
     options = list(conf_data["CONF_SCHED"].keys())
     clicked = StringVar()
     clicked.set("1")
     OptionMenu(window,clicked,*options).grid(row=20)
     clicked.trace_add("write",match_boxes)
+
+    # create a window close button
+    Button(window,text="Close",command=window.destroy).grid(row=100)
+
     #activate window (until it is closed)
     window.grab_set()
 
