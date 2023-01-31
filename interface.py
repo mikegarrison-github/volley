@@ -15,30 +15,55 @@ def test_pablo(pablo_date_var,hca_var,pablo_file=None) -> tuple[dict,int,str]:
     hca_var.set(pablo_data.hca)
     pablo_date_var.set(pablo_data.pablo_date)
 
+    # END TEST PABLO FUNCTION (return None)
+
+
+
+
+
+
 def open_conf_sched(root,conf_file) -> None:
+    # create new window object subordinate to the main window (root)
     window = Toplevel(root)
+
+    # create a window close button
     Button(window,text="Close",command=window.destroy).grid(row=100)
-    # open json file
+
+    # open json file and read in conference data
     F = open(conf_file)
     conf_data = conf.read_conference_data(F)
     F.close
+
     # print conf schedule
     out_text = ""
+    week_flag = False
+    home_week_flag = False
+    visiting_week_flag = False
     for week in conf_data["CONF_SCHED"]:
-        out_text += "Week "+str(week)+":\n"
+        temp_out_text = "Week "+str(week)+":\n"
         for match in conf_data["CONF_SCHED"][week]:
             home_team = match[1]
             if home_team == "Defeated":
                 ht_name = "Defeated"
             else:
                 ht_name = conf_data["CONFERENCE"][home_team]["my name"]
+                home_week_flag = True
             visiting_team = match[0]
             if visiting_team == "Defeated":
                 vt_name = "Defeated"
             else:
                 vt_name = conf_data["CONFERENCE"][visiting_team]["my name"]
-            out_text += str(vt_name)+" @ "+str(ht_name)+"\n"
-        out_text += "\n"
+                visiting_week_flag = True
+            temp_out_text += str(vt_name)+" @ "+str(ht_name)+"\n"
+            if home_week_flag and visiting_week_flag:
+                week_flag = True
+            else:
+                home_week_flag = False
+                visiting_week_flag = False
+        temp_out_text += "\n"
+        if week_flag:
+            out_text = temp_out_text
+            break
     text = Text(window,width=100,height=25)
     text.grid(row=16,columnspan=99)
     text.delete("1.0","end")
@@ -48,40 +73,60 @@ def open_conf_sched(root,conf_file) -> None:
     clicked = StringVar()
     clicked.set("1")
     drop = OptionMenu(window,clicked,*options).grid(row=20)
-    #activate window
+    #activate window (until it is closed)
     window.grab_set()
 
+    # END OPEN CONF SCHEDULE FUNCTION (return None) (ends when window is closed)
+
+
+
+
+
+
 def run_conference(runs_value,text,text2,conf_file="conf.json",pablo_file=None) -> None:
+    
+    # check/set number of runs for monte carlo simulation (defaut 10000)
     try:
         number_of_runs = int(runs_value.get())
     except:
         number_of_runs = 10000
         runs_value.set("10000")
+    
+    # get conference data from json file
     F = open(conf_file)
     conf_data = conf.read_conference_data(F)
     F.close
     number_of_matches = conf_data["NUMBER_OF_MATCHES"]
+
+    # seed random number generator
     random.seed()
+
+    # get data from pablo file and create pablo data object
     if pablo_file:
         pablo_data = PabloWeeklyRating(pablo_file)
     else:
         pablo_data = PabloWeeklyRating()
+    
     # get current records
     results_table = []
     current_results=conf.find_current_records(number_of_matches,conf_data)
     for school in current_results:
-        rk_name = conf_data["CONFERENCE"][school]["rk name"]
-        pablo_rating,pablo_rank = pablo_data.find_pablo(rk_name)
-        current_results[school]["rank"] = pablo_rank
-        my_name = conf_data["CONFERENCE"][school]["my name"]
+        team = Team(school)
+        team.load_from_dict(conf_data["CONFERENCE"])
+        team.find_pablo(pablo_data)
+        current_results[school]["rank"] = team.rank
+        current_results[school]["rating"]= team.rating
         wins = current_results[school]["wins"]
         losses = current_results[school]["losses"]
         percentage = float(wins)/float(wins + losses)
-        results_table.append([pablo_rank,my_name,wins,losses,percentage])
-    # sort by percentage, rank, name
+        results_table.append([team.rank,team.my_name,wins,losses,percentage])
+
+    # sort results table by percentage, rank, name
     results_table.sort(key=lambda entry: entry[1])
     results_table.sort(key=lambda entry: entry[0])
     results_table.sort(reverse=True,key=lambda entry: entry[4])
+
+    #start building out_string with header and current standings table
     out_string = '''All discussion about the PAC-12 is welcome (except for trolling and flamebaiting)
 
 ==================
@@ -92,18 +137,19 @@ Standings:\n\n'''
     for school in results_table:
         out_string += "("+str(school[0])+") "+str(school[1])+" "+str(school[2])+"-"+str(school[3])+"\n"
     out_string += "\n("+str(pablo_data.pablo_date)+" pablo rankings)\n\n==================\n\n"
+
+    # build expected wins table
     out_string += "Expected wins as of "+str(pablo_data.pablo_date)+"\n\n"
-    # calculate expected wins
+    # actually generate expected wins as final_results dict
     for school in conf_data["CONFERENCE"]:
-        rk_name = conf_data["CONFERENCE"][school]["rk name"]
-        rating,pablo_rank = pablo_data.find_pablo(rk_name)
-        current_results[school]["rating"]=rating
+        team = Team(school)
+        team.load_from_dict(conf_data["CONFERENCE"])
         current_results[school]["expected wins"]=[]
         current_results[school]["expected placements"]=[]
     current_results["Defeated"]={"rating":-9999}
     final_results = conf.run_conference(number_of_runs,number_of_matches,current_results,pablo_data,conf_data)
     del final_results["Defeated"]
-    # now sort by expected wins, pablo rating, name
+    # now sort final results by mean expected wins, pablo rating, name
     sorted_list_of_schools = sorted(conf_data["CONFERENCE"].keys())
     _pablo = {}
     for school in sorted_list_of_schools:
@@ -113,6 +159,7 @@ Standings:\n\n'''
     for school in pablo_sorted_list:
         _wins[school] = statistics.mean(final_results[school]["expected wins"])
     wins_sorted_list = [x for (x,y) in sorted(_wins.items(), key=lambda item: item[1], reverse=True)]
+    # build string
     for school in wins_sorted_list:
         wins = final_results[school]["expected wins"]
         mean_wins = statistics.mean(wins)
@@ -124,6 +171,8 @@ Standings:\n\n'''
         low_wins = sorted([mean_wins-std_wins,minimum_possible_wins,maximum_possible_wins])[1]
         display_name = conf_data["CONFERENCE"][school]["my name"]
         out_string += str(display_name)+" "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins))+"\n"
+    
+    # build expected placements table
     out_string += "\n==================\n\nExpected placement as of "+str(pablo_data.pablo_date)+"\n\n"
     for school in wins_sorted_list:
         number_of_teams = len(conf_data["CONFERENCE"])
@@ -135,6 +184,8 @@ Standings:\n\n'''
         low_placements = sorted([mean_placements-std_placements,1,number_of_teams])[1]
         display_name = conf_data["CONFERENCE"][school]["my name"]
         out_string += str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements))+"\n"
+    
+    # build remaining text (will be edited by hand cut/paste from second text box)
     out_string += "\n==================\n\nThis week's matches (Pacific times)\n\n"
     out_string += '''Thur:
 [font color="19d2e6"]7:00pm[/font] 
@@ -173,39 +224,61 @@ Conference schedule link:
 https://pac-12.com/womens-volleyball/schedule/
 
 Pablo is the creation of @pablo and is available by subscription on richkern.com'''
+    
+    # insert into first text box
     text.delete("1.0","end")
     text.insert("1.0",out_string)
+    
+    # make match lines and insert into second text box (for copy/paste into first text box)
     match_string = conf.make_schedules_and_odds(current_results,pablo_data,conf_data)
     text2.delete("1.0","end")
     text2.insert("1.0",match_string)
 
+    # END RUN CONFERENCE FUNCTION (return None)
+
+
+
+
+
 def main():
     root = Tk()
+
+    # set some things that will be used elsewhere
     pablo_date=StringVar(root,"no pablo data")
     hca=IntVar(root,0)
+    runs_value = StringVar(root,"10000")
     conf_file = 'conf.json'
 
-# label
+
+    # Construct root window
+    #labels
     Label(root, text="Mike's Volleytalk pablo control panel").grid(row=0,columnspan=99)
     Label(root,text="Output:").grid(row=15,column=0)
-    text = Text(root,width=100,height=25)
-    text.grid(row=16,columnspan=99)
-    text2 = Text(root,width=100,height=25)
-    text2.grid(row=18,columnspan=99)
     Label(root,text="Pablo Date:").grid(row=1,column=0)
     Label(root,textvariable=pablo_date).grid(row=1,column=1)
     Label(root,text="HCA:").grid(row=2,column=0)
     Label(root,textvariable=hca).grid(row=2,column=1)
-    Button(root,text="Check Pablo",command=lambda: test_pablo(pablo_date,hca)).grid(row=3,columnspan=2)
     Label(root,text="If the date and HCA apprear to be valid:").grid(row=4,columnspan=2)
     Label(root,text="Number of runs:").grid(row=5,column=0)
-    runs_value = StringVar(root,"10000")
+    # text and entry boxes
+    text = Text(root,width=100,height=25)
+    text.grid(row=16,columnspan=99)
+    text2 = Text(root,width=100,height=25)
+    text2.grid(row=18,columnspan=99)
     runs = Entry(root,textvariable=runs_value)
     runs.grid(row=5, column=1)
+    # buttons
+    Button(root,text="Check Pablo",command=lambda: test_pablo(pablo_date,hca)).grid(row=3,columnspan=2)
     Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2,conf_file)).grid(row=6,columnspan=2)
     Button(root,text="Edit Schedule",command=lambda: open_conf_sched(root,conf_file)).grid(row=6,column=2)
 
     root.mainloop()
+
+    # END MAIN FUNCTION (return None, program will end when mainloop ends)
+
+
+
+
 
 
 if __name__ == "__main__":

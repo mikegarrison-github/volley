@@ -122,9 +122,10 @@ def make_schedules_and_odds(results, pablo_data, conf_data) -> str:
     match_text = None
     odds_text = None
     rank_text = None
-    out_text = "match lines\n"
+    week_flag = False
+    out_text = ""
     for week in conf_data["CONF_SCHED"]:
-        out_text += "Week "+str(week)+"\n"
+        temp_out_text = "Week "+str(week)+"\n"
         for match in conf_data["CONF_SCHED"][week]:
             home_team = Team(match[1])
             visiting_team = Team(match[0])
@@ -133,6 +134,7 @@ def make_schedules_and_odds(results, pablo_data, conf_data) -> str:
             home_team.load_from_dict(results) # get rank and rating
             visiting_team.load_from_dict(results)
             if (home_team.name!="Defeated") and (visiting_team.name!="Defeated"):
+                week_flag = True
                 home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
                 match_text = str(visiting_team.my_name)+"&#064;"+str(home_team.my_name)
                 if round((home_prob)*100)>=45 and round((home_prob)*100)<=55:
@@ -152,10 +154,13 @@ def make_schedules_and_odds(results, pablo_data, conf_data) -> str:
                     match_text = '[font color="red"]'+match_text+"[/font]\n"
                 else:
                     match_text += "\n"
-                out_text += match_text
+                temp_out_text += match_text
                 if odds_text:
-                    out_text += odds_text
+                    temp_out_text += odds_text
                 if rank_text:
-                    out_text += rank_text
+                    temp_out_text += rank_text
+        if week_flag:
+            out_text = temp_out_text
+            break
     return out_text
         
