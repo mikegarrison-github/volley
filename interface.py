@@ -6,17 +6,6 @@ import statistics
 from classes import Team,PabloWeeklyRating
 
 
-def test_pablo(pablo_date_var,hca_var,pablo_file=None) -> tuple[dict,int,str]:
-    if pablo_file:
-        pablo_data = PabloWeeklyRating(pablo_file)
-    else:
-        pablo_data = PabloWeeklyRating()
-    hca_var.set(pablo_data.hca)
-    pablo_date_var.set(pablo_data.pablo_date)
-
-    # END TEST PABLO FUNCTION (return None)
-
-
 
 
 def open_conf_sched(root,conf_file) -> None:
