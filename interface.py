@@ -125,16 +125,10 @@ def run_conference(runs_value,text,text2,conf_file="conf.json",pablo_file=None) 
     results_table.sort(reverse=True,key=lambda entry: entry[4])
 
     #start building out_string with header and current standings table
-    out_string = '''All discussion about the PAC-12 is welcome (except for trolling and flamebaiting)
-
-==================
-
-[font color="red"]NOTE: All references to rankings in this post are based on pablo, not AVCA![/font]
-
-Standings:\n\n'''
+    out_string = conf_data["TEXT"]["INTRO"]+conf_data["TEXT"]["DIVIDER"]+conf_data["TEXT"]["STANDINGS TOP"]
     for school in results_table:
         out_string += "("+str(school[0])+") "+str(school[1])+" "+str(school[2])+"-"+str(school[3])+"\n"
-    out_string += "\n("+str(pablo_data.pablo_date)+" pablo rankings)\n\n==================\n\n"
+    out_string += "\n("+str(pablo_data.pablo_date)+" pablo rankings)"+conf_data["TEXT"]["DIVIDER"]
 
     # build expected wins table
     out_string += "Expected wins as of "+str(pablo_data.pablo_date)+"\n\n"
@@ -171,7 +165,9 @@ Standings:\n\n'''
         out_string += str(display_name)+" "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins))+"\n"
     
     # build expected placements table
-    out_string += "\n==================\n\nExpected placement as of "+str(pablo_data.pablo_date)+"\n\n"
+    out_string = out_string[:-1] # remove extra \n
+    out_string += conf_data["TEXT"]["DIVIDER"]+"Expected placement as of "+str(pablo_data.pablo_date)+"\n\n"
+    # build string
     for school in wins_sorted_list:
         number_of_teams = len(conf_data["CONFERENCE"])
         placements = final_results[school]["expected placements"]
@@ -184,44 +180,16 @@ Standings:\n\n'''
         out_string += str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements))+"\n"
     
     # build remaining text (will be edited by hand cut/paste from second text box)
-    out_string += "\n==================\n\nThis week's matches (Pacific times)\n\n"
-    out_string += '''Thur:
-[font color="19d2e6"]7:00pm[/font] 
+    out_string = out_string[:-1] # remove extra \n
+    out_string += conf_data["TEXT"]["DIVIDER"]+conf_data["TEXT"]["MATCHES TOP"]+conf_data["TEXT"]["MATCHES SKELETON"]+conf_data["TEXT"]["DIVIDER"]
+    out_string += '''[font color="gold"]Pablo highlight matches of the week (top-25 pablo matchups):[/font]
 
-Fri:
-[font color="19d2e6"]7:00pm[/font] 
+None'''
+    out_string += conf_data["TEXT"]["DIVIDER"]
+    out_string += '''[font color="red"]Pablo close matches of the week (55 percent or closer):[/font]
 
-Sat:
-[font color="19d2e6"]noon[/font] 
-
-Sun:
-[font color="19d2e6"]11:00am[/font] 
-
-==================
-
-[font color="gold"]Pablo highlight matches of the week (top-25 pablo matchups):[/font]
-
-None
-
-==================
-
-[font color="red"]Pablo close matches of the week (55 percent or closer):[/font]
-
-None
-
-==================
-
-Next week:
-
-Mountains @ BayArea, Washington @ Oregon, Arizona @ LA
-
-===================
-
-Conference schedule link:
-
-https://pac-12.com/womens-volleyball/schedule/
-
-Pablo is the creation of @pablo and is available by subscription on richkern.com'''
+None'''
+    out_string += conf_data["TEXT"]["DIVIDER"]+conf_data["TEXT"]["NEXT WEEK"]+conf_data["TEXT"]["DIVIDER"]+conf_data["TEXT"]["OUTRO"]
     
     # insert into first text box
     text.delete("1.0","end")
