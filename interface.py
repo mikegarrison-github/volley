@@ -48,7 +48,7 @@ def open_conf_sched(root,conf_file) -> None:
                     out_list.append([match[0],match[1]])
             conf_data["CONF_SCHED"][week]=out_list
             json_out = json.dumps(conf_data,indent=4)
-            with open(conf_file, "w") as outfile:
+            with open(conf_file_name, "w") as outfile:
                 outfile.write(json_out)
 
         
@@ -57,7 +57,11 @@ def open_conf_sched(root,conf_file) -> None:
 
 
     # open json file and read in conference data
-    F = open(conf_file)
+    try:
+        conf_file_name = str(conf_file.get())
+    except:
+        conf_file_name = "conf.json"
+    F = open(conf_file_name)
     conf_data = conf.read_conference_data(F)
     F.close
 
@@ -81,7 +85,7 @@ def open_conf_sched(root,conf_file) -> None:
 
 
 
-def run_conference(runs_value,text,text2,conf_file="conf.json",pablo_file=None) -> None:
+def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
     
     # check/set number of runs for monte carlo simulation (defaut 10000)
     try:
@@ -91,7 +95,11 @@ def run_conference(runs_value,text,text2,conf_file="conf.json",pablo_file=None) 
         runs_value.set("10000")
     
     # get conference data from json file
-    F = open(conf_file)
+    try:
+        conf_file_name = str(conf_file.get())
+    except:
+        conf_file_name = "conf.json"
+    F = open(conf_file_name)
     conf_data = conf.read_conference_data(F)
     F.close
     number_of_matches = conf_data["NUMBER_OF_MATCHES"]
@@ -213,7 +221,7 @@ def main():
     pablo_date=StringVar(root,"no pablo data")
     hca=IntVar(root,0)
     runs_value = StringVar(root,"10000")
-    conf_file = 'conf.json'
+    conf_file_value = StringVar(root,'conf.json')
     pablo_file = None
 
     # test pablo inner function
@@ -235,6 +243,7 @@ def main():
     Label(root,textvariable=hca).grid(row=2,column=1)
     Label(root,text="If the date and HCA apprear to be valid:").grid(row=4,columnspan=2)
     Label(root,text="Number of runs:").grid(row=5,column=0)
+    Label(root,text="JSON file name:").grid(row=6,column=0)
     # text and entry boxes
     text = Text(root,width=100,height=25)
     text.grid(row=16,columnspan=99)
@@ -242,10 +251,12 @@ def main():
     text2.grid(row=18,columnspan=99)
     runs = Entry(root,textvariable=runs_value)
     runs.grid(row=5, column=1)
+    conf_file = Entry(root,textvariable=conf_file_value)
+    conf_file.grid(row=6, column=1)
     # buttons
     Button(root,text="Check Pablo",command=test_pablo).grid(row=3,columnspan=2)
-    Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2,conf_file)).grid(row=6,columnspan=2)
-    Button(root,text="Edit Schedule",command=lambda: open_conf_sched(root,conf_file)).grid(row=6,column=2)
+    Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2,conf_file_value)).grid(row=7,columnspan=2)
+    Button(root,text="Edit Schedule",command=lambda: open_conf_sched(root,conf_file_value)).grid(row=7,column=2)
 
     root.mainloop()
 
