@@ -3,37 +3,67 @@ import runtime
 import pablo
 import statistics
 import math
+import json
+from classes import Team,PabloWeeklyRating
 
-def make_quad_list(quad) -> list:
-    bracket = runtime.BRACKET[quad]
+
+
+def read_data(tournament_file=None) -> dict:
+    try:
+        tournament_file_name = str(tournament_file.get())
+    except:
+        tournament_file_name = "tournament.json"
+
+    F = open(tournament_file_name)
+    tournament_data = json.load(F)
+    F.close
+
+    return tournament_data
+
+def make_quad_list(tournament_data, quad) -> list:
+    bracket = tournament_data["BRACKET"][quad]
     return bracket
 
 
-def play_match(schools, home_school, avg_school=None) -> float:
-    pablo0 = runtime.SCHOOLS[schools[0]]["pablo"]
-    pablo1 = runtime.SCHOOLS[schools[1]]["pablo"]
-    if schools[0] == avg_school:
-        pablo0 = median_pablo()
-    if schools[1] == avg_school:
-        pablo1 = median_pablo()
-    if schools[0] == home_school:
-        team_1_prob = pablo.pablo_odds(pablo0,pablo1,"H")
-    elif schools[1] == home_school:
-        team_1_prob = pablo.pablo_odds(pablo0,pablo1,"A")
+def play_match(tournament_data, pablo_data, schools, home_school, avg_school=None) -> float:
+    team0 = Team(schools[0])
+    team1 = Team(schools[1])
+    if team0.name == "Defeated":
+        team0.set_names("Defeated","Defeated")
     else:
-        team_1_prob = pablo.pablo_odds(pablo0,pablo1,"N")
+        team0.load_from_dict(tournament_data["SCHOOLS"])
+    if team1.name == "Defeated":
+        team1.set_names("Defeated","Defeated")
+    else:
+        team1.load_from_dict(tournament_data["SCHOOLS"])
+    team0.find_pablo(pablo_data)
+    team1.find_pablo(pablo_data)
+    if schools[0] == avg_school:
+        team0.rating = median_pablo(tournament_data,pablo_data)
+    if schools[1] == avg_school:
+        team1.rating = median_pablo(tournament_data,pablo_data)
+    if schools[0] == home_school:
+        team_1_prob = team1.chance_to_win(pablo_data,team0,"A")
+    elif schools[1] == home_school:
+        team_1_prob = team1.chance_to_win(pablo_data,team0,"H")
+    else:
+        team_1_prob = team1.chance_to_win(pablo_data,team0,"N")
     return team_1_prob
 
 
-def play_quad(bracket, neutral_flag=False, avg_school=None) -> list:
+def play_quad(tournament_data, pablo_data, bracket, neutral_flag=False, avg_school=None) -> list:
     
     # who is home?
     home_school = None
     top_seed = None
     for school in bracket:
-        school_data = runtime.SCHOOLS[school]
-        seed = school_data["seed"]
-        if seed:
+        this_school = Team(school)
+        if school == "Defeated":
+            this_school.set_names("Defeated","Defeated")
+        else:
+            this_school.load_from_dict(tournament_data["SCHOOLS"])
+        seed = this_school.seed
+        if seed != 9999:
             if top_seed:
                 if seed < top_seed:
                     home_school = school
@@ -46,78 +76,80 @@ def play_quad(bracket, neutral_flag=False, avg_school=None) -> list:
     
     # play first game
     schools = [bracket[0],bracket[1]]
-    team_1_prob = play_match(schools,home_school,avg_school)
+    team_1_prob = play_match(tournament_data,pablo_data,schools,home_school,avg_school)
     # who won?
     score = random.random()
     if score <= team_1_prob:
-        game_1_winner = schools[0]
-        game_1_loser = schools[1]
-    else:
         game_1_winner = schools[1]
         game_1_loser = schools[0]
+    else:
+        game_1_winner = schools[0]
+        game_1_loser = schools[1]
 
     # play second game
     schools = [bracket[2],bracket[3]]
-    team_1_prob = play_match(schools,home_school,avg_school)
+    team_1_prob = play_match(tournament_data,pablo_data,schools,home_school,avg_school)
     # who won?
     score = random.random()
     if score <= team_1_prob:
-        game_2_winner = schools[0]
-        game_2_loser = schools[1]
-    else:
         game_2_winner = schools[1]
         game_2_loser = schools[0]
+    else:
+        game_2_winner = schools[0]
+        game_2_loser = schools[1]
 
     # play third game
     schools = [game_1_winner,game_2_winner]
-    team_1_prob = play_match(schools,home_school,avg_school)
+    team_1_prob = play_match(tournament_data,pablo_data,schools,home_school,avg_school)
     # who won?
     score = random.random()
     if score <= team_1_prob:
-        game_3_winner = schools[0]
-        game_3_loser = schools[1]
-    else:
         game_3_winner = schools[1]
         game_3_loser = schools[0]
+    else:
+        game_3_winner = schools[0]
+        game_3_loser = schools[1]
 
     winners = [game_3_winner,game_3_loser,game_1_loser,game_2_loser]
     return winners
 
 
 # bracket check
-def bracket_check() -> None:
-    for quad in runtime.BRACKET:
-        for school in runtime.BRACKET[quad]:
-            school_data = runtime.SCHOOLS.get(school)
+def bracket_check(tournament_data) -> None:
+    for quad in tournament_data["BRACKET"]:
+        for school in tournament_data["BRACKET"][quad]:
+            school_data = tournament_data["SCHOOLS"].get(school)
             if not school_data:
                 raise ValueError("No data found for school: "+str(school)+" in quad: "+str(quad))
 
 # bracket list
-def bracket_list() -> list:
+def bracket_list(tournament_data) -> list:
     br_list = []
-    for quad in runtime.BRACKET:
-        for school in runtime.BRACKET[quad]:
+    for quad in tournament_data["BRACKET"]:
+        for school in tournament_data["BRACKET"][quad]:
             br_list.append(school)
     return br_list
 
 
 
 # average pablo score
-def median_pablo() -> int:
+def median_pablo(tournament_data,pablo_data) -> int:
     pablos = []
-    for quad in runtime.BRACKET:
-        for school in runtime.BRACKET[quad]:
+    for quad in tournament_data["BRACKET"]:
+        for school in tournament_data["BRACKET"][quad]:
             if school == "Defeated":
                 continue
-            school_data = runtime.SCHOOLS.get(school)
-            pablos.append(school_data["pablo"])
+            this_school = Team(school)
+            this_school.load_from_dict(tournament_data["SCHOOLS"])
+            this_school.find_pablo(pablo_data)
+            pablos.append(this_school.rating)
     median = statistics.median(pablos)
     return round(median)
             
 
 
 # run tournament
-def run_tournament(number_of_runs,avg_school=None) -> dict:
+def run_tournament(tournament_data,pablo_data,number_of_runs,avg_school=None) -> dict:
     results = {}
     for i in range(number_of_runs):
         # make results buckets
@@ -132,9 +164,9 @@ def run_tournament(number_of_runs,avg_school=None) -> dict:
         }
 
         # play subregionals
-        for quad in runtime.BRACKET:
-            bracket = make_quad_list(quad)
-            winners = play_quad(bracket,False,avg_school)
+        for quad in tournament_data["BRACKET"]:
+            bracket = make_quad_list(tournament_data,quad)
+            winners = play_quad(tournament_data,pablo_data,bracket,False,avg_school)
             regionals[quad] = winners[0]
             losers["round 1"].append(winners[2])
             losers["round 1"].append(winners[3])
@@ -146,29 +178,29 @@ def run_tournament(number_of_runs,avg_school=None) -> dict:
         r2 = [regionals["LL1"],regionals["LL4"],regionals["LL2"],regionals["LL3"]]
         r3 = [regionals["UR1"],regionals["UR4"],regionals["UR2"],regionals["UR3"]]
         r4 = [regionals["LR1"],regionals["LR4"],regionals["LR2"],regionals["LR3"]]
-        winners = play_quad(r1,False,avg_school)
+        winners = play_quad(tournament_data,pablo_data,r1,False,avg_school)
         ff = [winners[0]]
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
-        winners = play_quad(r2,False,avg_school)
+        winners = play_quad(tournament_data,pablo_data,r2,False,avg_school)
         ff.append(winners[0])
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
-        winners = play_quad(r3,False,avg_school)
+        winners = play_quad(tournament_data,pablo_data,r3,False,avg_school)
         ff.append(winners[0])
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
-        winners = play_quad(r4,False,avg_school)
+        winners = play_quad(tournament_data,pablo_data,r4,False,avg_school)
         ff.append(winners[0])
         losers["round 3"].append(winners[2])
         losers["round 3"].append(winners[3])
         losers["round 4"].append(winners[1])
 
         # play ff
-        winners = play_quad(ff,True,avg_school)
+        winners = play_quad(tournament_data,pablo_data,ff,True,avg_school)
         champion = winners[0]
         losers["round 5"].append(winners[2])
         losers["round 5"].append(winners[3])
@@ -238,9 +270,13 @@ def main():
     # run
     random.seed()
 
-    NUMBER_OF_RUNS = 100000
-    bracket_check()
-    final_results = run_tournament(NUMBER_OF_RUNS)
+    NUMBER_OF_RUNS = 1000
+    tournament_data = read_data()
+    pablo_data = PabloWeeklyRating()
+
+    bracket_check(tournament_data)
+
+    final_results = run_tournament(tournament_data, pablo_data, NUMBER_OF_RUNS)
     print("\nList of all schools\n-------------------")
     for school in final_results:
         print(str(school)+" Champs: "+str(final_results[school].get("champion",0))+" #2: "+str(final_results[school].get("runner up",0))+" FF: "+str(final_results[school].get("FF",0)))
@@ -355,17 +391,17 @@ def main():
         print("2: "+xxx(results["2"],NUMBER_OF_RUNS))
         print("1: "+xxx(results["1"],NUMBER_OF_RUNS))
         print("0: "+xxx(results["0"],NUMBER_OF_RUNS))
-    avg_pablo = median_pablo()
+    avg_pablo = median_pablo(tournament_data,pablo_data)
     print("\n\nAverage (median) pablo score of remaining teams: "+str(avg_pablo))
     # do bracket strength test
     print("\nResults when schools have average pablo score:")
-    br_list = bracket_list()
+    br_list = bracket_list(tournament_data)
     diff_list = []
     for school in br_list:
         name = str(school)
         if name == "Defeated":
             continue
-        final_results = run_tournament(1500,school)
+        final_results = run_tournament(tournament_data, pablo_data, 15, school)
         championships = float(final_results[school].get("champion",0))
         runner = float(final_results[school].get("runner up",0))
         final4 = float(final_results[school].get("FF",0))

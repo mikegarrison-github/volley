@@ -5,7 +5,7 @@ import numpy as np
 
 
 class Team:
-    def __init__(self, name=None, rating=None, rank=None) -> None:
+    def __init__(self, name=None, rating=None, rank=None, seed=None) -> None:
         if name:
             self.name = name
         else:
@@ -18,6 +18,10 @@ class Team:
             self.rank = int(rank)
         else:
             self.rank = 888
+        if seed:
+            self.seed = int(seed)
+        else:
+            self.seed = 888
         self.rk_name = "team rk name"
         self.my_name = "my team name"
 
@@ -62,6 +66,9 @@ class Team:
             rank = team.get("rank")
             if rank:
                 self.rank = rank
+            seed = team.get("seed")
+            if seed:
+                self.seed = seed
 
 
 class PabloWeeklyRating:

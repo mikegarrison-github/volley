@@ -1,0 +1,56 @@
+{
+    "SCHOOLS": {
+        "Defeated": {
+            "my name": "Defeated",
+            "rk name": "Defeated",
+            "seed": 9999
+        },
+        "Arkansas": {
+            "my name": "Arkansas",
+            "rk name": "Arkansas",
+            "seed": 9999
+        },
+        "Texas": {
+            "my name": "Texas",
+            "rk name": "Texas",
+            "seed": 1
+        },
+        "San Diego": {
+            "my name": "San Diego",
+            "rk name": "San Diego",
+            "seed": 2
+        },
+        "Pittsburgh": {
+            "my name": "Pittsburgh",
+            "rk name": "Pittsburgh",
+            "seed": 1
+        },
+        "Louisville": {
+            "my name": "Louisville",
+            "rk name": "Louisville",
+            "seed": 1
+        }
+    },
+
+    "BRACKET": {
+        "UL1": ["Texas","Defeated","Defeated","Defeated"],
+        "UL4": ["Defeated","Defeated","Defeated","Defeated"],
+        "UL3": ["Defeated","Defeated","Defeated","Defeated"],
+        "UL2": ["Defeated","Defeated","Defeated","Defeated"],
+
+        "LL2": ["San Diego","Defeated","Defeated","Defeated"],
+        "LL3": ["Defeated","Defeated","Defeated","Defeated"],
+        "LL4": ["Defeated","Defeated","Defeated","Defeated"],
+        "LL1": ["Defeated","Defeated","Defeated","Defeated"],
+
+        "UR1": ["Defeated","Defeated","Defeated","Defeated"],
+        "UR4": ["Defeated","Defeated","Defeated","Defeated"],
+        "UR3": ["Defeated","Defeated","Defeated","Defeated"],
+        "UR2": ["Defeated","Defeated","Defeated","Pittsburgh"],
+
+        "LR2": ["Defeated","Defeated","Defeated","Defeated"],
+        "LR3": ["Defeated","Defeated","Defeated","Defeated"],
+        "LR4": ["Defeated","Defeated","Defeated","Defeated"],
+        "LR1": ["Defeated","Defeated","Defeated","Louisville"]
+    }
+}
