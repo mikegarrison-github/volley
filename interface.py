@@ -243,8 +243,169 @@ def run_tournament(runs_value,text,text2,tourn_file,pablo_file=None) -> None:
     if halt:
         return
     
-    pass
+    # actually run the simulated tournament
+    final_results = tourn.run_tournament(tournament_data, pablo_data, number_of_runs)
 
+    # assemble the results
+    outstring = "\nList of all schools\n-------------------\n"
+    for school in final_results:
+        outstring += str(school)+" Champs: "+str(final_results[school].get("champion",0))+" #2: "+str(final_results[school].get("runner up",0))+" FF: "+str(final_results[school].get("FF",0))+"\n"
+        outstring += " -- Elite 8: "+str(final_results[school].get("E8",0))+" Sweet 16: "+str(final_results[school].get("S6",0))+" won a match: "+str(final_results[school].get("R2",0))+"\n"
+        outstring += " -- one and done: "+str(final_results[school].get("zilch",0))+"\n"
+    outstring += "\nOdds determined by using the "+str(pablo_data.pablo_date)+" pablo ratings and the regional home court determined by best surviving seed. Final Four is assumed to be neutral court. Tournament simulation uses random number generator and the pablo-determined odds. Results are based on "+str(number_of_runs)+" simulations."+"\n"
+    outstring += "\nPercentage chances by tiers\n-------------------"+"\n"
+    list_of_champs = []
+    list_of_semis = []
+    list_of_FF = []
+    list_of_E8 = []
+    list_of_S16 = []
+    list_of_R2 = []
+    for school in final_results:
+        name = str(school)
+        if name == "Defeated":
+            continue
+        championships = float(final_results[school].get("champion",0))
+        runner = float(final_results[school].get("runner up",0))
+        final4 = float(final_results[school].get("FF",0))
+        elite8 = float(final_results[school].get("E8",0))
+        sweet16 = float(final_results[school].get("S6",0))
+        round2 = float(final_results[school].get("R2",0))
+        semis = championships + runner
+        f4 = semis + final4
+        e8 = f4 + elite8
+        s16 = e8 + sweet16
+        r2 = s16 + round2
+        locked = False
+        if championships >= float(number_of_runs)*0.05:
+            champ_pct = championships / float(number_of_runs) * 100
+            list_of_champs.append([name,champ_pct])
+            locked = True
+        if semis >= float(number_of_runs)*0.10 or locked:
+            semi_pct = semis / float(number_of_runs) * 100
+            list_of_semis.append([name,semi_pct])
+            locked = True
+        if f4 >= float(number_of_runs)*0.16 or locked:
+            f4_pct = f4 / float(number_of_runs) * 100
+            list_of_FF.append([name,f4_pct])
+            locked = True
+        if e8 >= float(number_of_runs)*0.25 or locked:
+            e8_pct = e8 / float(number_of_runs) * 100
+            list_of_E8.append([name,e8_pct])
+            locked = True
+        if s16 >= float(number_of_runs)*0.33 or locked:
+            s16_pct = s16 / float(number_of_runs) * 100
+            list_of_S16.append([name,s16_pct])
+            locked = True
+        if r2 >= float(number_of_runs)*0.50 or locked:
+            r2_pct = r2 / float(number_of_runs) * 100
+            list_of_R2.append([name,r2_pct])
+    # list of champions
+    sorted_list_of_champs = sorted(list_of_champs,key=lambda x: x[1],reverse=True)
+    outstring += "\nChampion (cutoff at 5%)"+"\n"
+    for champs in sorted_list_of_champs:
+        outstring += str(champs[0])+": "+str(int(round(champs[1],0)))+"%"+"\n"
+    # list of teams reaching semis
+    sorted_list_of_semis = sorted(list_of_semis,key=lambda x: x[1],reverse=True)
+    outstring += "\nFinalist (cutoff at 10%)"+"\n"
+    for semis in sorted_list_of_semis:
+        outstring += str(semis[0])+": "+str(int(round(semis[1],0)))+"%"+"\n"
+    # list of teams reaching FF
+    sorted_list_of_FF = sorted(list_of_FF,key=lambda x: x[1],reverse=True)
+    outstring += "\nFinal Four (cutoff at 16%)"+"\n"
+    for teams in sorted_list_of_FF:
+        outstring += str(teams[0])+": "+str(int(round(teams[1],0)))+"%"+"\n"
+    # list of teams reaching E8
+    sorted_list_of_E8 = sorted(list_of_E8,key=lambda x: x[1],reverse=True)
+    outstring += "\nElite Eight (cutoff at 25%)"+"\n"
+    for teams in sorted_list_of_E8:
+        outstring += str(teams[0])+": "+str(int(round(teams[1],0)))+"%"+"\n"
+    # list of teams reaching S16
+    sorted_list_of_S16 = sorted(list_of_S16,key=lambda x: x[1],reverse=True)
+    outstring += "\nSweet 16 (cutoff at 33%)"+"\n"
+    for teams in sorted_list_of_S16:
+        outstring += str(teams[0])+": "+str(int(round(teams[1],0)))+"%"+"\n"
+    # list of teams reaching round 2
+    sorted_list_of_R2 = sorted(list_of_R2,key=lambda x: x[1],reverse=True)
+    outstring += "\nRound 2 (cutoff at 50%)"+"\n"
+    for teams in sorted_list_of_R2:
+        outstring += str(teams[0])+": "+str(int(round(teams[1],0)))+"%"+"\n"
+    # estimated finish graphs
+    outstring += "\nSimulated Number Of Wins (blocks of up to 5%):"+"\n"
+    outstring += "Each X represents "+str(int(0.05*number_of_runs))+" simulated tournaments. The last X (or the first one, if there is only one) represents from 1 to "+str(int(0.05*number_of_runs))+" simulations."+"\n"
+    for school in final_results:
+        name = str(school)
+        if name == "Defeated":
+            continue
+        championships = float(final_results[school].get("champion",0))
+        runner = float(final_results[school].get("runner up",0))
+        final4 = float(final_results[school].get("FF",0))
+        elite8 = float(final_results[school].get("E8",0))
+        sweet16 = float(final_results[school].get("S6",0))
+        round2 = float(final_results[school].get("R2",0))
+        zilch = float(final_results[school].get("zilch",0))
+        results = {
+            "6": championships,
+            "5": runner,
+            "4": final4,
+            "3": elite8,
+            "2": sweet16,
+            "1": round2,
+            "0": zilch
+        }
+        most_common_finish = max(results, key=results.get)
+        outstring += "\n"+name+" most common number of wins is "+most_common_finish+"\n"
+        outstring += "6: "+tourn.xxx(results["6"],number_of_runs)+"\n"
+        outstring += "5: "+tourn.xxx(results["5"],number_of_runs)+"\n"
+        outstring += "4: "+tourn.xxx(results["4"],number_of_runs)+"\n"
+        outstring += "3: "+tourn.xxx(results["3"],number_of_runs)+"\n"
+        outstring += "2: "+tourn.xxx(results["2"],number_of_runs)+"\n"
+        outstring += "1: "+tourn.xxx(results["1"],number_of_runs)+"\n"
+        outstring += "0: "+tourn.xxx(results["0"],number_of_runs)+"\n"
+    avg_pablo = tourn.median_pablo(tournament_data,pablo_data)
+    outstring += "\n\nAverage (median) pablo score of remaining teams: "+str(avg_pablo)+"\n"
+    # do bracket strength test
+    outstring += "\nResults when schools have average pablo score:"+"\n"
+    br_list = tourn.bracket_list(tournament_data)
+    diff_list = []
+    for school in br_list:
+        name = str(school)
+        if name == "Defeated":
+            continue
+        final_results = tourn.run_tournament(tournament_data, pablo_data, 500, school)
+        championships = float(final_results[school].get("champion",0))
+        runner = float(final_results[school].get("runner up",0))
+        final4 = float(final_results[school].get("FF",0))
+        elite8 = float(final_results[school].get("E8",0))
+        sweet16 = float(final_results[school].get("S6",0))
+        round2 = float(final_results[school].get("R2",0))
+        semis = championships + runner
+        f4 = championships + runner + final4
+        e8 = championships + runner + final4 + elite8
+        s16 = championships + runner + final4 + elite8 + sweet16
+        r2 = championships + runner + final4 + elite8 + sweet16 + round2
+        champ_pct = float(championships) / 5.0
+        semi_pct = float(semis) / 5.0
+        f4_pct = float(f4) / 5.0
+        e8_pct = float(e8) / 5.0
+        s16_pct = float(s16) / 5.0
+        r2_pct = float(r2) / 5.0
+        diff_list.append([school,champ_pct,f4_pct,s16_pct])
+    sorted_diff_list = sorted(diff_list,key=lambda x: x[1],reverse=True)
+    outstring += "\nFour easiest paths to the championship"+"\n"
+    for school in sorted_diff_list[0:4]:
+        outstring += str(school[0])+": "+str(round(school[1],1))+"%"+"\n"
+    sorted_diff_list = sorted(diff_list,key=lambda x: x[2],reverse=True)
+    outstring += "\nEight easiest paths to the Final Four"+"\n"
+    for school in sorted_diff_list[0:8]:
+        outstring += str(school[0])+": "+str(round(school[2],1))+"%"+"\n"
+    sorted_diff_list = sorted(diff_list,key=lambda x: x[3],reverse=True)
+    outstring += "\nSixteen easiest paths to the Sweet 16"+"\n"
+    for school in sorted_diff_list[0:20]:
+        outstring += str(school[0])+": "+str(round(school[3],1))+"%"+"\n"
+
+    # insert into first text box
+    text.delete("1.0","end")
+    text.insert("1.0",outstring)
 
 
     # END RUN Tournament FUNCTION (return None)

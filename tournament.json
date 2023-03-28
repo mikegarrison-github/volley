@@ -33,8 +33,8 @@
     },
 
     "BRACKET": {
-        "UL1": ["Texas","Washington","USC","UCLA"],
-        "UL4": ["Pepperdine","Defeated","Defeated","Defeated"],
+        "UL1": ["Texas","Defeated","Defeated","Defeated"],
+        "UL4": ["Defeated","Defeated","Defeated","Defeated"],
         "UL3": ["Defeated","Defeated","Defeated","Defeated"],
         "UL2": ["Defeated","Defeated","Defeated","Defeated"],
 
