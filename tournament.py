@@ -115,12 +115,24 @@ def play_quad(tournament_data, pablo_data, bracket, neutral_flag=False, avg_scho
 
 
 # bracket check
-def bracket_check(tournament_data) -> None:
+def bracket_check(tournament_data,text_window=None) -> bool:
+    halt = False
+    if text_window:
+        text_window.delete("1.0","end")
+        out_string = ""
     for quad in tournament_data["BRACKET"]:
         for school in tournament_data["BRACKET"][quad]:
             school_data = tournament_data["SCHOOLS"].get(school)
             if not school_data:
-                raise ValueError("No data found for school: "+str(school)+" in quad: "+str(quad))
+                halt = True
+                if text_window:
+                    out_string += "No data found for school: "+str(school)+" in quad: "+str(quad)+"\n"
+                else:
+                    raise ValueError("No data found for school: "+str(school)+" in quad: "+str(quad))
+    if text_window:
+        out_string += "Open tournament JSON file and add missing schools to SCHOOLS data or correct errors in brackets."
+        text_window.insert("1.0",out_string)
+    return halt
 
 # bracket list
 def bracket_list(tournament_data) -> list:

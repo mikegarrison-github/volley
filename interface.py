@@ -211,6 +211,43 @@ None'''
     # END RUN CONFERENCE FUNCTION (return None)
 
 
+def run_tournament(runs_value,text,text2,tourn_file,pablo_file=None) -> None:
+
+    # check/set number of runs for monte carlo simulation (defaut 10000)
+    try:
+        number_of_runs = int(runs_value.get())
+    except:
+        number_of_runs = 10000
+        runs_value.set("10000")
+    
+    # get tournament data from json file
+    try:
+        tournament_file_name = str(tourn_file.get())
+    except:
+        tournament_file_name = "tournament.json"
+    F = open(tournament_file_name)
+    tournament_data = json.load(F)
+    F.close
+
+    # seed random number generator
+    random.seed()
+
+    # get data from pablo file and create pablo data object
+    if pablo_file:
+        pablo_data = PabloWeeklyRating(pablo_file)
+    else:
+        pablo_data = PabloWeeklyRating()
+    
+    # check to see if there are schools in the bracket not defined in the JSON file
+    halt = tourn.bracket_check(tournament_data,text)
+    if halt:
+        return
+    
+    pass
+
+
+
+    # END RUN Tournament FUNCTION (return None)
 
 
 
@@ -222,6 +259,7 @@ def main():
     hca=IntVar(root,0)
     runs_value = StringVar(root,"10000")
     conf_file_value = StringVar(root,'conf.json')
+    tournament_file_value = StringVar(root,'tournament.json')
     pablo_file = None
 
     # test pablo inner function
@@ -243,7 +281,8 @@ def main():
     Label(root,textvariable=hca).grid(row=2,column=1)
     Label(root,text="If the date and HCA apprear to be valid:").grid(row=4,columnspan=2)
     Label(root,text="Number of runs:").grid(row=5,column=0)
-    Label(root,text="JSON file name:").grid(row=6,column=0)
+    Label(root,text="JSON conf file name:").grid(row=6,column=0)
+    Label(root,text="JSON tourn file name:").grid(row=6,column=2)
     # text and entry boxes
     text = Text(root,width=100,height=25)
     text.grid(row=16,columnspan=99)
@@ -253,10 +292,13 @@ def main():
     runs.grid(row=5, column=1)
     conf_file = Entry(root,textvariable=conf_file_value)
     conf_file.grid(row=6, column=1)
+    tournament_file = Entry(root,textvariable=tournament_file_value)
+    tournament_file.grid(row=6, column=3)
     # buttons
     Button(root,text="Check Pablo",command=test_pablo).grid(row=3,columnspan=2)
     Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2,conf_file_value)).grid(row=7,columnspan=2)
-    Button(root,text="Edit Schedule",command=lambda: open_conf_sched(root,conf_file_value)).grid(row=7,column=2)
+    Button(root,text="Run Tournament",command=lambda: run_tournament(runs_value,text,text2,tournament_file_value)).grid(row=7,column=2,columnspan=2)
+    Button(root,text="Edit Schedule",command=lambda: open_conf_sched(root,conf_file_value)).grid(row=8,columnspan=2)
 
     root.mainloop()
 
