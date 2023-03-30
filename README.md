@@ -45,6 +45,6 @@ Some of the post is not automated and will need to be edited, like the "next wee
 
 ### CONF File Editor
 
-To make it easier to keep the conf file up-to-date with winners and losers, an automated editing program is avalable. Click the "Edit" button. Select the current week. The list of matches should show up. Select the radio button for the winner of a match and then hit the save button. This will replace the name of the loser in schedule with "Defeated".
+To make it easier to keep the conf file up-to-date with winners and losers, an automated editing program is avalable. Click the "Edit Schedule" button. A new window will open with a dropdown list for each of the weeks. Select the desired (usually most recent) week. The list of matches should show up. Select the radio button for the winner of any completed matches and then hit the "Write Data" button. This will replace the name of the loser in the JSON file schedule with "Defeated".
 
 (These instructions may become outdated if I change how the wins and losses are recorded.)
