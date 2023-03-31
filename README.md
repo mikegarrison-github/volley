@@ -23,13 +23,13 @@ Go to the pablo rankings page on RichKern.com and save/download the page as an H
 
 ### JSON file
 
-To create the conference schools and schedule, edit the conf.json file (and if desired, save a copy under a different name). The list of schools is in CONFERENCE. Each school gets a "my name" that will be the display name in the output text and a "rk name" that should be the same name as is found in the pablo list from Rich Kern. The name of the key in the list should be the name used in the schedules. The schedules are done by week. Each match consists of a pair of schools in the order AWAY,HOME.
+To create the conference schools and schedule, edit the conf.json file (and if desired, save a copy under a different name). The list of schools is in CONFERENCE. Each school gets a "my name" that will be the display name in the output text and a "rk name" that should be the same name as is found in the pablo list from Rich Kern. The name of the key in the list should be the name used in the schedules.
 
-Although I have plans to change this, for now the way to indicate that a match has been played is to replace the name of the losing team with "Defeated".
+The schedules are done by week. Each week is a list of dictionary objects that (so far) consist of "home", "away", and "winner". When initially creating an unplayed schedule, "winner" can be set to "" or to null (no quotes) or can be just not included.
 
-Number of matches should be set to the expected number of matches to be played by each team. (It is assumed this is the same for all teams.)
+Number of matches should be set to the expected number of matches to be played in one season by each team. (It is assumed this is the same for all teams.)
 
-The remaining text can be edited in order to customize some of the output.
+There are also some text variables that can be edited in order to customize some of the output.
 
 ### Making A Run
 
@@ -45,6 +45,8 @@ Some of the post is not automated and will need to be edited, like the "next wee
 
 ### CONF File Editor
 
-To make it easier to keep the conf file up-to-date with winners and losers, an automated editing program is avalable. Click the "Edit Schedule" button. A new window will open with a dropdown list for each of the weeks. Select the desired (usually most recent) week. The list of matches should show up. Select the radio button for the winner of any completed matches and then hit the "Write Data" button. This will replace the name of the loser in the JSON file schedule with "Defeated".
+To make it easier to keep the conf file up-to-date with winners and losers, an automated editing program is avalable. Click the "Edit Schedule" button. A new window will open with a dropdown list for each of the weeks. Select the desired (usually most recent) week. The list of matches should show up. Select the radio button for the winner of any completed matches and then hit the "Write Data" button. This will set the "winner" variable in the JSON file with the name of the selected team.
 
-(These instructions may become outdated if I change how the wins and losses are recorded.)
+## Tournament Simulator
+
+Info to come later. Uses another JSON file for data.

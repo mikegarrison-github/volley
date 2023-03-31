@@ -19,33 +19,35 @@ def open_conf_sched(root,conf_file) -> None:
         week = str(clicked.get())
         matches = conf_data["CONF_SCHED"].get(week,[])
         count = 0
+        homes = []
+        aways = []
+        selections = []
         for widget in answer_frame.winfo_children():
             widget.destroy()
         for match in matches:
+            brow = 21+count
+            selections.insert(count,StringVar())
+            home_team = Team(match.get("home"))
+            home_team.load_from_dict(conf_data["CONFERENCE"])
+            ht_name = home_team.my_name
+            homes.insert(count,ht_name)
+            visiting_team = Team(match.get("away"))
+            visiting_team.load_from_dict(conf_data["CONFERENCE"])
+            vt_name = visiting_team.my_name
+            aways.insert(count,vt_name)
+            current_winner = match.get("winner")
+            Radiobutton(answer_frame,text=ht_name,value=home_team.name,variable=selections[count]).grid(row=brow,column=1)
+            Radiobutton(answer_frame,text=vt_name,value=visiting_team.name,variable=selections[count]).grid(row=brow,column=0)
+            if current_winner:
+                selections[count].set(current_winner)
             count +=1
-            brow = 20+count
-            match.append(StringVar())
-            home_team = match[1]
-            if home_team == "Defeated":
-                ht_name = "Defeated"
-            else:
-                ht_name = conf_data["CONFERENCE"][home_team]["my name"]
-            Radiobutton(answer_frame,text=ht_name,value=home_team,variable=match[2]).grid(row=brow,column=1)
-            visiting_team = match[0]
-            if visiting_team == "Defeated":
-                vt_name = "Defeated"
-            else:
-                vt_name = conf_data["CONFERENCE"][visiting_team]["my name"]
-            Radiobutton(answer_frame,text=vt_name,value=visiting_team,variable=match[2]).grid(row=brow,column=0)
         def write_data(*args) -> None:
             out_list = []
-            for match in matches:
-                if match[0] == match[2].get():
-                    out_list.append([match[0],"Defeated"])
-                elif match[1] == match[2].get():
-                    out_list.append(["Defeated",match[1]])
-                else:
-                    out_list.append([match[0],match[1]])
+            for i in range(count):
+                match = matches[i]
+                selected_winner = selections[i].get()
+                match["winner"] = selected_winner
+                out_list.append(match)
             conf_data["CONF_SCHED"][week]=out_list
             json_out = json.dumps(conf_data,indent=4)
             with open(conf_file_name, "w") as outfile:

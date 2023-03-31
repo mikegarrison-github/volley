@@ -51,507 +51,255 @@
     },
     "CONF_SCHED": {
         "1": [
-            [
-                "Defeated",
-                "Washington"
-            ],
-            [
-                "Arizona State",
-                "Defeated"
-            ],
-            [
-                "Oregon",
-                "Defeated"
-            ],
-            [
-                "Stanford",
-                "Defeated"
-            ],
-            [
-                "Colorado",
-                "Defeated"
-            ],
-            [
-                "Southern California",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Oregon State"
-            ],
-            [
-                "Washington State",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Utah"
-            ],
-            [
-                "Defeated",
-                "Colorado"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "Washington",
-                "Defeated"
-            ]
+            {
+                "away": "Washington State",
+                "home": "Washington",
+                "winner": "Washington"
+            },
+            {
+                "away": "Arizona State",
+                "home": "Arizona",
+                "winner": "Arizona State"
+            },
+            {
+                "away": "Oregon",
+                "home": "Oregon State",
+                "winner": "Oregon"
+            },
+            {
+                "away": "Stanford",
+                "home": "California",
+                "winner": "Stanford"
+            },
+            {
+                "away": "Colorado",
+                "home": "Utah",
+                "winner": "Colorado"
+            },
+            {
+                "away": "Southern California",
+                "home": "UCLA",
+                "winner": "Southern California"
+            },
+            {
+                "away": "California",
+                "home": "Oregon State",
+                "winner": "Oregon State"
+            },
+            {
+                "away": "Washington State",
+                "home": "Southern California",
+                "winner": "Washington State"
+            },
+            {
+                "away": "Arizona",
+                "home": "Utah",
+                "winner": "Utah"
+            },
+            {
+                "away": "Arizona State",
+                "home": "Colorado",
+                "winner": "Colorado"
+            },
+            {
+                "away": "Stanford",
+                "home": "Oregon",
+                "winner": "Oregon"
+            },
+            {
+                "away": "Washington",
+                "home": "UCLA",
+                "winner": "Washington"
+            }
         ],
         "2": [
-            [
-                "Defeated",
-                "Stanford"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "Arizona",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Southern California"
-            ],
-            [
-                "Utah",
-                "Defeated"
-            ],
-            [
-                "Washington State",
-                "Defeated"
-            ],
-            [
-                "Arizona State",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "Colorado",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Stanford"
-            ],
-            [
-                "Defeated",
-                "Southern California"
-            ],
-            [
-                "Washington",
-                "Defeated"
-            ]
+            {
+                "away": "Washington",
+                "home": "Stanford",
+                "winner": "Stanford"
+            },
+            {
+                "away": "Arizona State",
+                "home": "Oregon",
+                "winner": "Oregon"
+            },
+            {
+                "away": "Arizona",
+                "home": "Oregon State",
+                "winner": "Arizona"
+            },
+            {
+                "away": "Colorado",
+                "home": "Southern California",
+                "winner": "Southern California"
+            },
+            {
+                "away": "Utah",
+                "home": "UCLA",
+                "winner": "Utah"
+            },
+            {
+                "away": "Washington State",
+                "home": "California",
+                "winner": "Washington State"
+            },
+            {
+                "away": "Arizona State",
+                "home": "Oregon State",
+                "winner": "Arizona State"
+            },
+            {
+                "away": "Arizona",
+                "home": "Oregon",
+                "winner": "Oregon"
+            },
+            {
+                "away": "Colorado",
+                "home": "UCLA",
+                "winner": "Colorado"
+            },
+            {
+                "away": "Washington State",
+                "home": "Stanford",
+                "winner": "Stanford"
+            },
+            {
+                "away": "Utah",
+                "home": "Southern California",
+                "winner": "Southern California"
+            },
+            {
+                "away": "Washington",
+                "home": "California",
+                "winner": "Washington"
+            }
         ],
         "3": [
-            [
-                "Defeated",
-                "Utah"
-            ],
-            [
-                "Stanford",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Washington State"
-            ],
-            [
-                "UCLA",
-                "Defeated"
-            ],
-            [
-                "Southern California",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Washington"
-            ],
-            [
-                "Defeated",
-                "Colorado"
-            ],
-            [
-                "Defeated",
-                "Washington State"
-            ],
-            [
-                "UCLA",
-                "Defeated"
-            ],
-            [
-                "Southern California",
-                "Defeated"
-            ],
-            [
-                "Stanford",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Washington"
-            ]
-        ],
-        "4": [
-            [
-                "Defeated",
-                "Colorado"
-            ],
-            [
-                "Defeated",
-                "Arizona State"
-            ],
-            [
-                "Stanford",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Utah"
-            ],
-            [
-                "Defeated",
-                "UCLA"
-            ],
-            [
-                "Defeated",
-                "Southern California"
-            ],
-            [
-                "Washington State",
-                "Defeated"
-            ],
-            [
-                "Washington",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Arizona"
-            ],
-            [
-                "Defeated",
-                "Southern California"
-            ],
-            [
-                "Oregon",
-                "Defeated"
-            ],
-            [
-                "Stanford",
-                "Defeated"
-            ]
-        ],
-        "5": [
-            [
-                "Arizona State",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "Defeated",
-                "Washington State"
-            ],
-            [
-                "Defeated",
-                "Oregon State"
-            ],
-            [
-                "Southern California",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Stanford"
-            ],
-            [
-                "Defeated",
-                "Washington State"
-            ],
-            [
-                "Defeated",
-                "Washington"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "Utah",
-                "Defeated"
-            ],
-            [
-                "UCLA",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Stanford"
-            ]
-        ],
-        "6": [
-            [
-                "Defeated",
-                "Colorado"
-            ],
-            [
-                "Defeated",
-                "Colorado"
-            ],
-            [
-                "Defeated",
-                "Utah"
-            ],
-            [
-                "Defeated",
-                "Washington"
-            ],
-            [
-                "Defeated",
-                "Arizona State"
-            ],
-            [
-                "Oregon",
-                "Defeated"
-            ],
-            [
-                "Oregon",
-                "Defeated"
-            ],
-            [
-                "Stanford",
-                "Defeated"
-            ],
-            [
-                "Stanford",
-                "Defeated"
-            ],
-            [
-                "UCLA",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Washington State"
-            ],
-            [
-                "Defeated",
-                "Arizona"
-            ]
-        ],
-        "7": [
-            [
-                "Washington State",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "Defeated",
-                "Southern California"
-            ],
-            [
-                "Defeated",
-                "UCLA"
-            ],
-            [
-                "Colorado",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Stanford"
-            ],
-            [
-                "Defeated",
-                "UCLA"
-            ],
-            [
-                "Defeated",
-                "Stanford"
-            ],
-            [
-                "Utah",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "Defeated",
-                "Southern California"
-            ],
-            [
-                "Washington",
-                "Defeated"
-            ]
-        ],
-        "8": [
-            [
-                "Stanford",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Utah"
-            ],
-            [
-                "Oregon",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "UCLA"
-            ],
-            [
-                "Defeated",
-                "Arizona"
-            ],
-            [
-                "Washington State",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Southern California"
-            ],
-            [
-                "Stanford",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Colorado"
-            ],
-            [
-                "Washington State",
-                "Defeated"
-            ],
-            [
-                "Oregon",
-                "Defeated"
-            ],
-            [
-                "Washington",
-                "Defeated"
-            ]
-        ],
-        "9": [
-            [
-                "Defeated",
-                "Stanford"
-            ],
-            [
-                "Arizona",
-                "Defeated"
-            ],
-            [
-                "Southern California",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "Defeated",
-                "Washington State"
-            ],
-            [
-                "Colorado",
-                "Defeated"
-            ],
-            [
-                "Arizona State",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Stanford"
-            ],
-            [
-                "Defeated",
-                "Oregon"
-            ],
-            [
-                "UCLA",
-                "Defeated"
-            ],
-            [
-                "Defeated",
-                "Washington"
-            ],
-            [
-                "Defeated",
-                "Washington State"
-            ]
+            {
+                "away": "California",
+                "home": "Utah",
+                "winner": "Utah"
+            },
+            {
+                "away": "Stanford",
+                "home": "Colorado",
+                "winner": "Stanford"
+            },
+            {
+                "away": "Oregon",
+                "home": "Washington State",
+                "winner": "Washington State"
+            },
+            {
+                "away": "UCLA",
+                "home": "Arizona State",
+                "winner": "UCLA"
+            },
+            {
+                "away": "Southern California",
+                "home": "Arizona",
+                "winner": "Arizona"
+            },
+            {
+                "away": "Oregon State",
+                "home": "Washington",
+                "winner": "Washington"
+            },
+            {
+                "away": "California",
+                "home": "Colorado",
+                "winner": "Colorado"
+            },
+            {
+                "away": "Oregon State",
+                "home": "Washington State",
+                "winner": "Washington State"
+            },
+            {
+                "away": "UCLA",
+                "home": "Arizona",
+                "winner": "UCLA"
+            },
+            {
+                "away": "Southern California",
+                "home": "Arizona State",
+                "winner": "Southern California"
+            },
+            {
+                "away": "Stanford",
+                "home": "Utah",
+                "winner": "Stanford"
+            },
+            {
+                "away": "Oregon",
+                "home": "Washington",
+                "winner": "Washington"
+            }
         ],
         "10": [
-            [
-                "UCLA",
-                "Washington State"
-            ],
-            [
-                "Southern California",
-                "Washington"
-            ],
-            [
-                "Colorado",
-                "Arizona"
-            ],
-            [
-                "Utah",
-                "Arizona State"
-            ],
-            [
-                "Oregon State",
-                "Stanford"
-            ],
-            [
-                "Oregon",
-                "California"
-            ],
-            [
-                "Oregon State",
-                "Oregon"
-            ],
-            [
-                "Utah",
-                "Colorado"
-            ],
-            [
-                "Arizona",
-                "Arizona State"
-            ],
-            [
-                "California",
-                "Stanford"
-            ],
-            [
-                "UCLA",
-                "Southern California"
-            ],
-            [
-                "Washington",
-                "Washington State"
-            ]
+            {
+                "away": "UCLA",
+                "home": "Washington State",
+                "winner": ""
+            },
+            {
+                "away": "Southern California",
+                "home": "Washington",
+                "winner": ""
+            },
+            {
+                "away": "Colorado",
+                "home": "Arizona",
+                "winner": ""
+            },
+            {
+                "away": "Utah",
+                "home": "Arizona State",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "Stanford",
+                "winner": ""
+            },
+            {
+                "away": "Oregon",
+                "home": "California",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "Oregon",
+                "winner": ""
+            },
+            {
+                "away": "Utah",
+                "home": "Colorado",
+                "winner": ""
+            },
+            {
+                "away": "Arizona",
+                "home": "Arizona State",
+                "winner": ""
+            },
+            {
+                "away": "California",
+                "home": "Stanford",
+                "winner": ""
+            },
+            {
+                "away": "UCLA",
+                "home": "Southern California",
+                "winner": ""
+            },
+            {
+                "away": "Washington",
+                "home": "Washington State",
+                "winner": ""
+            }
         ]
     },
-    "NUMBER_OF_MATCHES": 20,
+    "NUMBER_OF_MATCHES": 8,
     "TEXT": {
         "INTRO": "All discussion about the PAC-12 is welcome (except for trolling and flamebaiting)",
         "DIVIDER": "\n\n==================\n\n",
