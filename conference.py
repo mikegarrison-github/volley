@@ -27,16 +27,10 @@ def run_conference(number_of_runs, number_of_matches, results, pablo_data, conf_
         season_results = {}
         for week in conf_data["CONF_SCHED"]:
             for match in conf_data["CONF_SCHED"][week]:
-                home_team = Team(match[1])
-                visiting_team = Team(match[0])
-                if home_team.name == "Defeated":
-                    home_team.set_names("Defeated","Defeated")
-                else:
-                    home_team.load_from_dict(conf_data["CONFERENCE"])
-                if visiting_team.name == "Defeated":
-                    visiting_team.set_names("Defeated","Defeated")
-                else:
-                    visiting_team.load_from_dict(conf_data["CONFERENCE"])
+                home_team = Team(match.get("home"))
+                visiting_team = Team(match.get("away"))
+                home_team.load_from_dict(conf_data["CONFERENCE"])
+                visiting_team.load_from_dict(conf_data["CONFERENCE"])
                 home_team.find_pablo(pablo_data)
                 visiting_team.find_pablo(pablo_data)
                 home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
@@ -83,12 +77,16 @@ def find_current_records(number_of_matches, conf_data) -> dict:
         results[school]={"wins":0,"losses":0,"unplayed":0}
     for week in conf_data["CONF_SCHED"]:
         for match in conf_data["CONF_SCHED"][week]:
-            home_team = match[1]
-            visiting_team = match[0]
-            if home_team == "Defeated":
-                results[visiting_team]["wins"] += 1
-            elif visiting_team == "Defeated":
-                results[home_team]["wins"] += 1
+            home_team = match.get("home")
+            visiting_team = match.get("away")
+            winner = match.get("winner")
+            if winner:
+                if winner == home_team:
+                    results[home_team]["wins"] += 1
+                elif winner == visiting_team:
+                    results[visiting_team]["wins"] += 1
+                else:
+                    raise ValueError("Week: "+str(week)+" Match: "+str(match)+" winner must == either home or away team if not null")
             else:
                 results[home_team]["unplayed"] += 1
                 results[visiting_team]["unplayed"] += 1
@@ -98,7 +96,10 @@ def find_current_records(number_of_matches, conf_data) -> dict:
     for school in conf_data["CONFERENCE"]:
         wins = results[school]["wins"]
         losses = results[school]["losses"]
-        percentage = float(wins) / float(wins + losses)
+        if (wins + losses) > 0:
+            percentage = float(wins) / float(wins + losses)
+        else:
+            percentage = 0.0
         standings[school] = percentage
     ordered_list = sorted(standings.items(), key=lambda item: item[1], reverse=True)
     place = 1
@@ -127,13 +128,14 @@ def make_schedules_and_odds(results, pablo_data, conf_data) -> str:
     for week in conf_data["CONF_SCHED"]:
         temp_out_text = "Week "+str(week)+"\n"
         for match in conf_data["CONF_SCHED"][week]:
-            home_team = Team(match[1])
-            visiting_team = Team(match[0])
+            home_team = Team(match.get("home"))
+            visiting_team = Team(match.get("away"))
+            winner = match.get("winner")
             home_team.load_from_dict(conf_data["CONFERENCE"]) # get name info
             visiting_team.load_from_dict(conf_data["CONFERENCE"])
             home_team.load_from_dict(results) # get rank and rating
             visiting_team.load_from_dict(results)
-            if (home_team.name!="Defeated") and (visiting_team.name!="Defeated"):
+            if not winner:
                 week_flag = True
                 home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
                 match_text = str(visiting_team.my_name)+"&#064;"+str(home_team.my_name)

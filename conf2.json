@@ -1,0 +1,188 @@
+{
+    "CONFERENCE": {
+        "Arizona": {
+            "my name": "Arizona",
+            "rk name": "Arizona"
+        },
+        "Arizona State": {
+            "my name": "ASU",
+            "rk name": "Arizona State"
+        },
+        "California": {
+            "my name": "Cal",
+            "rk name": "Cal"
+        },
+        "Stanford": {
+            "my name": "Stanford",
+            "rk name": "Stanford"
+        },
+        "UCLA": {
+            "my name": "UCLA",
+            "rk name": "UCLA"
+        },
+        "Southern California": {
+            "my name": "USC",
+            "rk name": "USC"
+        },
+        "Oregon": {
+            "my name": "Oregon",
+            "rk name": "Oregon"
+        },
+        "Oregon State": {
+            "my name": "OSU",
+            "rk name": "Oregon State"
+        },
+        "Colorado": {
+            "my name": "Colorado",
+            "rk name": "Colorado"
+        },
+        "Utah": {
+            "my name": "Utah",
+            "rk name": "Utah"
+        },
+        "Washington": {
+            "my name": "Washington",
+            "rk name": "Washington"
+        },
+        "Washington State": {
+            "my name": "WSU",
+            "rk name": "Washington State"
+        }
+    },
+    "CONF_SCHED": {
+        "1": [
+            {
+                "away": "Washington State",
+                "home": "Washington",
+                "winner": "Washington"
+                },
+            {
+                "away": "Arizona State",
+                "home": "Arizona",
+                "winner": null
+            },
+            {
+                "away": "Oregon",
+                "home": "Oregon State",
+                "winner": null
+            },
+            {
+                "away": "Stanford",
+                "home": "California",
+                "winner": null
+            },
+            {
+                "away": "Colorado",
+                "home": "Utah",
+                "winner": null
+            },
+            {
+                "away": "Southern California",
+                "home": "UCLA",
+                "winner": null
+            },
+            {
+                "away": "California",
+                "home": "Oregon State",
+                "winner": null
+            },
+            {
+                "away": "Washington State",
+                "home": "Southern California",
+                "winner": null
+            },
+            {
+                "away": "Arizona",
+                "home": "Utah",
+                "winner": null
+            },
+            {
+                "away": "Arizona State",
+                "home": "Colorado",
+                "winner": null
+            },
+            {
+                "away": "Stanford",
+                "home": "Oregon",
+                "winner": null
+            },
+            {
+                "away": "Washington",
+                "home": "UCLA",
+                "winner": null
+            }
+        ],
+        "10": [
+            {
+                "away": "UCLA",
+                "home": "Washington State",
+                "winner": null
+            },
+            {
+                "away": "Southern California",
+                "home": "Washington",
+                "winner": null
+            },
+            {
+                "away": "Colorado",
+                "home": "Arizona",
+                "winner": null
+            },
+            {
+                "away": "Utah",
+                "home": "Arizona State",
+                "winner": null
+            },
+            {
+                "away": "Oregon State",
+                "home": "Stanford",
+                "winner": null
+            },
+            {
+                "away": "Oregon",
+                "home": "California",
+                "winner": null
+            },
+            {
+                "away": "Oregon State",
+                "home": "Oregon",
+                "winner": null
+            },
+            {
+                "away": "Utah",
+                "home": "Colorado",
+                "winner": null
+            },
+            {
+                "away": "Arizona",
+                "home": "Arizona State",
+                "winner": null
+            },
+            {
+                "away": "California",
+                "home": "Stanford",
+                "winner": null
+            },
+            {
+                "away": "UCLA",
+                "home": "Southern California",
+                "winner": null
+            },
+            {
+                "away": "Washington",
+                "home": "Washington State",
+                "winner": null
+            }
+        ]
+    },
+    "NUMBER_OF_MATCHES": 4,
+    "TEXT": {
+        "INTRO": "All discussion about the PAC-12 is welcome (except for trolling and flamebaiting)",
+        "DIVIDER": "\n\n==================\n\n",
+        "STANDINGS TOP": "[font color=\"red\"]NOTE: All references to rankings in this post are based on pablo, not AVCA![/font]\n\nStandings:\n\n",
+        "MATCHES TOP": "This week's matches (Pacific times)\n\n",
+        "MATCHES SKELETON": "Thur:\n[font color=\"19d2e6\"]7:00pm[/font] \n\nFri:\n[font color=\"19d2e6\"]7:00pm[/font] \n\nSat:\n[font color=\"19d2e6\"]noon[/font] \n\nSun:\n[font color=\"19d2e6\"]11:00am[/font]",
+        "NEXT WEEK": "Next week:\n\nMountains @ BayArea, Washington @ Oregon, Arizona @ LA",
+        "OUTRO": "Conference schedule link:\n\nhttps://pac-12.com/womens-volleyball/schedule/\n\nPablo is the creation of @pablo and is available by subscription on richkern.com\nThis post generated by code written by Mike Garrison."
+    }
+}
