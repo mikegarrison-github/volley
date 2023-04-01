@@ -33,14 +33,19 @@ def run_conference(number_of_runs, number_of_matches, results, pablo_data, conf_
                 visiting_team.load_from_dict(conf_data["CONFERENCE"])
                 home_team.find_pablo(pablo_data)
                 visiting_team.find_pablo(pablo_data)
-                home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
-                score = random.random()
-                if score <= home_prob:
-                    wins = season_results.get(home_team.name,0)
-                    season_results[home_team.name] = wins + 1
+                winner = match.get("winner")
+                if winner:
+                    wins = season_results.get(winner,0)
+                    season_results[winner] = wins + 1
                 else:
-                    wins = season_results.get(visiting_team.name,0)
-                    season_results[visiting_team.name] = wins + 1
+                    home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
+                    score = random.random()
+                    if score <= home_prob:
+                        wins = season_results.get(home_team.name,0)
+                        season_results[home_team.name] = wins + 1
+                    else:
+                        wins = season_results.get(visiting_team.name,0)
+                        season_results[visiting_team.name] = wins + 1
         standings = {}
         for school in conf_data["CONFERENCE"]:
             wins = season_results.get(school,0)
