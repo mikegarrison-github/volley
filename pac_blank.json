@@ -1,0 +1,684 @@
+{
+    "CONFERENCE": {
+        "Arizona": {
+            "my name": "Arizona",
+            "rk name": "Arizona"
+        },
+        "Arizona State": {
+            "my name": "ASU",
+            "rk name": "Arizona State"
+        },
+        "California": {
+            "my name": "Cal",
+            "rk name": "Cal"
+        },
+        "Stanford": {
+            "my name": "Stanford",
+            "rk name": "Stanford"
+        },
+        "UCLA": {
+            "my name": "UCLA",
+            "rk name": "UCLA"
+        },
+        "Southern California": {
+            "my name": "USC",
+            "rk name": "USC"
+        },
+        "Oregon": {
+            "my name": "Oregon",
+            "rk name": "Oregon"
+        },
+        "Oregon State": {
+            "my name": "OSU",
+            "rk name": "Oregon State"
+        },
+        "Colorado": {
+            "my name": "Colorado",
+            "rk name": "Colorado"
+        },
+        "Utah": {
+            "my name": "Utah",
+            "rk name": "Utah"
+        },
+        "Washington": {
+            "my name": "Washington",
+            "rk name": "Washington"
+        },
+        "Washington State": {
+            "my name": "WSU",
+            "rk name": "Washington State"
+        }
+    },
+    "CONF_SCHED": {
+        "1": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "2": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "3": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "4": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "5": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "6": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "7": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "8": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "9": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ],
+        "10": [
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            },
+            {
+                "away": "",
+                "home": "",
+                "winner": ""
+            }
+        ]
+    },
+    "NUMBER_OF_MATCHES": 20,
+    "TEXT": {
+        "INTRO": "All discussion about the PAC-12 is welcome (except for trolling and flamebaiting)",
+        "DIVIDER": "\n\n==================\n\n",
+        "STANDINGS TOP": "[font color=\"red\"]NOTE: All references to rankings in this post are based on pablo, not AVCA![/font]\n\nStandings:\n\n",
+        "MATCHES TOP": "This week's matches (Pacific times)\n\n",
+        "MATCHES SKELETON": "Thur:\n[font color=\"19d2e6\"]7:00pm[/font] \n\nFri:\n[font color=\"19d2e6\"]7:00pm[/font] \n\nSat:\n[font color=\"19d2e6\"]noon[/font] \n\nSun:\n[font color=\"19d2e6\"]11:00am[/font]",
+        "NEXT WEEK": "Next week:\n\nMountains @ BayArea, Washington @ Oregon, Arizona @ LA",
+        "OUTRO": "Conference schedule link:\n\nhttps://pac-12.com/womens-volleyball/schedule/\n\nPablo is the creation of @pablo and is available by subscription on richkern.com\nThis post generated by code written by Mike Garrison."
+    }
+}

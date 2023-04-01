@@ -54,620 +54,620 @@
             {
                 "away": "Washington State",
                 "home": "Washington",
-                "winner": "Washington"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "Arizona",
-                "winner": "Arizona State"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "Oregon State",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "California",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "Utah",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "UCLA",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "Oregon State",
-                "winner": "Oregon State"
+                "winner": ""
             },
             {
                 "away": "Washington State",
                 "home": "Southern California",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "Utah",
-                "winner": "Utah"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "Colorado",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "UCLA",
-                "winner": "Washington"
+                "winner": ""
             }
         ],
         "2": [
             {
                 "away": "Washington",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "Oregon State",
-                "winner": "Arizona"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "Southern California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "UCLA",
-                "winner": "Utah"
+                "winner": ""
             },
             {
                 "away": "Washington State",
                 "home": "California",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "Oregon State",
-                "winner": "Arizona State"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "UCLA",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Washington State",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "Southern California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "California",
-                "winner": "Washington"
+                "winner": ""
             }
         ],
         "3": [
             {
                 "away": "California",
                 "home": "Utah",
-                "winner": "Utah"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "Colorado",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "Washington State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "UCLA",
                 "home": "Arizona State",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "Arizona",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Washington",
-                "winner": "Washington"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "Colorado",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Washington State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "UCLA",
                 "home": "Arizona",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "Arizona State",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "Utah",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "Washington",
-                "winner": "Washington"
+                "winner": ""
             }
         ],
         "4": [
             {
                 "away": "Washington State",
                 "home": "Colorado",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "Arizona State",
-                "winner": "Arizona State"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "Arizona",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "Utah",
-                "winner": "Utah"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "UCLA",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "Southern California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Washington State",
                 "home": "Utah",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "Colorado",
-                "winner": "Washington"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "Arizona",
-                "winner": "Arizona"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Southern California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "UCLA",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "Arizona State",
-                "winner": "Stanford"
+                "winner": ""
             }
         ],
         "5": [
             {
                 "away": "Arizona State",
                 "home": "Washington",
-                "winner": "Arizona State"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "Washington State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "Oregon State",
-                "winner": "Oregon State"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "UCLA",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "Washington State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "Washington",
-                "winner": "Washington"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "Oregon State",
-                "winner": "Utah"
+                "winner": ""
             },
             {
                 "away": "UCLA",
                 "home": "California",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             }
         ],
         "6": [
             {
                 "away": "UCLA",
                 "home": "Colorado",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "Utah",
-                "winner": "Utah"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "Washington",
-                "winner": "Washington"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Arizona State",
-                "winner": "Arizona State"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "Arizona",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "Washington State",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "UCLA",
                 "home": "Utah",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "Colorado",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "Washington State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Arizona",
-                "winner": "Arizona"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "Arizona State",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "Washington",
-                "winner": "Stanford"
+                "winner": ""
             }
         ],
         "7": [
             {
                 "away": "Washington State",
                 "home": "Oregon State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "Southern California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "UCLA",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "California",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "UCLA",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "California",
-                "winner": "Utah"
+                "winner": ""
             },
             {
                 "away": "Washington State",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "Southern California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "Oregon State",
-                "winner": "Washington"
+                "winner": ""
             }
         ],
         "8": [
             {
                 "away": "Stanford",
                 "home": "Southern California",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Utah",
-                "winner": "Utah"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "UCLA",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "Arizona",
-                "winner": "Arizona"
+                "winner": ""
             },
             {
                 "away": "Washington State",
                 "home": "Arizona State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "Southern California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Stanford",
                 "home": "UCLA",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Colorado",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Washington State",
                 "home": "Arizona",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "Utah",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "Arizona State",
-                "winner": "Washington"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "Colorado",
-                "winner": "Oregon"
+                "winner": ""
             }
         ],
         "9": [
             {
                 "away": "Arizona",
                 "home": "California",
-                "winner": "Arizona"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "Oregon State",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "Washington",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "UCLA",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "Washington State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Arizona State",
                 "home": "California",
-                "winner": "Arizona State"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "Washington State",
-                "winner": "Washington State"
+                "winner": ""
             },
             {
                 "away": "UCLA",
                 "home": "Oregon State",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "Washington",
-                "winner": "Washington"
+                "winner": ""
             }
         ],
         "10": [
             {
                 "away": "UCLA",
                 "home": "Washington State",
-                "winner": "UCLA"
+                "winner": ""
             },
             {
                 "away": "Southern California",
                 "home": "Washington",
-                "winner": "Washington"
+                "winner": ""
             },
             {
                 "away": "Colorado",
                 "home": "Arizona",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "Arizona State",
-                "winner": "Arizona State"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "Oregon",
                 "home": "California",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Oregon State",
                 "home": "Oregon",
-                "winner": "Oregon"
+                "winner": ""
             },
             {
                 "away": "Utah",
                 "home": "Colorado",
-                "winner": "Colorado"
+                "winner": ""
             },
             {
                 "away": "Arizona",
                 "home": "Arizona State",
-                "winner": "Arizona"
+                "winner": ""
             },
             {
                 "away": "California",
                 "home": "Stanford",
-                "winner": "Stanford"
+                "winner": ""
             },
             {
                 "away": "UCLA",
                 "home": "Southern California",
-                "winner": "Southern California"
+                "winner": ""
             },
             {
                 "away": "Washington",
                 "home": "Washington State",
-                "winner": "Washington State"
+                "winner": ""
             }
         ]
     },
