@@ -49,4 +49,22 @@ To make it easier to keep the conf file up-to-date with winners and losers, an a
 
 ## Tournament Simulator
 
-Info to come later. Uses another JSON file for data.
+Uses another JSON file for data. Two dictionaries.
+
+One is all the schools, each of which is a dictionary with keys of "my name", "rk name", and "seed". Seed should be set to 9999 unless the team is one of the tournament seeds.
+
+The other dictionary is the brackets, consisting of keys like "UL1" that refer to "upper left" of the NCAA bracket. Each quadrant has a 1, 2, 3, and 4 that are associated with the top four seeds in that quadrant, but the code does not actually care which is 1, which is 2, etc. That information comes from the seed in the schools data section.
+
+### Running The Simulation
+
+Select the number of runs (default 10000) and hit the button to run the tournament. This will take quite some time, because it will run the tournament up to 65 different ways. One run for the teams with their actual pablo ratings, and one run for each surviving team as if it had a tournament median pablo rating. (Currently hardwired to 500 runs per team, regardless of the value set for number of runs.)
+
+Results will appear in the upper text window.
+
+### Editing Bracket As Matches Are Played
+
+An editor is available. Click on the box and get a dropdown list of the 16 subregionals (UL1, UL2, etc.). Select one. Four lines will appear.
+
+To indicate that a team has won, click its name. To indicate that a team has lost, click "Newly Defeated". Previously defeated teams will just show up in the list as "Defeated", and this will already be pre-selected. (There is no way to "undefeat" a team other than opening up the JSON file and editing it that way.) When the winning and/or losing teams have been selected, click the write button.
+
+Note that after the first two rounds have been played, each subregional list will contain at most one team, so you will have to find the losing team by going back to the dropdown and pulling up a different subregional quad. (It is not actually necessary to indicate a team as the winner if it is the only one still remaining in the subregion. It is only necessary to remove losers by clicking them as "Newly Defeated" and then writing the data to the JSON file.)
