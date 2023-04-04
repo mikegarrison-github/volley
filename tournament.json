@@ -31,26 +31,102 @@
             "seed": 1
         }
     },
-
     "BRACKET": {
-        "UL1": ["Texas","Defeated","Defeated","Defeated"],
-        "UL4": ["Defeated","Defeated","Defeated","Defeated"],
-        "UL3": ["Defeated","Defeated","Defeated","Defeated"],
-        "UL2": ["Defeated","Defeated","Defeated","Defeated"],
-
-        "LL2": ["San Diego","Defeated","Defeated","Defeated"],
-        "LL3": ["Defeated","Defeated","Defeated","Defeated"],
-        "LL4": ["Defeated","Defeated","Defeated","Defeated"],
-        "LL1": ["Defeated","Defeated","Defeated","Defeated"],
-
-        "UR1": ["Defeated","Defeated","Defeated","Defeated"],
-        "UR4": ["Defeated","Defeated","Defeated","Defeated"],
-        "UR3": ["Defeated","Defeated","Defeated","Defeated"],
-        "UR2": ["Defeated","Defeated","Defeated","Pittsburgh"],
-
-        "LR2": ["Defeated","Defeated","Defeated","Defeated"],
-        "LR3": ["Defeated","Defeated","Defeated","Defeated"],
-        "LR4": ["Defeated","Defeated","Defeated","Defeated"],
-        "LR1": ["Defeated","Defeated","Defeated","Louisville"]
+        "UL1": [
+            "Texas",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "UL4": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "UL3": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "UL2": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "LL2": [
+            "San Diego",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "LL3": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "LL4": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "LL1": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "UR1": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "UR4": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "UR3": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "UR2": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Pittsburgh"
+        ],
+        "LR2": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "LR3": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "LR4": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Defeated"
+        ],
+        "LR1": [
+            "Defeated",
+            "Defeated",
+            "Defeated",
+            "Louisville"
+        ]
     }
 }

@@ -57,7 +57,6 @@ def open_conf_sched(root,conf_file) -> None:
         # create a write data button
         Button(answer_frame,text="Write Data",command=write_data).grid(row=90)
 
-
     # open json file and read in conference data
     try:
         conf_file_name = str(conf_file.get())
@@ -82,10 +81,67 @@ def open_conf_sched(root,conf_file) -> None:
 
     # END OPEN CONF SCHEDULE FUNCTION (return None) (ends when window is closed)
 
+def open_tourn_sched(root,JSON_file) -> None:
+    # create new window object subordinate to the main window (root)
+    window = Toplevel(root)
+    answer_frame = Frame(window, width =10, height =10)
+    answer_frame.grid(row=21)
 
+    def match_boxes(*args) -> None:
+        bracket = str(clicked.get())
+        teams = tourn_data["BRACKET"].get(bracket,[])
+        count = 0
+        selections = []
+        for widget in answer_frame.winfo_children():
+            widget.destroy()
+        for team in teams:
+            brow = 21+count
+            selections.insert(count,StringVar())
+            Radiobutton(answer_frame,text=team,value=team,variable=selections[count]).grid(row=brow,column=0)
+            Radiobutton(answer_frame,text="Newly Defeated",value="Newly Defeated",variable=selections[count]).grid(row=brow,column=1)
+            if team == "Defeated":
+                selections[count].set("Defeated")
+            count +=1
+        def write_data(*args) -> None:
+            out_list = []
+            for i in range(count):
+                team = teams[i]
+                selected_value = selections[i].get()
+                if selected_value == "Defeated" or selected_value == "Newly Defeated":
+                    team = "Defeated"
+                out_list.append(team)
+            tourn_data["BRACKET"][bracket]=out_list
+            json_out = json.dumps(tourn_data,indent=4)
+            with open(tourn_file_name, "w") as outfile:
+                outfile.write(json_out)
 
+        
+        # create a write data button
+        Button(answer_frame,text="Write Data",command=write_data).grid(row=90)
 
+    # open json file and read in tournament data
+    try:
+        tourn_file_name = str(JSON_file.get())
+    except:
+        tourn_file_name = "tourn.json"
+    F = open(tourn_file_name)
+    tourn_data = json.load(F)
+    F.close
 
+    # bracket_select dropdown
+    options = list(tourn_data["BRACKET"].keys())
+    clicked = StringVar()
+    clicked.set(options[0])
+    OptionMenu(window,clicked,*options).grid(row=20)
+    clicked.trace_add("write",match_boxes)
+
+    # create a window close button
+    Button(window,text="Close",command=window.destroy).grid(row=100)
+
+    #activate window (until it is closed)
+    window.grab_set()
+
+    # END OPEN TOURNAMENT SCHEDULE FUNCTION (return None) (ends when window is closed)
 
 def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
     
@@ -465,6 +521,7 @@ def main():
     Button(root,text="Run Conference",command=lambda: run_conference(runs_value,text,text2,conf_file_value)).grid(row=7,columnspan=2)
     Button(root,text="Run Tournament",command=lambda: run_tournament(runs_value,text,text2,tournament_file_value)).grid(row=7,column=2,columnspan=2)
     Button(root,text="Edit Schedule",command=lambda: open_conf_sched(root,conf_file_value)).grid(row=8,columnspan=2)
+    Button(root,text="Edit Schedule",command=lambda: open_tourn_sched(root,tournament_file_value)).grid(row=8,column=2,columnspan=2)
 
     root.mainloop()
 
