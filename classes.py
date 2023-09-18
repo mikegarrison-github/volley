@@ -80,7 +80,7 @@ class PabloWeeklyRating:
         pbl_tbl = pablo_page[0]
         self.hca = int(pbl_tbl.columns[0].split()[-1])
         self.pablo_date = str(pbl_tbl.columns[0].split()[3]) + " " + str(pbl_tbl.columns[0].split()[4])
-        today = date(today)
+        today = date.today()
         self.run_date = today.strftime("%B %d")
         data = pbl_tbl.to_numpy()
         data = np.delete(data,0,0)
