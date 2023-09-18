@@ -200,7 +200,7 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
     out_string += "\n("+str(pablo_data.pablo_date)+" pablo rankings)"+conf_data["TEXT"]["DIVIDER"]
 
     # build expected wins table
-    out_string += "Expected wins as of "+str(pablo_data.pablo_date)+"\n\n"
+    out_string += "Expected wins as of "+str(pablo_data.run_date)+"\n\n"
     # actually generate expected wins as final_results dict
     for school in conf_data["CONFERENCE"]:
         team = Team(school)
@@ -235,7 +235,7 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
     
     # build expected placements table
     out_string = out_string[:-1] # remove extra \n
-    out_string += conf_data["TEXT"]["DIVIDER"]+"Expected placement as of "+str(pablo_data.pablo_date)+"\n\n"
+    out_string += conf_data["TEXT"]["DIVIDER"]+"Expected placement as of "+str(pablo_data.run_date)+"\n\n"
     # build string
     for school in wins_sorted_list:
         number_of_teams = len(conf_data["CONFERENCE"])
