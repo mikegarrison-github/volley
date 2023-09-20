@@ -184,6 +184,10 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         losses = current_results[school]["losses"]
         if (wins + losses) > 0:
             percentage = float(wins) / float(wins + losses)
+            if wins == 0:
+                percentage += -0.0001 * losses
+            if losses == 0:
+                percentage += 0.0001 * wins
         else:
             percentage = 0.0
         results_table.append([team.rank,team.my_name,wins,losses,percentage])
