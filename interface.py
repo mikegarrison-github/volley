@@ -233,8 +233,10 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         std_wins = statistics.stdev(wins)
         maximum_possible_wins = final_results[school]["wins"] + final_results[school]["unplayed"]
         minimum_possible_wins = final_results[school]["wins"]
-        a,b = ((minimum_possible_wins - mean_wins)/std_wins,(maximum_possible_wins - mean_wins)/std_wins)
-        interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=mean_wins,scale=std_wins)
+        a0,b0 = ((minimum_possible_wins - mean_wins)/std_wins,(maximum_possible_wins - mean_wins)/std_wins)
+        a1,b1,loc,scale = SPstats.truncnorm.fit(wins,a0,b0,loc=mean_wins,scale=std_wins)
+        a,b = ((minimum_possible_wins - loc)/scale,(maximum_possible_wins - loc)/scale)
+        interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=loc,scale=scale)
         high_wins = sorted([interval_75[1],minimum_possible_wins,maximum_possible_wins])[1]
         low_wins = sorted([interval_75[0],minimum_possible_wins,maximum_possible_wins])[1]
         display_name = conf_data["CONFERENCE"][school]["my name"]
@@ -250,8 +252,10 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         mean_placements = statistics.mean(placements)
         median_placements = statistics.median(placements)
         std_placements = statistics.stdev(placements)
-        a,b = ((1 - mean_placements)/std_placements,(number_of_teams - mean_placements)/std_placements)
-        interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=mean_placements,scale=std_placements)
+        a0,b0 = ((1 - mean_placements)/std_placements,(number_of_teams - mean_placements)/std_placements)
+        a1,b1,loc,scale = SPstats.truncnorm.fit(placements,a0,b0,loc=mean_placements,scale=std_placements)
+        a,b = ((1 - loc)/scale,(number_of_teams - loc)/scale)
+        interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=loc,scale=scale)
         high_placements = sorted([interval_75[1],1,number_of_teams])[1]
         low_placements = sorted([interval_75[0],1,number_of_teams])[1]
         display_name = conf_data["CONFERENCE"][school]["my name"]
