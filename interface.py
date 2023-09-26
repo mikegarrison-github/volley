@@ -5,6 +5,7 @@ from tkinter import *
 import statistics
 from classes import Team,PabloWeeklyRating
 import json
+from scipy import stats as SPstats
 
 
 
@@ -232,8 +233,10 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         std_wins = statistics.stdev(wins)
         maximum_possible_wins = final_results[school]["wins"] + final_results[school]["unplayed"]
         minimum_possible_wins = final_results[school]["wins"]
-        high_wins = sorted([mean_wins+std_wins,minimum_possible_wins,maximum_possible_wins])[1]
-        low_wins = sorted([mean_wins-std_wins,minimum_possible_wins,maximum_possible_wins])[1]
+        a,b = ((minimum_possible_wins - mean_wins)/std_wins,(maximum_possible_wins - mean_wins)/std_wins)
+        interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=mean_wins,scale=std_wins)
+        high_wins = sorted([interval_75[1],minimum_possible_wins,maximum_possible_wins])[1]
+        low_wins = sorted([interval_75[0],minimum_possible_wins,maximum_possible_wins])[1]
         display_name = conf_data["CONFERENCE"][school]["my name"]
         out_string += str(display_name)+" "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins))+"\n"
     
@@ -247,8 +250,10 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         mean_placements = statistics.mean(placements)
         median_placements = statistics.median(placements)
         std_placements = statistics.stdev(placements)
-        high_placements = sorted([mean_placements+std_placements,1,number_of_teams])[1]
-        low_placements = sorted([mean_placements-std_placements,1,number_of_teams])[1]
+        a,b = ((1 - mean_placements)/std_placements,(number_of_teams - mean_placements)/std_placements)
+        interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=mean_placements,scale=std_placements)
+        high_placements = sorted([interval_75[1],1,number_of_teams])[1]
+        low_placements = sorted([interval_75[0],1,number_of_teams])[1]
         display_name = conf_data["CONFERENCE"][school]["my name"]
         out_string += str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements))+"\n"
     
