@@ -214,7 +214,7 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         mean_prob_wins = statistics.mean(prob_wins)
         mean_actual_wins = statistics.mean(actual_wins)
         wins_above_expectation = mean_actual_wins - mean_prob_wins
-        out_string += "[font color=\"19e6c5\"]("+str(school[0])+")[/font] "+str(school[1])+" [b]"+str(school[2])+"-"+str(school[3])+"[/b] [font color=\"caec42\"]("+f'{wins_above_expectation:+.1f}'+")[/font]"+"\n"
+        out_string += "[font color=\"19e6c5\"]("+str(school[0])+")[/font] "+str(school[1])+" [b]"+str(school[2])+"-"+str(school[3])+"[/b] [font color=\"caec42\"]("+f'{wins_above_expectation:+.0f}'+")[/font]"+"\n"
     out_string += "\n[font color=\"19e6c5\"]("+str(pablo_data.pablo_date)+" pablo rankings)[/font] School [b]W-L[/b] [font color=\"caec42\"](wins above expectation)[/font]"+conf_data["TEXT"]["DIVIDER"]
 
     # build expected wins table
