@@ -191,18 +191,31 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
                 percentage += 0.0001 * wins
         else:
             percentage = 0.0
-        results_table.append([team.rank,team.my_name,wins,losses,percentage])
+        results_table.append([team.rank,team.my_name,wins,losses,percentage,school])
 
     # sort results table by percentage, rank, name
     results_table.sort(key=lambda entry: entry[1])
     results_table.sort(key=lambda entry: entry[0])
     results_table.sort(reverse=True,key=lambda entry: entry[4])
 
+    # find wins above expectation
+    for school in conf_data["CONFERENCE"]:
+        team = Team(school)
+        team.load_from_dict(conf_data["CONFERENCE"])
+        current_results[school]["actual wins"]=[]
+        current_results[school]["probable wins"]=[]
+    prob_results = conf.run_past_conference(number_of_runs,number_of_matches,current_results,pablo_data,conf_data)
+
     #start building out_string with header and current standings table
     out_string = conf_data["TEXT"]["INTRO"]+conf_data["TEXT"]["DIVIDER"]+conf_data["TEXT"]["STANDINGS TOP"]
     for school in results_table:
-        out_string += "("+str(school[0])+") "+str(school[1])+" "+str(school[2])+"-"+str(school[3])+"\n"
-    out_string += "\n("+str(pablo_data.pablo_date)+" pablo rankings)"+conf_data["TEXT"]["DIVIDER"]
+        prob_wins = prob_results[school[5]]["probable wins"]
+        actual_wins = prob_results[school[5]]["actual wins"]
+        mean_prob_wins = statistics.mean(prob_wins)
+        mean_actual_wins = statistics.mean(actual_wins)
+        wins_above_expectation = mean_actual_wins - mean_prob_wins
+        out_string += "[font color=\"19e6c5\"]("+str(school[0])+")[/font] "+str(school[1])+" [b]"+str(school[2])+"-"+str(school[3])+"[/b] [font color=\"caec42\"]("+f'{wins_above_expectation:+.1f}'+")[/font]"+"\n"
+    out_string += "\n[font color=\"19e6c5\"]("+str(pablo_data.pablo_date)+" pablo rankings)[/font] School [b]W-L[/b] [font color=\"caec42\"](wins above expectation)[/font]"+conf_data["TEXT"]["DIVIDER"]
 
     # build expected wins table
     out_string += "Expected wins as of "+str(pablo_data.run_date)+"\n\n"
@@ -212,9 +225,9 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         team.load_from_dict(conf_data["CONFERENCE"])
         current_results[school]["expected wins"]=[]
         current_results[school]["expected placements"]=[]
-    current_results["Defeated"]={"rating":-9999}
+    # current_results["Defeated"]={"rating":-9999}
     final_results = conf.run_conference(number_of_runs,number_of_matches,current_results,pablo_data,conf_data)
-    del final_results["Defeated"]
+    # del final_results["Defeated"]
     # now sort final results by mean expected wins, pablo rating, name
     sorted_list_of_schools = sorted(conf_data["CONFERENCE"].keys())
     _pablo = {}

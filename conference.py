@@ -62,6 +62,41 @@ def run_conference(number_of_runs, number_of_matches, results, pablo_data, conf_
             results[school]["expected placements"] = placements
     return results
 
+# run conference
+def run_past_conference(number_of_runs, number_of_matches, results, pablo_data, conf_data) -> dict:
+    for i in range(number_of_runs):
+        season_results = {}
+        season_prob_results = {}
+        for week in conf_data["CONF_SCHED"]:
+            for match in conf_data["CONF_SCHED"][week]:
+                home_team = Team(match.get("home"))
+                visiting_team = Team(match.get("away"))
+                home_team.load_from_dict(conf_data["CONFERENCE"])
+                visiting_team.load_from_dict(conf_data["CONFERENCE"])
+                home_team.find_pablo(pablo_data)
+                visiting_team.find_pablo(pablo_data)
+                winner = match.get("winner")
+                if winner:
+                    wins = season_results.get(winner,0)
+                    season_results[winner] = wins + 1
+                    home_prob = home_team.chance_to_win(pablo_data,visiting_team,"H")
+                    score = random.random()
+                    if score <= home_prob:
+                        prob_wins = season_prob_results.get(home_team.name,0)
+                        season_prob_results[home_team.name] = prob_wins + 1
+                    else:
+                        prob_wins = season_prob_results.get(visiting_team.name,0)
+                        season_prob_results[visiting_team.name] = prob_wins + 1
+        for school in conf_data["CONFERENCE"]:
+            past_results = results[school]
+            wins = past_results["actual wins"]
+            wins.append(season_results.get(school,0))
+            prob_wins = past_results["probable wins"]
+            prob_wins.append(season_prob_results.get(school,0))
+            results[school]["actual wins"] = wins
+            results[school]["probable wins"] = prob_wins
+    return results
+
 # find current records
 def find_current_records(number_of_matches, conf_data) -> dict:
     results = {}
