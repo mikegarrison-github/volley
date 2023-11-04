@@ -258,8 +258,12 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
     # build expected placements table
     out_string = out_string[:-1] # remove extra \n
     out_string += conf_data["TEXT"]["DIVIDER"]+"Predicted final placements as of "+str(pablo_data.run_date)+"\n\n"
+    _placements = {}
+    for school in pablo_sorted_list:
+        _placements[school] = statistics.mean(final_results[school]["expected placements"])
+    placements_sorted_list = [x for (x,y) in sorted(_placements.items(), key=lambda item: item[1], reverse=False)]
     # build string
-    for school in wins_sorted_list:
+    for school in placements_sorted_list:
         number_of_teams = len(conf_data["CONFERENCE"])
         placements = final_results[school]["expected placements"]
         mean_placements = statistics.mean(placements)
