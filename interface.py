@@ -146,6 +146,10 @@ def open_tourn_sched(root,JSON_file) -> None:
 
 def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
     
+    text.delete("1.0","end")
+    text2.delete("1.0","end")
+
+
     # check/set number of runs for monte carlo simulation (defaut 10000)
     try:
         number_of_runs = int(runs_value.get())
@@ -246,12 +250,16 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         std_wins = statistics.stdev(wins)
         maximum_possible_wins = final_results[school]["wins"] + final_results[school]["unplayed"]
         minimum_possible_wins = final_results[school]["wins"]
-        a0,b0 = ((minimum_possible_wins - mean_wins)/std_wins,(maximum_possible_wins - mean_wins)/std_wins)
-        a1,b1,loc,scale = SPstats.truncnorm.fit(wins,a0,b0,loc=mean_wins,scale=std_wins)
-        a,b = ((minimum_possible_wins - loc)/scale,(maximum_possible_wins - loc)/scale)
-        interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=loc,scale=scale)
-        high_wins = sorted([interval_75[1],minimum_possible_wins,maximum_possible_wins])[1]
-        low_wins = sorted([interval_75[0],minimum_possible_wins,maximum_possible_wins])[1]
+        if std_wins != 0:
+            a0,b0 = ((minimum_possible_wins - mean_wins)/std_wins,(maximum_possible_wins - mean_wins)/std_wins)
+            a1,b1,loc,scale = SPstats.truncnorm.fit(wins,a0,b0,loc=mean_wins,scale=std_wins)
+            a,b = ((minimum_possible_wins - loc)/scale,(maximum_possible_wins - loc)/scale)
+            interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=loc,scale=scale)
+            high_wins = sorted([interval_75[1],minimum_possible_wins,maximum_possible_wins])[1]
+            low_wins = sorted([interval_75[0],minimum_possible_wins,maximum_possible_wins])[1]
+        else:
+            high_wins = mean_wins
+            low_wins = mean_wins
         display_name = conf_data["CONFERENCE"][school]["my name"]
         out_string += str(display_name)+" "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins))+"\n"
     
@@ -269,12 +277,16 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
         mean_placements = statistics.mean(placements)
         median_placements = statistics.median(placements)
         std_placements = statistics.stdev(placements)
-        a0,b0 = ((1 - mean_placements)/std_placements,(number_of_teams - mean_placements)/std_placements)
-        a1,b1,loc,scale = SPstats.truncnorm.fit(placements,a0,b0,loc=mean_placements,scale=std_placements)
-        a,b = ((1 - loc)/scale,(number_of_teams - loc)/scale)
-        interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=loc,scale=scale)
-        high_placements = sorted([interval_75[1],1,number_of_teams])[1]
-        low_placements = sorted([interval_75[0],1,number_of_teams])[1]
+        if std_placements != 0:
+            a0,b0 = ((1 - mean_placements)/std_placements,(number_of_teams - mean_placements)/std_placements)
+            a1,b1,loc,scale = SPstats.truncnorm.fit(placements,a0,b0,loc=mean_placements,scale=std_placements)
+            a,b = ((1 - loc)/scale,(number_of_teams - loc)/scale)
+            interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=loc,scale=scale)
+            high_placements = sorted([interval_75[1],1,number_of_teams])[1]
+            low_placements = sorted([interval_75[0],1,number_of_teams])[1]
+        else:
+            high_placements = mean_placements
+            low_placements = mean_placements
         display_name = conf_data["CONFERENCE"][school]["my name"]
         out_string += str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements))+"\n"
     
@@ -291,12 +303,10 @@ None'''
     out_string += conf_data["TEXT"]["DIVIDER"]+conf_data["TEXT"]["NEXT WEEK"]+conf_data["TEXT"]["DIVIDER"]+conf_data["TEXT"]["OUTRO"]
     
     # insert into first text box
-    text.delete("1.0","end")
     text.insert("1.0",out_string)
     
     # make match lines and insert into second text box (for copy/paste into first text box)
     match_string = conf.make_schedules_and_odds(current_results,pablo_data,conf_data)
-    text2.delete("1.0","end")
     text2.insert("1.0",match_string)
 
     # END RUN CONFERENCE FUNCTION (return None)
