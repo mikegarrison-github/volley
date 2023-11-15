@@ -261,26 +261,52 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
             high_wins = mean_wins
             low_wins = mean_wins
         display_name = conf_data["CONFERENCE"][school]["my name"]
-        out_string += str(display_name)+" "+str(round(high_wins,1))+" to "+str(round(low_wins,1))+" -- median wins: "+str(round(median_wins))+"\n"
+        out_string += str(display_name)+" "+str(round(high_wins))+" to "+str(round(low_wins))+" -- median wins: "+str(round(median_wins))+"\n"
     
     # build expected placements table
+    number_of_teams = len(conf_data["CONFERENCE"])
     out_string = out_string[:-1] # remove extra \n
     out_string += conf_data["TEXT"]["DIVIDER"]+"Predicted final placements as of "+str(pablo_data.run_date)+"\n\n"
+    # find non-overlaps
+    boundaries = {}
+    for school in wins_sorted_list:
+        maximum_possible_wins = final_results[school]["wins"] + final_results[school]["unplayed"]
+        minimum_possible_wins = final_results[school]["wins"]
+        boundaries[school] = {
+            "max": maximum_possible_wins,
+            "min": minimum_possible_wins
+        }
+    for school in boundaries:
+        # look for schools you can't fall behind
+        count = 0 
+        for sch in boundaries:
+            if boundaries[school]["min"] >= boundaries[sch]["max"] and school != sch:
+                count += 1
+        worst_place = number_of_teams - count
+        boundaries[school]["worst place"] = worst_place
+        # look for schools you can't pass
+        count = 0
+        for sch in boundaries:
+            if boundaries[school]["max"] < boundaries[sch]["min"] and school != sch:
+                count += 1
+        best_place = 1 + count
+        boundaries[school]["best place"] = best_place
     _placements = {}
     for school in pablo_sorted_list:
         _placements[school] = statistics.mean(final_results[school]["expected placements"])
     placements_sorted_list = [x for (x,y) in sorted(_placements.items(), key=lambda item: item[1], reverse=False)]
     # build string
     for school in placements_sorted_list:
-        number_of_teams = len(conf_data["CONFERENCE"])
         placements = final_results[school]["expected placements"]
         mean_placements = statistics.mean(placements)
         median_placements = statistics.median(placements)
         std_placements = statistics.stdev(placements)
+        worst_place = boundaries[school]["worst place"]
+        best_place = boundaries[school]["best place"]
         if std_placements != 0:
-            a0,b0 = ((1 - mean_placements)/std_placements,(number_of_teams - mean_placements)/std_placements)
+            a0,b0 = ((best_place - mean_placements)/std_placements,(worst_place - mean_placements)/std_placements)
             a1,b1,loc,scale = SPstats.truncnorm.fit(placements,a0,b0,loc=mean_placements,scale=std_placements)
-            a,b = ((1 - loc)/scale,(number_of_teams - loc)/scale)
+            a,b = ((best_place - loc)/scale,(worst_place - loc)/scale)
             interval_75 = SPstats.truncnorm.interval(0.75,a,b,loc=loc,scale=scale)
             high_placements = sorted([interval_75[1],1,number_of_teams])[1]
             low_placements = sorted([interval_75[0],1,number_of_teams])[1]
@@ -288,7 +314,7 @@ def run_conference(runs_value,text,text2,conf_file,pablo_file=None) -> None:
             high_placements = mean_placements
             low_placements = mean_placements
         display_name = conf_data["CONFERENCE"][school]["my name"]
-        out_string += str(display_name)+" "+str(round(low_placements,1))+" to "+str(round(high_placements,1))+" -- median placement: "+str(round(median_placements))+"\n"
+        out_string += str(display_name)+" "+str(round(low_placements))+" to "+str(round(high_placements))+" -- median placement: "+str(round(median_placements))+"\n"
     
     # build remaining text (will be edited by hand cut/paste from second text box)
     out_string = out_string[:-1] # remove extra \n
