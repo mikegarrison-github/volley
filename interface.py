@@ -526,7 +526,7 @@ def run_tournament(runs_value,text,text2,tourn_file,pablo_file=None) -> None:
     for school in sorted_diff_list[0:8]:
         outstring += str(school[0])+": "+str(round(school[2],1))+"%"+"\n"
     sorted_diff_list = sorted(diff_list,key=lambda x: x[3],reverse=True)
-    outstring += "\nSixteen easiest paths to the Sweet 16"+"\n"
+    outstring += "\nTwenty easiest paths to the Sweet 16"+"\n"
     for school in sorted_diff_list[0:20]:
         outstring += str(school[0])+": "+str(round(school[3],1))+"%"+"\n"
 
