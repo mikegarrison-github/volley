@@ -1,0 +1,575 @@
+{
+    "CONFERENCE": {
+        "Oregon State": {
+            "my name": "OSU",
+            "rk name": "Oregon State"
+        },
+        "Pepperdine": {
+            "my name": "Pepperdine",
+            "rk name": "Pepperdine"
+        },
+        "Santa Clara": {
+            "my name": "Santa Clara",
+            "rk name": "Santa Clara"
+        },
+        "San Francisco": {
+            "my name": "San Francisco",
+            "rk name": "San Francisco"
+        },
+        "Gonzaga": {
+            "my name": "Gonzaga",
+            "rk name": "Gonzaga"
+        },
+        "Pacific": {
+            "my name": "Pacific",
+            "rk name": "Pacific"
+        },
+        "LMU": {
+            "my name": "LMU",
+            "rk name": "LMU"
+        },
+        "Saint Mary's": {
+            "my name": "Saint Mary's",
+            "rk name": "Saint Marys"
+        },
+        "Portland": {
+            "my name": "Portland",
+            "rk name": "Portland"
+        },
+        "San Diego": {
+            "my name": "San Diego",
+            "rk name": "San Diego"
+        },
+        "Washington State": {
+            "my name": "WSU",
+            "rk name": "Washington State"
+        }
+    },
+    "CONF_SCHED": {
+        "1": [
+            {
+                "away": "San Diego",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "Portland",
+                "winner": ""
+            },
+            {
+                "away": "Pacific",
+                "home": "LMU",
+                "winner": ""
+            },
+            {
+                "away": "Washington State",
+                "home": "Santa Clara",
+                "winner": ""
+            },
+            {
+                "away": "Pepperdine",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "Pacific",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "San Francisco",
+                "home": "Santa Clara",
+                "winner": ""
+            },
+            {
+                "away": "San Diego",
+                "home": "Washington State",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "Saint Mary's",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "Portland",
+                "winner": ""
+            }
+        ],
+        "2": [
+            {
+                "away": "Pepperdine",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "Santa Clara",
+                "winner": ""
+            },
+            {
+                "away": "Pacific",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Portland",
+                "home": "Washington State",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "Portland",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "Santa Clara",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Pepperdine",
+                "home": "Washington State",
+                "winner": ""
+            }
+        ],
+        "3": [
+            {
+                "away": "Washington State",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "San Diego",
+                "home": "LMU",
+                "winner": ""
+            },
+            {
+                "away": "San Francisco",
+                "home": "Portland",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "Saint Mary's",
+                "winner": ""
+            },
+            {
+                "away": "Santa Clara",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "San Francisco",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "Pepperdine",
+                "home": "LMU",
+                "winner": ""
+            },
+            {
+                "away": "Santa Clara",
+                "home": "Portland",
+                "winner": ""
+            },
+            {
+                "away": "Washington State",
+                "home": "Saint Mary's",
+                "winner": ""
+            }
+        ],
+        "4": [
+            {
+                "away": "Portland",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "Pacific",
+                "home": "Santa Clara",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "Washington State",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "Washington State",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "Portland",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "Pacific",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "LMU",
+                "winner": ""
+            }
+        ],
+        "5": [
+            {
+                "away": "Santa Clara",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "Portland",
+                "winner": ""
+            },
+            {
+                "away": "San Diego",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "Pepperdine",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "Washington State",
+                "winner": ""
+            },
+            {
+                "away": "Pepperdine",
+                "home": "Santa Clara",
+                "winner": ""
+            },
+            {
+                "away": "San Diego",
+                "home": "Saint Mary's",
+                "winner": ""
+            }
+        ],
+        "6": [
+            {
+                "away": "Pacific",
+                "home": "Portland",
+                "winner": ""
+            },
+            {
+                "away": "Washington State",
+                "home": "LMU",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "San Francisco",
+                "home": "Saint Mary's",
+                "winner": ""
+            },
+            {
+                "away": "Santa Clara",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "San Francisco",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "Washington State",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "Santa Clara",
+                "home": "Saint Mary's",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "Portland",
+                "winner": ""
+            }
+        ],
+        "7": [
+            {
+                "away": "Portland",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "Santa Clara",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "Pacific",
+                "home": "Washington State",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "Washington State",
+                "winner": ""
+            },
+            {
+                "away": "Pepperdine",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "Pacific",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Portland",
+                "home": "Santa Clara",
+                "winner": ""
+            }
+        ],
+        "8": [
+            {
+                "away": "Washington State",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "San Francisco",
+                "home": "LMU",
+                "winner": ""
+            },
+            {
+                "away": "San Diego",
+                "home": "Portland",
+                "winner": ""
+            },
+            {
+                "away": "Santa Clara",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "San Francisco",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "San Diego",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "Santa Clara",
+                "home": "LMU",
+                "winner": ""
+            },
+            {
+                "away": "Pacific",
+                "home": "Saint Mary's",
+                "winner": ""
+            },
+            {
+                "away": "Washington State",
+                "home": "Portland",
+                "winner": ""
+            }
+        ],
+        "9": [
+            {
+                "away": "Santa Clara",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Portland",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "Pepperdine",
+                "home": "Saint Mary's",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "Washington State",
+                "home": "Oregon State",
+                "winner": ""
+            },
+            {
+                "away": "Pepperdine",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "Santa Clara",
+                "winner": ""
+            },
+            {
+                "away": "San Diego",
+                "home": "San Francisco",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "LMU",
+                "winner": ""
+            }
+        ],
+        "10": [
+            {
+                "away": "San Francisco",
+                "home": "Washington State",
+                "winner": ""
+            },
+            {
+                "away": "San Diego",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "Portland",
+                "home": "Saint Mary's",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "LMU",
+                "winner": ""
+            },
+            {
+                "away": "Gonzaga",
+                "home": "Santa Clara",
+                "winner": ""
+            },
+            {
+                "away": "Saint Mary's",
+                "home": "San Diego",
+                "winner": ""
+            },
+            {
+                "away": "San Francisco",
+                "home": "Gonzaga",
+                "winner": ""
+            },
+            {
+                "away": "Oregon State",
+                "home": "Pepperdine",
+                "winner": ""
+            },
+            {
+                "away": "Portland",
+                "home": "Pacific",
+                "winner": ""
+            },
+            {
+                "away": "LMU",
+                "home": "Washington State",
+                "winner": ""
+            }
+        ]
+    },
+    "NUMBER_OF_MATCHES": 18,
+    "TEXT": {
+        "INTRO": "All discussion about the WCC/PAC is welcome (except for trolling and flamebaiting)",
+        "DIVIDER": "\n\n==================\n\n",
+        "STANDINGS TOP": "[font color=\"red\"]NOTE: All references to rankings in this post are based on pablo, not AVCA![/font]\n\nStandings:\n\n",
+        "MATCHES TOP": "This week's matches (Pacific times)\n\n",
+        "MATCHES SKELETON": "Thur:\n[font color=\"19d2e6\"]7:00pm[/font] \n\nFri:\n[font color=\"19d2e6\"]7:00pm[/font] \n\nSat:\n[font color=\"19d2e6\"]noon[/font] \n\nSun:\n[font color=\"19d2e6\"]11:00am[/font]",
+        "NEXT WEEK": "Next week:\n\nPlaying one match: ",
+        "OUTRO": "Conference schedule link:\n\nhttps://wccsports.com/calendar.aspx?path=wvball\n\nPablo is the creation of @pablo and is available by subscription on richkern.com\nThis post generated by code written by Mike Garrison."
+    }
+}

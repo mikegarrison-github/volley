@@ -1,8 +1,8 @@
+import numpy as np
 from scipy.stats import norm
 import pandas as pd
-import numpy as np
 from datetime import date
-
+from io import StringIO
 
 
 class Team:
@@ -76,7 +76,7 @@ class PabloWeeklyRating:
     def __init__(self,file_name="RichKern.com Pablo Rankings.html") -> None:
         self.pablo_data_dict = {}
         with open(file_name,'r') as f:
-            pablo_page = pd.read_html(f.read())
+            pablo_page = pd.read_html(StringIO(f.read()))
         pbl_tbl = pablo_page[0]
         self.hca = int(pbl_tbl.columns[0].split()[-1])
         self.pablo_date = str(pbl_tbl.columns[0].split()[3]) + " " + str(pbl_tbl.columns[0].split()[4])
