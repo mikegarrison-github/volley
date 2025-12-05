@@ -79,7 +79,7 @@ class PabloWeeklyRating:
             pablo_page = pd.read_html(StringIO(f.read()))
         pbl_tbl = pablo_page[0]
         self.hca = int(pbl_tbl.columns[0].split()[-1])
-        self.pablo_date = str(pbl_tbl.columns[0].split()[3]) + " " + str(pbl_tbl.columns[0].split()[4])
+        self.pablo_date = str(pbl_tbl.columns[0].split()[5]) + " " + str(pbl_tbl.columns[0].split()[6])
         today = date.today()
         self.run_date = today.strftime("%B %d")
         data = pbl_tbl.to_numpy()

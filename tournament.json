@@ -8,17 +8,77 @@
         "Arkansas": {
             "my name": "Arkansas",
             "rk name": "Arkansas",
-            "seed": 3
+            "seed": 9999
+        },
+        "Northern Colorado": {
+            "my name": "Northern Colorado",
+            "rk name": "Northern Colorado",
+            "seed": 9999
+        },
+        "Arizona": {
+            "my name": "Arizona",
+            "rk name": "Arizona",
+            "seed": 9999
+        },
+        "Princeton": {
+            "my name": "Princeton",
+            "rk name": "Princeton",
+            "seed": 9999
+        },
+        "Cal Poly": {
+            "my name": "Cal Poly",
+            "rk name": "Cal Poly",
+            "seed": 9999
+        },
+        "Utah Valley": {
+            "my name": "Utah Valley",
+            "rk name": "Utah Valley",
+            "seed": 9999
+        },
+        "South Florida": {
+            "my name": "South Florida",
+            "rk name": "USF",
+            "seed": 9999
+        },
+        "Arkansas St": {
+            "my name": "Arkansas St",
+            "rk name": "Arkansas State",
+            "seed": 9999
+        },
+        "Central Arkansas": {
+            "my name": "Central Arkansas",
+            "rk name": "Central Arkansas",
+            "seed": 9999
+        },
+        "Michigan": {
+            "my name": "Michigan",
+            "rk name": "Michigan",
+            "seed": 9999
+        },
+        "Rice": {
+            "my name": "Rice",
+            "rk name": "Rice",
+            "seed": 7
+        },
+        "UCLA": {
+            "my name": "UCLA",
+            "rk name": "UCLA",
+            "seed": 8
+        },
+        "Colorado": {
+            "my name": "Colorado",
+            "rk name": "Colorado",
+            "seed": 5
         },
         "Texas": {
             "my name": "Texas",
             "rk name": "Texas",
-            "seed": 2
+            "seed": 1
         },
         "San Diego": {
             "my name": "San Diego",
             "rk name": "San Diego",
-            "seed": 9999
+            "seed": 8
         },
         "Pittsburgh": {
             "my name": "Pittsburgh",
@@ -28,6 +88,11 @@
         "Texas A&M": {
             "my name": "Texas A&M",
             "rk name": "Texas A&M",
+            "seed": 3
+        },
+        "Florida A&M": {
+            "my name": "Florida A&M",
+            "rk name": "Florida A&M",
             "seed": 9999
         },
         "Texas St": {
@@ -35,15 +100,30 @@
             "rk name": "Texas State",
             "seed": 9999
         },
+        "Campbell": {
+            "my name": "Campbell",
+            "rk name": "Campbell",
+            "seed": 9999
+        },
         "SMU": {
             "my name": "SMU",
             "rk name": "SMU",
-            "seed": 7
+            "seed": 2
         },
         "Western Kentucky": {
             "my name": "Western Kentucky",
             "rk name": "Western Kentucky",
-            "seed": 6
+            "seed": 7
+        },
+        "South Carolina": {
+            "my name": "South Carolina",
+            "rk name": "South Carolina",
+            "seed": 9999
+        },
+        "New Hampshire": {
+            "my name": "New Hampshire",
+            "rk name": "New Hampshire",
+            "seed": 9999
         },
         "Coastal Carolina": {
             "my name": "Coastal Carolina",
@@ -58,12 +138,12 @@
         "Tennessee": {
             "my name": "Tennessee",
             "rk name": "Tennessee",
-            "seed": 3
+            "seed": 7
         },
         "Stanford": {
             "my name": "Stanford",
             "rk name": "Stanford",
-            "seed": 1
+            "seed": 2
         },
         "Fresno St": {
             "my name": "Fresno St",
@@ -78,12 +158,12 @@
         "Houston": {
             "my name": "Houston",
             "rk name": "Houston",
-            "seed": 8
+            "seed": 9999
         },
         "ASU": {
             "my name": "ASU",
             "rk name": "Arizona State",
-            "seed": 5
+            "seed": 2
         },
         "Georgia": {
             "my name": "Georgia",
@@ -98,12 +178,12 @@
         "BYU": {
             "my name": "BYU",
             "rk name": "BYU",
-            "seed": 4
+            "seed": 5
         },
         "Oregon": {
             "my name": "Oregon",
             "rk name": "Oregon",
-            "seed": 2
+            "seed": 9999
         },
         "Southeastern Louisiana": {
             "my name": "Southeastern Louisiana",
@@ -118,12 +198,12 @@
         "Iowa St": {
             "my name": "Iowa St",
             "rk name": "Iowa State",
-            "seed": 7
+            "seed": 5
         },
         "Marquette": {
             "my name": "Marquette",
             "rk name": "Marquette",
-            "seed": 6
+            "seed": 9999
         },
         "Eastern Illinois": {
             "my name": "Eastern Illinois",
@@ -158,17 +238,17 @@
         "PSU": {
             "my name": "PSU",
             "rk name": "Penn State",
-            "seed": 5
+            "seed": 8
         },
         "UNI": {
             "my name": "UNI",
             "rk name": "Northern Iowa",
-            "seed": 8
+            "seed": 6
         },
         "Miami (FL)": {
             "my name": "Miami (FL)",
             "rk name": "Miami-FL",
-            "seed": 9999
+            "seed": 5
         },
         "Jackson St": {
             "my name": "Jackson St",
@@ -178,7 +258,7 @@
         "Wisconsin": {
             "my name": "Wisconsin",
             "rk name": "Wisconsin",
-            "seed": 1
+            "seed": 3
         },
         "Coppin St": {
             "my name": "Coppin St",
@@ -193,12 +273,12 @@
         "USC": {
             "my name": "USC",
             "rk name": "USC",
-            "seed": 8
+            "seed": 4
         },
         "Dayton": {
             "my name": "Dayton",
             "rk name": "Dayton",
-            "seed": 5
+            "seed": 9999
         },
         "Pepperdine": {
             "my name": "Pepperdine",
@@ -211,9 +291,9 @@
             "seed": 9999
         },
         "WSU": {
-            "my name": "WSU",
+            "my name": "Washington St",
             "rk name": "Washington State",
-            "seed": 4
+            "seed": 9999
         },
         "Creighton": {
             "my name": "Creighton",
@@ -228,17 +308,17 @@
         "Minnesota": {
             "my name": "Minnesota",
             "rk name": "Minnesota",
-            "seed": 9999
+            "seed": 4
         },
         "Utah St": {
             "my name": "Utah St",
             "rk name": "Utah State",
-            "seed": 6
+            "seed": 9999
         },
         "Auburn": {
             "my name": "Auburn",
             "rk name": "Auburn",
-            "seed": 7
+            "seed": 9999
         },
         "Western Michigan": {
             "my name": "Western Michigan",
@@ -253,7 +333,7 @@
         "Kentucky": {
             "my name": "Kentucky",
             "rk name": "Kentucky",
-            "seed": 2
+            "seed": 1
         },
         "Wofford": {
             "my name": "Wofford",
@@ -263,22 +343,22 @@
         "Baylor": {
             "my name": "Baylor",
             "rk name": "Baylor",
-            "seed": 9999
+            "seed": 6
         },
         "James Madison": {
             "my name": "James Madison",
             "rk name": "James Madison",
-            "seed": 7
+            "seed": 9999
         },
         "FSU": {
             "my name": "FSU",
             "rk name": "Florida State",
-            "seed": 6
+            "seed": 9999
         },
         "TCU": {
             "my name": "TCU",
             "rk name": "TCU",
-            "seed": 9999
+            "seed": 6
         },
         "SFA": {
             "my name": "SFA",
@@ -288,7 +368,7 @@
         "Florida": {
             "my name": "Florida",
             "rk name": "Florida",
-            "seed": 4
+            "seed": 9999
         },
         "FGCU": {
             "my name": "FGCU",
@@ -303,12 +383,12 @@
         "Georgia Tech": {
             "my name": "Georgia Tech",
             "rk name": "Georgia Tech",
-            "seed": 5
+            "seed": 9999
         },
         "Missouri": {
             "my name": "Missouri",
             "rk name": "Missouri",
-            "seed": 8
+            "seed": 9999
         },
         "Delaware": {
             "my name": "Delaware",
@@ -329,104 +409,249 @@
             "my name": "Louisville",
             "rk name": "Louisville",
             "seed": 2
+        },
+        "UTEP": {
+            "my name": "UTEP",
+            "rk name": "UTEP",
+            "seed": 6
+        },
+        "Cleveland State": {
+            "my name": "Cleveland St",
+            "rk name": "Cleveland State",
+            "seed": 9999
+        },
+        "Wichita State": {
+            "my name": "Wichita St",
+            "rk name": "Wichita State",
+            "seed": 9999
+        },
+        "Washington": {
+            "my name": "Washington",
+            "rk name": "Washington",
+            "seed": 9999
+        },
+        "College of Charleston": {
+            "my name": "College of Charleston",
+            "rk name": "College of Charleston",
+            "seed": 9999
+        },
+        "LMU": {
+            "my name": "LMU",
+            "rk name": "LMU",
+            "seed": 9999
+        },
+        "Sacramento State": {
+            "my name": "Sacramento St",
+            "rk name": "Sacramento State",
+            "seed": 9999
+        },
+        "South Dakota": {
+            "my name": "South Dakota",
+            "rk name": "South Dakota",
+            "seed": 9999
+        },
+        "South Dakota St": {
+            "my name": "South Dakota St",
+            "rk name": "South Dakota State",
+            "seed": 7
+        },
+        "NC State": {
+            "my name": "NC St",
+            "rk name": "NC State",
+            "seed": 9999
+        },
+        "Utah": {
+            "my name": "Utah",
+            "rk name": "Utah",
+            "seed": 9999
+        },
+        "Illinois": {
+            "my name": "Illinois",
+            "rk name": "Illinois",
+            "seed": 9999
+        },
+        "UT Arlington": {
+            "my name": "UT Arlington",
+            "rk name": "UT Arlington",
+            "seed": 9999
+        },
+        "Chicago State": {
+            "my name": "Chicago St",
+            "rk name": "Chicago State",
+            "seed": 9999
+        },
+        "Delaware State": {
+            "my name": "Delaware St",
+            "rk name": "Delaware State",
+            "seed": 9999
+        },
+        "Loyola Chicago": {
+            "my name": "Loyola Chicago",
+            "rk name": "Loyola-Chicago",
+            "seed": 9999
+        },
+        "Mississippi": {
+            "my name": "Mississippi",
+            "rk name": "Ole Miss",
+            "seed": 9999
+        },
+        "CSU": {
+            "my name": "CSU",
+            "rk name": "Colorado State",
+            "seed": 9999
+        },
+        "Texas A&M - Corpus Christi": {
+            "my name": "Texas A&M - Corpus Christi",
+            "rk name": "Texas A&M-Corpus Christi",
+            "seed": 9999
+        },
+        "Oklahoma": {
+            "my name": "Oklahoma",
+            "rk name": "Oklahoma",
+            "seed": 9999
+        },
+        "North Carolina": {
+            "my name": "North Carolina",
+            "rk name": "North Carolina",
+            "seed": 9999
+        },
+        "Xavier": {
+            "my name": "Xavier",
+            "rk name": "Xavier",
+            "seed": 8
+        },
+        "Indiana": {
+            "my name": "Indiana",
+            "rk name": "Indiana",
+            "seed": 4
+        },
+        "Kansas State": {
+            "my name": "Kansas St",
+            "rk name": "Kansas State",
+            "seed": 9999
+        },
+        "Tulsa": {
+            "my name": "Tulsa",
+            "rk name": "Tulsa",
+            "seed": 9999
+        },
+        "American": {
+            "my name": "American",
+            "rk name": "American",
+            "seed": 9999
+        },
+        "Toledo": {
+            "my name": "Toledo",
+            "rk name": "Toledo",
+            "seed": 9999
+        },
+        "Saint Thomas (MN)": {
+            "my name": "Saint Thomas (MN)",
+            "rk name": "St. Thomas-MN",
+            "seed": 9999
+        },
+        "Morehead State": {
+            "my name": "Morehead St",
+            "rk name": "Morehead State",
+            "seed": 9999
         }
     },
     "BRACKET": {
         "UL1": [
             "Nebraska",
             "LIU",
-            "Delaware",
-            "Missouri"
+            "Kansas State",
+            "San Diego"
         ],
         "UL4": [
-            "Georgia Tech",
-            "South Alabama",
-            "FGCU",
-            "Florida"
+            "Miami (FL)",
+            "Tulsa",
+            "High Point",
+            "Kansas"
         ],
         "UL3": [
-            "Arkansas",
+            "Texas A&M",
+            "Campbell",
             "SFA",
-            "TCU",
-            "FSU"
+            "TCU"
         ],
         "UL2": [
-            "James Madison",
-            "Baylor",
-            "Wofford",
-            "Kentucky"
+            "Western Kentucky",
+            "Marquette",
+            "Loyola Chicago",
+            "Louisville"
         ],
         "LL2": [
-            "Louisville",
-            "Wright St",
-            "Western Michigan",
-            "Auburn"
+            "SMU",
+            "Central Arkansas",
+            "Florida",
+            "Rice"
         ],
         "LL3": [
-            "Utah St",
-            "Minnesota",
-            "Colgate",
-            "Creighton"
+            "Baylor",
+            "Arkansas St",
+            "Wright St",
+            "Purdue"
         ],
         "LL4": [
-            "WSU",
-            "GCU",
-            "Pepperdine",
-            "Dayton"
+            "Minnesota",
+            "Fairfield",
+            "Saint Thomas (MN)",
+            "Iowa St"
         ],
         "LL1": [
-            "USC",
+            "Xavier",
+            "Michigan",
             "UMBC",
-            "Coppin St",
             "Pittsburgh"
         ],
         "UR1": [
-            "Wisconsin",
-            "Jackson St",
-            "Miami (FL)",
-            "UNI"
+            "Texas",
+            "Florida A&M",
+            "South Florida",
+            "PSU"
         ],
         "UR4": [
-            "PSU",
-            "Yale",
-            "Omaha",
-            "Kansas"
+            "Colorado",
+            "American",
+            "Toledo",
+            "Indiana"
         ],
         "UR3": [
-            "Purdue",
-            "Fairfield",
+            "Wisconsin",
             "Eastern Illinois",
-            "Marquette"
+            "North Carolina",
+            "UTEP"
         ],
         "UR2": [
-            "Iowa St",
-            "Hawaii",
-            "Southeastern Louisiana",
-            "Oregon"
+            "South Dakota St",
+            "Arizona",
+            "Utah Valley",
+            "Stanford"
         ],
         "LR2": [
-            "Texas",
-            "Texas A&M",
-            "Texas St",
-            "SMU"
-        ],
-        "LR3": [
-            "Western Kentucky",
-            "Coastal Carolina",
-            "High Point",
+            "ASU",
+            "Coppin St",
+            "Utah St",
             "Tennessee"
         ],
+        "LR3": [
+            "UNI",
+            "Utah",
+            "Northern Colorado",
+            "Creighton"
+        ],
         "LR4": [
-            "BYU",
-            "Weber St",
-            "Georgia",
-            "ASU"
+            "USC",
+            "Princeton",
+            "Cal Poly",
+            "BYU"
         ],
         "LR1": [
-            "Houston",
-            "UCSB",
-            "Fresno St",
-            "Stanford"
+            "UCLA",
+            "Georgia Tech",
+            "Wofford",
+            "Kentucky"
         ]
     }
 }
